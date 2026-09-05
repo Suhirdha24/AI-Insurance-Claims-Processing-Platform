@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { useAuth } from '@/lib/auth';
 import { useTheme } from '@/lib/theme';
-import { ShieldCheck, Search, Sun, Moon, LogOut, User as UserIcon, Sparkles } from 'lucide-react';
+import { ShieldCheck, Search, Sun, Moon, LogOut, Sparkles, User as UserIcon } from 'lucide-react';
 import { api } from '@/lib/api';
 
 export function Header({ onNLSearchResults }: { onNLSearchResults?: (results: any) => void }) {
@@ -30,20 +31,20 @@ export function Header({ onNLSearchResults }: { onNLSearchResults?: (results: an
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur border-b border-slate-200 dark:border-slate-800 px-6 py-3">
+    <header className="sticky top-0 z-40 w-full bg-[#06070B]/80 backdrop-blur-xl border-b border-purple-500/20 px-6 py-3.5 shadow-xl">
       <div className="flex items-center justify-between gap-4 max-w-7xl mx-auto">
         {/* Left: Brand logo */}
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
+        <Link href="/" className="flex items-center gap-3 shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-purple-500/30">
             <ShieldCheck className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-base font-extrabold tracking-tight text-slate-900 dark:text-slate-100 leading-none">
-              SHIELD <span className="text-blue-600 dark:text-blue-400">AI</span>
+            <h1 className="text-lg font-extrabold tracking-tight text-white leading-none">
+              SHIELD <span className="text-gradient-purple">. AI</span>
             </h1>
-            <p className="text-[11px] font-medium text-slate-500 dark:text-slate-400">Enterprise Claims Platform</p>
+            <p className="text-[11px] font-medium text-slate-400 mt-0.5">Advisory Claims Engine</p>
           </div>
-        </div>
+        </Link>
 
         {/* Center: Natural Language Search input */}
         <form onSubmit={handleNLSearch} className="flex-1 max-w-xl relative hidden md:block">
@@ -52,14 +53,14 @@ export function Header({ onNLSearchResults }: { onNLSearchResults?: (results: an
               type="text"
               value={nlQuery}
               onChange={(e) => setNlQuery(e.target.value)}
-              placeholder="Ask AI: 'Show high-risk vehicle claims above ₹2 lakh'..."
-              className="w-full pl-10 pr-12 py-2 text-xs rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+              placeholder="Ask AI: 'Show high-risk vehicle damage claims above ₹2 lakh'..."
+              className="w-full pl-10 pr-12 py-2 text-xs rounded-full bg-slate-900/80 border border-purple-500/30 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 transition-all shadow-inner"
             />
-            <Sparkles className="w-4 h-4 text-blue-500 absolute left-3 top-2.5" />
+            <Sparkles className="w-4 h-4 text-purple-400 absolute left-3.5 top-2.5" />
             <button
               type="submit"
               disabled={isSearching}
-              className="absolute right-1.5 top-1.5 px-2.5 py-1 text-[10px] font-bold uppercase rounded-lg bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 transition-colors"
+              className="absolute right-1.5 top-1.5 px-3 py-1 text-[10px] font-bold uppercase rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-500 hover:to-indigo-500 disabled:opacity-50 transition-colors shadow-md shadow-purple-500/20"
             >
               {isSearching ? '...' : 'Search'}
             </button>
@@ -70,23 +71,30 @@ export function Header({ onNLSearchResults }: { onNLSearchResults?: (results: an
         <div className="flex items-center gap-3">
           <button
             onClick={toggleTheme}
-            className="p-2 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            className="p-2 text-slate-400 hover:text-white rounded-xl hover:bg-slate-800/60 transition-colors border border-transparent hover:border-purple-500/20"
             title="Toggle Light/Dark Theme"
           >
             {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4 text-amber-400" />}
           </button>
 
           {user && (
-            <div className="flex items-center gap-3 pl-3 border-l border-slate-200 dark:border-slate-800">
+            <div className="flex items-center gap-3 pl-3 border-l border-purple-500/20">
+              {/* User Balance Badge - INSURE.AI Sidebar Style */}
+              <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-xs font-semibold text-purple-300">
+                <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+                Coverage: ₹10,00,000
+              </div>
+
               <div className="text-right hidden sm:block">
-                <div className="text-xs font-bold text-slate-900 dark:text-slate-100">{user.name}</div>
-                <span className="inline-block px-1.5 py-0.5 text-[9px] font-black tracking-wider uppercase rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                <div className="text-xs font-extrabold text-white">{user.name}</div>
+                <span className="inline-block px-2 py-0.5 text-[9px] font-black tracking-wider uppercase rounded-full bg-purple-950/60 border border-purple-500/30 text-purple-300 mt-0.5">
                   {user.role}
                 </span>
               </div>
+
               <button
                 onClick={logout}
-                className="p-2 text-rose-500 hover:text-rose-700 dark:text-rose-400 rounded-xl hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-colors"
+                className="p-2 text-rose-400 hover:text-rose-300 rounded-xl hover:bg-rose-950/40 border border-transparent hover:border-rose-500/30 transition-colors"
                 title="Sign Out"
               >
                 <LogOut className="w-4 h-4" />
