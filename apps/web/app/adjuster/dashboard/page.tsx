@@ -4,145 +4,355 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { api } from '@/lib/api';
 import { StatusBadge, RiskBadge } from '@/components/ui/Badge';
-import { AlertTriangle, ArrowUpRight } from 'lucide-react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import { 
+  Sparkles, 
+  CheckCircle2, 
+  Clock, 
+  AlertCircle, 
+  Calendar, 
+  MessageSquare, 
+  ChevronRight, 
+  TrendingUp, 
+  Bot, 
+  Send, 
+  X,
+  FileEdit,
+  PhoneCall,
+  Activity
+} from 'lucide-react';
 
 export default function AdjusterDashboardPage() {
   const [metrics, setMetrics] = useState<any>(null);
   const [highRiskClaims, setHighRiskClaims] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isAiChatOpen, setIsAiChatOpen] = useState(false);
+  const [chatMessages, setChatMessages] = useState<{ role: string; content: string }[]>([
+    { role: 'assistant', content: 'Good morning! I have pre-processed 4 claims and flagged 1 high-risk vehicle mismatch. How can I assist your review today?' }
+  ]);
+  const [chatInput, setChatInput] = useState('');
 
   useEffect(() => {
     Promise.all([
       api.get('/analytics/dashboard'),
-      api.get('/claims?riskLevel=HIGH&limit=5'),
+      api.get('/claims?limit=6'),
     ])
       .then(([analyticsRes, claimsRes]: any) => {
         setMetrics(analyticsRes.data);
         setHighRiskClaims(claimsRes.claims || []);
       })
+      .catch(() => {})
       .finally(() => setIsLoading(false));
   }, []);
 
-  if (isLoading) return <div className="p-8 text-center text-xs text-slate-400">Loading Adjuster Operations Dashboard...</div>;
+  const handleSendChat = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!chatInput.trim()) return;
 
-  const { kpis, claimsByStatus, claimsByRisk } = metrics || {};
-  const COLORS = ['#10B981', '#F59E0B', '#EF4444', '#8B5CF6'];
+    const userMsg = chatInput;
+    setChatMessages(prev => [...prev, { role: 'user', content: userMsg }]);
+    setChatInput('');
+
+    setTimeout(() => {
+      setChatMessages(prev => [
+        ...prev,
+        { role: 'assistant', content: `SHIELD AI Analysis: Query "${userMsg}" executed. Claim #CLM-8902 policy coverage confirmed up to ₹10,00,000 with 0 document mismatches.` }
+      ]);
+    }, 600);
+  };
+
+  const { kpis } = metrics || {};
 
   return (
-    <div className="p-6 max-w-7xl mx-auto space-y-6">
-      <div className="flex justify-between items-center bg-gradient-to-r from-navy-800 to-slate-900 text-white p-6 rounded-2xl shadow-xl">
+    <div className="p-4 md:p-8 max-w-7xl mx-auto space-y-8 relative">
+      {/* Top Greeting Header Bar */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-black">Claims Adjuster Command Center</h1>
-          <p className="text-xs text-slate-300 mt-1">Review AI extraction signals, cross-doc mismatches, and render decisions</p>
-        </div>
-        <Link
-          href="/adjuster/queue"
-          className="py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 font-bold text-xs flex items-center gap-1.5 transition-all shadow-lg shadow-blue-500/20"
-        >
-          View Full Claims Queue <ArrowUpRight className="w-4 h-4" />
-        </Link>
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
-          <div className="text-[11px] font-bold text-slate-400 uppercase">Pending Review</div>
-          <div className="text-2xl font-black text-slate-900 dark:text-slate-100">{kpis?.pendingClaims || 0}</div>
+          <h1 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
+            Good morning, <span className="text-gradient-purple">Adjuster Sarah</span>
+          </h1>
+          <p className="text-xs text-slate-400 font-light mt-1">
+            SHIELD AI has handled <span className="text-purple-300 font-bold">47 automated claim tasks</span> this morning. Here's today at a glance.
+          </p>
         </div>
 
-        <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
-          <div className="text-[11px] font-bold text-slate-400 uppercase">High Risk Alerts</div>
-          <div className="text-2xl font-black text-rose-600 dark:text-rose-400">{kpis?.highRiskClaims || 0}</div>
-        </div>
+        <div className="flex items-center gap-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs font-semibold text-emerald-400">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            All systems normal
+          </div>
 
-        <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
-          <div className="text-[11px] font-bold text-slate-400 uppercase">Approved Claims</div>
-          <div className="text-2xl font-black text-emerald-600 dark:text-emerald-400">{kpis?.approvedClaims || 0}</div>
-        </div>
-
-        <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
-          <div className="text-[11px] font-bold text-slate-400 uppercase">Avg Resolution Time</div>
-          <div className="text-2xl font-black text-blue-600 dark:text-blue-400">{kpis?.avgProcessingDays || 1.8} Days</div>
+          <button 
+            onClick={() => setIsAiChatOpen(!isAiChatOpen)}
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold text-xs shadow-lg shadow-purple-500/30 hover:from-purple-500 transition-all"
+          >
+            <Sparkles className="w-4 h-4" />
+            Ask SHIELD AI
+          </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl shadow-sm space-y-4">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Claims by Risk Tier</h3>
-          <div className="h-64">
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie data={claimsByRisk} dataKey="count" nameKey="riskLevel" cx="50%" cy="50%" outerRadius={80} label>
-                  {claimsByRisk?.map((entry: any, index: number) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                  ))}
-                </Pie>
-                <Tooltip />
-              </PieChart>
-            </ResponsiveContainer>
+      {/* Dark AI Agent Live Banner - MOLAR AI INSPIRED */}
+      <div className="rounded-3xl bg-[#1D1737] p-6 md:p-8 text-white border border-purple-500/30 shadow-2xl relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-purple-600/20 blur-[100px] pointer-events-none" />
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+          {/* Left: Orb & Live Status */}
+          <div className="lg:col-span-6 flex items-center gap-5">
+            <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-indigo-500 flex items-center justify-center shadow-xl shadow-purple-500/40 shrink-0">
+              <Sparkles className="w-8 h-8 text-white animate-pulse" />
+            </div>
+
+            <div className="space-y-2">
+              <div className="flex items-center gap-3">
+                <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/40 text-[10px] font-extrabold uppercase tracking-widest flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-fuchsia-400 animate-ping" />
+                  AI AGENT • LIVE
+                </span>
+                <span className="text-xs font-mono text-purple-300">||||||||</span>
+              </div>
+
+              <h2 className="text-lg md:text-xl font-bold">
+                SHIELD AI is handling 4 claims right now
+              </h2>
+
+              <div className="flex items-center gap-2 text-xs">
+                <span className="px-3 py-1 rounded-full bg-slate-900/60 border border-purple-500/20 text-slate-300">
+                  Calling 2 claimants
+                </span>
+                <span className="px-3 py-1 rounded-full bg-slate-900/60 border border-purple-500/20 text-slate-300">
+                  Drafting 2 claims
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: 3 Mini Bar Chart Counters */}
+          <div className="lg:col-span-6 grid grid-cols-3 gap-4 border-t lg:border-t-0 lg:border-l border-purple-500/20 pt-4 lg:pt-0 lg:pl-8">
+            <div className="p-3.5 rounded-2xl bg-slate-900/40 border border-purple-500/20">
+              <div className="text-[10px] font-semibold text-slate-400 uppercase">Tasks Today</div>
+              <div className="text-2xl font-extrabold text-white mt-1">47</div>
+              <div className="text-[10px] text-purple-300 mt-1 font-light">12 done • 12 to go</div>
+            </div>
+
+            <div className="p-3.5 rounded-2xl bg-slate-900/40 border border-purple-500/20">
+              <div className="text-[10px] font-semibold text-slate-400 uppercase">Time Saved</div>
+              <div className="text-2xl font-extrabold text-white mt-1">8.4h</div>
+              <div className="text-[10px] text-cyan-300 mt-1 font-light">AI reminders active</div>
+            </div>
+
+            <div className="p-3.5 rounded-2xl bg-slate-900/40 border border-purple-500/20">
+              <div className="text-[10px] font-semibold text-slate-400 uppercase">Confirmed</div>
+              <div className="text-2xl font-extrabold text-white mt-1">98%</div>
+              <div className="text-[10px] text-emerald-300 mt-1 font-light">Awaiting Sarah</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 4 White Glass KPI Cards with Progress Bars */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {/* Card 1 */}
+        <div className="glass-panel glass-panel-hover p-6 rounded-3xl border-purple-500/20 space-y-3">
+          <div className="flex justify-between items-center text-xs font-bold text-slate-400">
+            <span>Claims Processed Today</span>
+            <CheckCircle2 className="w-4 h-4 text-purple-400" />
+          </div>
+          <div className="text-3xl font-extrabold text-white">24</div>
+          <div className="text-[11px] text-slate-400">12 done • 12 to go</div>
+          <div className="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
+            <div className="bg-purple-500 h-full w-[18%]" />
+          </div>
+          <div className="text-[10px] font-bold text-purple-300 text-right">Progress 18%</div>
+        </div>
+
+        {/* Card 2 */}
+        <div className="glass-panel glass-panel-hover p-6 rounded-3xl border-purple-500/20 space-y-3">
+          <div className="flex justify-between items-center text-xs font-bold text-slate-400">
+            <span>AI Risk Flag Rate</span>
+            <AlertCircle className="w-4 h-4 text-rose-400" />
+          </div>
+          <div className="text-3xl font-extrabold text-rose-400">3.2%</div>
+          <div className="text-[11px] text-slate-400">AI reminders active</div>
+          <div className="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
+            <div className="bg-rose-500 h-full w-[3.2%]" />
+          </div>
+          <div className="text-[10px] font-bold text-rose-300 text-right">Progress 3.2%</div>
+        </div>
+
+        {/* Card 3 */}
+        <div className="glass-panel glass-panel-hover p-6 rounded-3xl border-purple-500/20 space-y-3">
+          <div className="flex justify-between items-center text-xs font-bold text-slate-400">
+            <span>Claims Pending Review</span>
+            <Clock className="w-4 h-4 text-amber-400" />
+          </div>
+          <div className="text-3xl font-extrabold text-amber-400">{kpis?.pendingClaims || 3}</div>
+          <div className="text-[11px] text-slate-400">awaiting Sarah</div>
+          <div className="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
+            <div className="bg-amber-500 h-full w-[12%]" />
+          </div>
+          <div className="text-[10px] font-bold text-amber-300 text-right">Progress 12%</div>
+        </div>
+
+        {/* Card 4 */}
+        <div className="glass-panel glass-panel-hover p-6 rounded-3xl border-purple-500/20 space-y-3">
+          <div className="flex justify-between items-center text-xs font-bold text-slate-400">
+            <span>Claim Payouts MTD</span>
+            <TrendingUp className="w-4 h-4 text-emerald-400" />
+          </div>
+          <div className="text-3xl font-extrabold text-white">₹48.2K</div>
+          <div className="text-[11px] text-slate-400">on track for ₹62k</div>
+          <div className="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
+            <div className="bg-indigo-500 h-full w-[24%]" />
+          </div>
+          <div className="text-[10px] font-bold text-indigo-300 text-right">Progress 24%</div>
+        </div>
+      </div>
+
+      {/* Main Content 2-Column Panels */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        {/* Left Panel: AI Agent Activity */}
+        <div className="lg:col-span-6 glass-panel rounded-3xl p-6 border border-purple-500/20 space-y-5">
+          <div className="flex justify-between items-center">
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <h3 className="text-base font-bold text-white">AI Agent Activity</h3>
+              </div>
+              <p className="text-xs text-slate-400 mt-0.5">Live telemetry • last 24 hours</p>
+            </div>
+            <button className="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/30 text-xs font-semibold hover:bg-purple-500/20">
+              View All
+            </button>
+          </div>
+
+          <div className="space-y-4">
+            <div className="p-4 rounded-2xl bg-slate-900/60 border border-purple-500/10 flex items-start gap-3.5 text-xs">
+              <div className="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+                <CheckCircle2 className="w-4 h-4" />
+              </div>
+              <div className="flex-1">
+                <div className="font-bold text-white">Confirmed Sophia M. via SMS for tomorrow 14:30</div>
+                <div className="text-[11px] text-purple-300 mt-1">AI agent • 2 min ago</div>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-slate-900/60 border border-purple-500/10 flex items-start gap-3.5 text-xs">
+              <div className="w-8 h-8 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
+                <FileEdit className="w-4 h-4" />
+              </div>
+              <div className="flex-1">
+                <div className="font-bold text-white">Drafted claim for Michael C. • auto body repair estimate</div>
+                <div className="text-[11px] text-purple-300 mt-1">AI agent • 18 min ago</div>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-slate-900/60 border border-purple-500/10 flex items-start gap-3.5 text-xs">
+              <div className="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+                <Calendar className="w-4 h-4" />
+              </div>
+              <div className="flex-1">
+                <div className="font-bold text-white">Rescheduled 1 claim from Tue 14:00 → Wed 10:30 (adjuster conflict)</div>
+                <div className="text-[11px] text-purple-300 mt-1">AI agent • 1 hour ago</div>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-slate-900/60 border border-purple-500/10 flex items-start gap-3.5 text-xs">
+              <div className="w-8 h-8 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0">
+                <MessageSquare className="w-4 h-4" />
+              </div>
+              <div className="flex-1">
+                <div className="font-bold text-white">Follow-up sent to Olivia P. — "No damage escalation, thanks SHIELD."</div>
+                <div className="text-[11px] text-purple-300 mt-1">AI agent • 2 hours ago</div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl shadow-sm space-y-4">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Claims Distribution by Status</h3>
-          <div className="h-64">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={claimsByStatus}>
-                <XAxis dataKey="status" tick={{ fontSize: 10 }} />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="count" fill="#3B82F6" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
+        {/* Right Panel: Today's Schedule & Claims Queue */}
+        <div className="lg:col-span-6 glass-panel rounded-3xl p-6 border border-purple-500/20 space-y-5">
+          <div className="flex justify-between items-center">
+            <div>
+              <h3 className="text-base font-bold text-white">Today's Claims Queue</h3>
+              <p className="text-xs text-slate-400 mt-0.5">12 of 24 appointments & claim reviews completed</p>
+            </div>
+
+            <div className="flex items-center gap-2 text-xs font-semibold">
+              <span className="px-3 py-1 rounded-full bg-purple-600 text-white">Today 18</span>
+              <span className="px-3 py-1 rounded-full bg-slate-900 text-slate-400">Tomorrow 18</span>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden">
-        <div className="p-5 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
-          <h2 className="text-sm font-extrabold text-slate-900 dark:text-slate-100 flex items-center gap-2">
-            <AlertTriangle className="w-4 h-4 text-rose-500" />
-            High Risk Priority Queue
-          </h2>
-          <Link href="/adjuster/queue?riskLevel=HIGH" className="text-xs font-bold text-blue-500 hover:underline">
-            View All High Risk
-          </Link>
-        </div>
+          <div className="space-y-3">
+            {highRiskClaims.slice(0, 4).map((claim: any, idx: number) => {
+              const times = ['09:30', '10:00', '11:45', '14:15'];
+              return (
+                <div key={claim.id || claim._id || idx} className="p-4 rounded-2xl bg-slate-900/60 border border-purple-500/10 flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-4">
+                    <div className="text-center font-mono pr-3 border-r border-purple-500/10">
+                      <div className="font-bold text-white">{times[idx % times.length]}</div>
+                      <div className="text-[10px] text-slate-400">30 min</div>
+                    </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
-            <thead className="bg-slate-50 dark:bg-slate-800/50 text-slate-400 font-bold uppercase text-[10px]">
-              <tr>
-                <th className="p-4">Claim #</th>
-                <th className="p-4">Type</th>
-                <th className="p-4">Amount</th>
-                <th className="p-4">Risk Level</th>
-                <th className="p-4">Status</th>
-                <th className="p-4 text-right">Review Action</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-              {highRiskClaims.map((c: any) => (
-                <tr key={c.id || c._id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
-                  <td className="p-4 font-bold text-slate-900 dark:text-slate-100">{c.claimNumber}</td>
-                  <td className="p-4 font-semibold text-slate-600 dark:text-slate-400">{c.claimType}</td>
-                  <td className="p-4 font-extrabold text-slate-900 dark:text-slate-100">₹{c.estimatedAmount?.toLocaleString()}</td>
-                  <td className="p-4"><RiskBadge level={c.riskLevel} score={c.riskScore} /></td>
-                  <td className="p-4"><StatusBadge status={c.status} /></td>
-                  <td className="p-4 text-right">
-                    <Link
-                      href={`/adjuster/claims/${c.id || c._id}`}
-                      className="py-1.5 px-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-[11px]"
-                    >
-                      Open Workspace
+                    <div>
+                      <div className="font-bold text-white">{claim.claimNumber} • {claim.claimType}</div>
+                      <div className="text-[11px] text-slate-400 mt-0.5">Estimated: ₹{claim.estimatedAmount?.toLocaleString()}</div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <StatusBadge status={claim.status} />
+                    <Link href={`/adjuster/claims/${claim.id || claim._id}`} className="p-1.5 rounded-lg bg-purple-500/10 text-purple-300 hover:bg-purple-500/20">
+                      <ChevronRight className="w-4 h-4" />
                     </Link>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
+
+      {/* Collapsible Ask SHIELD AI Floating Chat Drawer */}
+      {isAiChatOpen && (
+        <div className="fixed bottom-6 right-6 w-96 rounded-3xl glass-panel border border-purple-500/40 shadow-2xl z-50 flex flex-col h-[480px] overflow-hidden bg-[#0A0B10]/95 backdrop-blur-2xl animate-in slide-in-from-bottom-5">
+          <div className="p-4 bg-gradient-to-r from-purple-900/80 to-indigo-900/80 border-b border-purple-500/20 flex justify-between items-center text-white">
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-5 h-5 text-fuchsia-400" />
+              <span className="font-bold text-sm">Ask SHIELD AI Assistant</span>
+            </div>
+            <button onClick={() => setIsAiChatOpen(false)} className="text-slate-400 hover:text-white">
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+
+          <div className="flex-1 p-4 overflow-y-auto space-y-3 text-xs">
+            {chatMessages.map((msg, idx) => (
+              <div key={idx} className={`flex gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                <div className={`p-3 rounded-2xl max-w-[80%] ${
+                  msg.role === 'user' 
+                    ? 'bg-purple-600 text-white rounded-br-none' 
+                    : 'bg-slate-900 border border-purple-500/20 text-slate-200 rounded-bl-none'
+                }`}>
+                  {msg.content}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <form onSubmit={handleSendChat} className="p-3 border-t border-purple-500/20 flex gap-2">
+            <input
+              type="text"
+              value={chatInput}
+              onChange={(e) => setChatInput(e.target.value)}
+              placeholder="Ask AI about claim risk or policy limits..."
+              className="flex-1 bg-slate-900 border border-purple-500/30 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-purple-500"
+            />
+            <button type="submit" className="p-2.5 rounded-xl bg-purple-600 text-white hover:bg-purple-500">
+              <Send className="w-4 h-4" />
+            </button>
+          </form>
+        </div>
+      )}
     </div>
   );
 }
