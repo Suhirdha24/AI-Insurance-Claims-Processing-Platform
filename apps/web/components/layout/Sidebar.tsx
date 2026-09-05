@@ -28,6 +28,7 @@ export function Sidebar() {
 
   const customerLinks = [
     { href: '/dashboard', label: 'Damage Assessment', icon: LayoutDashboard },
+    { href: '/assessments', label: '3D AI Inspection', icon: Car },
     { href: '/claims/new', label: 'Submit Damage Claim', icon: FilePlus2 },
     { href: '/documents', label: 'My Documents', icon: FolderOpen },
   ];

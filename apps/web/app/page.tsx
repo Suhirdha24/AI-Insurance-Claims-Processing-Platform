@@ -103,17 +103,22 @@ export default function LandingPage() {
           </div>
 
           {/* Damage Assessment Image Showcase */}
-          <div className="relative rounded-2xl overflow-hidden border border-slate-800 aspect-video">
+          <Link href="/assessments" className="relative rounded-2xl overflow-hidden border border-slate-800 aspect-video block group">
             <Image 
               src="/images/hero_assessment.jpg" 
               alt="AI Car Damage Assessment Dashboard" 
               fill 
-              className="object-cover"
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
               priority
             />
             {/* Interactive Hotspot Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#06070B] via-transparent to-transparent opacity-60" />
-          </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#06070B] via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="px-5 py-2.5 rounded-full bg-cyan-500/90 text-black font-extrabold text-xs uppercase tracking-wider shadow-xl opacity-0 group-hover:opacity-100 transition-all transform group-hover:scale-105">
+                LAUNCH 3D INSPECTOR WORKSPACE →
+              </span>
+            </div>
+          </Link>
         </div>
       </section>
 
