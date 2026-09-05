@@ -11,7 +11,7 @@
     "test": "jest --detectOpenHandles"
   },
   "dependencies": {
-    "@ai-insurance/shared": "workspace:*",
+    "@ai-insurance/shared": "*",
     "bcryptjs": "^2.4.3",
     "bullmq": "^5.1.1",
     "cors": "^2.8.5",

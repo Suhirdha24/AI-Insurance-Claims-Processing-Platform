@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ai-insurance/shared": "workspace:*",
+    "@ai-insurance/shared": "*",
     "@hookform/resolvers": "^3.3.4",
     "axios": "^1.6.7",
     "clsx": "^2.1.0",
