@@ -1,0 +1,28 @@
+{
+  "name": "ai-insurance-claims-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Production-Quality AI-Assisted Insurance Claims Management Platform",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:worker\" \"npm run dev:web\"",
+    "dev:api": "npm --prefix apps/api run dev",
+    "dev:worker": "npm --prefix apps/worker run dev",
+    "dev:web": "npm --prefix apps/web run dev",
+    "build": "npm run build:shared && npm run build:api && npm run build:worker && npm run build:web",
+    "build:shared": "npm --prefix packages/shared run build",
+    "build:api": "npm --prefix apps/api run build",
+    "build:worker": "npm --prefix apps/worker run build",
+    "build:web": "npm --prefix apps/web run build",
+    "seed": "npm --prefix apps/api run seed",
+    "test": "npm --prefix packages/shared test && npm --prefix apps/api test",
+    "lint": "npm --prefix apps/api run lint && npm --prefix apps/web run lint"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.3.3"
+  }
+}
