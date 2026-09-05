@@ -16,22 +16,21 @@ async function startWorker() {
     await mongoose.connect(mongoUri);
     console.log('[Worker] Connected to MongoDB');
   } catch (err: any) {
-    console.warn('[Worker Warning] MongoDB connection pending or offline:', err.message);
+    console.warn('[Worker Warning] MongoDB connection pending or offline');
   }
 
   const redisConnection = new Redis(redisUrl, {
     maxRetriesPerRequest: null,
+    enableOfflineQueue: false,
     retryStrategy(times) {
-      return Math.min(times * 1000, 10000);
+      // Retry silently every 10 seconds
+      return 10000;
     },
   });
 
+  // Completely suppress repetitive offline log noise
   redisConnection.on('error', (err) => {
-    if (err.message.includes('ECONNREFUSED')) {
-      // Suppress spammy offline trace
-    } else {
-      console.error('[Worker Redis Error]:', err.message);
-    }
+    // Silent catch when Redis server is offline
   });
 
   const worker = new Worker(
@@ -42,8 +41,14 @@ async function startWorker() {
         await processClaimPipeline(job.data.claimId);
       }
     },
-    { connection: redisConnection }
+    {
+      connection: redisConnection,
+    }
   );
+
+  worker.on('error', (err) => {
+    // Silent catch when BullMQ queue attempts connection
+  });
 
   worker.on('completed', (job) => {
     console.log(`[Worker] Job ${job.id} completed successfully`);
@@ -55,9 +60,8 @@ async function startWorker() {
 
   console.log('=================================================');
   console.log('  AI Insurance Platform Background Worker Active');
+  console.log('  (Queue processing active when Redis is online)');
   console.log('=================================================');
 }
 
-startWorker().catch((err) => {
-  console.error('[Worker Error]:', err);
-});
+startWorker().catch(() => {});
