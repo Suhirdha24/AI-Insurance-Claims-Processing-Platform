@@ -12,9 +12,27 @@ const redisUrl = process.env.REDIS_URL || 'redis://localhost:6379';
 
 async function startWorker() {
   console.log('[Worker] Connecting to MongoDB...');
-  await mongoose.connect(mongoUri);
+  try {
+    await mongoose.connect(mongoUri);
+    console.log('[Worker] Connected to MongoDB');
+  } catch (err: any) {
+    console.warn('[Worker Warning] MongoDB connection pending or offline:', err.message);
+  }
 
-  const redisConnection = new Redis(redisUrl, { maxRetriesPerRequest: null });
+  const redisConnection = new Redis(redisUrl, {
+    maxRetriesPerRequest: null,
+    retryStrategy(times) {
+      return Math.min(times * 1000, 10000);
+    },
+  });
+
+  redisConnection.on('error', (err) => {
+    if (err.message.includes('ECONNREFUSED')) {
+      // Suppress spammy offline trace
+    } else {
+      console.error('[Worker Redis Error]:', err.message);
+    }
+  });
 
   const worker = new Worker(
     'claim-processing-queue',
@@ -41,6 +59,5 @@ async function startWorker() {
 }
 
 startWorker().catch((err) => {
-  console.error('[Worker] Failure starting background worker:', err);
-  process.exit(1);
+  console.error('[Worker Error]:', err);
 });
