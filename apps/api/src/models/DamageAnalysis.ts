@@ -19,7 +19,7 @@ export interface IDamageAnalysisModel extends Document {
     overriddenAt: Date;
   };
   aiProvider: string;
-  model: string;
+  aiModel: string;
   createdAt: Date;
 }
 
@@ -45,7 +45,7 @@ const damageAnalysisSchema = new Schema<IDamageAnalysisModel>(
       overriddenAt: Date,
     },
     aiProvider: { type: String, default: 'MOCK' },
-    model: { type: String, default: 'mock-vision-v1' },
+    aiModel: { type: String, default: 'mock-vision-v1' },
   },
   { timestamps: true }
 );

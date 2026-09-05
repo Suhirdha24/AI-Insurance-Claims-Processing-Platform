@@ -74,7 +74,7 @@ export class ClaimService {
     return claim;
   }
 
-  async getClaims(queryFilter: any, page = 1, limit = 20, sort = { createdAt: -1 }) {
+  async getClaims(queryFilter: any, page = 1, limit = 20, sort: any = { createdAt: -1 }) {
     const skip = (page - 1) * limit;
     const claims = await Claim.find(queryFilter)
       .populate('customerId', 'name email')
