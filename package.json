@@ -8,7 +8,7 @@
     "apps/*"
   ],
   "scripts": {
-    "dev": "concurrently \"npm run dev:api\" \"npm run dev:worker\" \"npm run dev:web\"",
+    "dev": "concurrently -n \"API,WORKER,WEB\" -c \"blue,yellow,green\" \"npm run dev:api\" \"npm run dev:worker\" \"npm run dev:web\"",
     "dev:api": "npm --prefix apps/api run dev",
     "dev:worker": "npm --prefix apps/worker run dev",
     "dev:web": "npm --prefix apps/web run dev",
