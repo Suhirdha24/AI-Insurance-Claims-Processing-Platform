@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { api } from '@/lib/api';
 import { StatusBadge, RiskBadge } from '@/components/ui/Badge';
-import { ShieldAlert, AlertTriangle, CheckCircle2, Clock, FileText, ArrowUpRight } from 'lucide-react';
+import { AlertTriangle, ArrowUpRight } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
 export default function AdjusterDashboardPage() {
@@ -31,7 +31,6 @@ export default function AdjusterDashboardPage() {
 
   return (
     <div className="p-6 max-w-7xl mx-auto space-y-6">
-      {/* Top Banner */}
       <div className="flex justify-between items-center bg-gradient-to-r from-navy-800 to-slate-900 text-white p-6 rounded-2xl shadow-xl">
         <div>
           <h1 className="text-xl font-black">Claims Adjuster Command Center</h1>
@@ -45,7 +44,6 @@ export default function AdjusterDashboardPage() {
         </Link>
       </div>
 
-      {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
           <div className="text-[11px] font-bold text-slate-400 uppercase">Pending Review</div>
@@ -68,7 +66,6 @@ export default function AdjusterDashboardPage() {
         </div>
       </div>
 
-      {/* Charts Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl shadow-sm space-y-4">
           <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Claims by Risk Tier</h3>
@@ -101,7 +98,6 @@ export default function AdjusterDashboardPage() {
         </div>
       </div>
 
-      {/* High Risk Claims Priority Queue Table */}
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden">
         <div className="p-5 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
           <h2 className="text-sm font-extrabold text-slate-900 dark:text-slate-100 flex items-center gap-2">

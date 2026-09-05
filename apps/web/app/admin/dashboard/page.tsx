@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { api } from '@/lib/api';
-import { Users, FileText, ShieldAlert, Activity, CheckCircle2 } from 'lucide-react';
+import { Activity } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 export default function AdminDashboardPage() {
@@ -31,7 +31,6 @@ export default function AdminDashboardPage() {
         </div>
       </div>
 
-      {/* KPI Overview */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
           <div className="text-[11px] font-bold text-slate-400 uppercase">Registered Users</div>
@@ -54,7 +53,6 @@ export default function AdminDashboardPage() {
         </div>
       </div>
 
-      {/* Chart */}
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl shadow-sm space-y-4">
         <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Platform Claims Throughput</h3>
         <div className="h-64">
