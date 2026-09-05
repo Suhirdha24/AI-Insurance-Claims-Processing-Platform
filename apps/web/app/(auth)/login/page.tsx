@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useAuth } from '@/lib/auth';
-import { ShieldCheck, ArrowRight, UserCheck, ShieldAlert, User } from 'lucide-react';
+import { ShieldCheck, ArrowRight, UserCheck, ShieldAlert, User, Sparkles, CheckCircle2, Lock } from 'lucide-react';
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -39,94 +40,147 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col justify-center items-center p-4">
-      <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-2xl space-y-6">
-        {/* Brand */}
-        <div className="text-center space-y-2">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white mx-auto shadow-lg shadow-blue-500/20">
-            <ShieldCheck className="w-8 h-8" />
-          </div>
-          <h1 className="text-2xl font-black text-white tracking-tight">
-            SHIELD <span className="text-blue-500">AI</span>
-          </h1>
-          <p className="text-xs text-slate-400">Production Claims Processing Portal</p>
-        </div>
+    <div className="min-h-screen bg-[#06070B] text-slate-100 bg-cyber-grid flex items-center justify-center p-4 md:p-8 relative overflow-hidden">
+      {/* Top Ambient Glow Aura */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[450px] bg-gradient-to-r from-purple-900/30 via-fuchsia-600/25 to-indigo-900/30 blur-[120px] pointer-events-none -z-10" />
 
-        {error && (
-          <div className="p-3 rounded-xl bg-rose-950/60 border border-rose-800 text-rose-300 text-xs font-semibold text-center">
-            {error}
-          </div>
-        )}
+      {/* Main Split Glassmorphism Container */}
+      <div className="w-full max-w-5xl rounded-3xl glass-panel border border-purple-500/30 shadow-2xl glow-purple overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+        {/* Left Column: Futuristic Cyberpunk Hero Graphic */}
+        <div className="lg:col-span-6 relative hidden lg:flex flex-col justify-between p-8 border-r border-purple-500/20">
+          <Image 
+            src="/images/login_hero.jpg" 
+            alt="AI Damage Assessment Cyber Hero" 
+            fill 
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#06070B] via-[#06070B]/50 to-transparent z-10" />
 
-        <form onSubmit={handleSubmit} className="space-y-4 text-xs">
-          <div>
-            <label className="block text-slate-300 font-bold mb-1">Email Address</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="customer@example.com"
-              required
-              className="w-full p-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:ring-2 focus:ring-blue-500 outline-none"
-            />
+          {/* Top Brand Tag */}
+          <div className="relative z-20 flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-fuchsia-500 flex items-center justify-center text-white shadow-lg shadow-purple-500/30">
+              <ShieldCheck className="w-6 h-6" />
+            </div>
+            <span className="text-xl font-bold tracking-tight text-white">
+              SHIELD <span className="text-gradient-purple">. AI</span>
+            </span>
           </div>
 
-          <div>
-            <label className="block text-slate-300 font-bold mb-1">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
-              required
-              className="w-full p-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:ring-2 focus:ring-blue-500 outline-none"
-            />
-          </div>
+          {/* Floating AI Metrics overlay */}
+          <div className="relative z-20 space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/40 text-xs font-semibold text-purple-300">
+              <Sparkles className="w-3.5 h-3.5 text-fuchsia-400" />
+              Advisory Vision Engine v3.0
+            </div>
 
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold transition-all shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2"
-          >
-            {isLoading ? 'Signing In...' : 'Sign In to Account'} <ArrowRight className="w-4 h-4" />
-          </button>
-        </form>
+            <h2 className="text-2xl font-extrabold text-white leading-tight">
+              Instant AI Damage Detection & Human-in-the-Loop Approval
+            </h2>
 
-        {/* Demo Fast Login Buttons */}
-        <div className="border-t border-slate-800 pt-5 space-y-2">
-          <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider text-center">
-            One-Click Demo Account Access:
-          </div>
-          <div className="grid grid-cols-3 gap-2 text-[11px]">
-            <button
-              onClick={() => handleDemoLogin('customer@example.com')}
-              className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 font-bold flex flex-col items-center gap-1 transition-colors"
-            >
-              <User className="w-4 h-4 text-emerald-400" />
-              Customer
-            </button>
-            <button
-              onClick={() => handleDemoLogin('adjuster@example.com')}
-              className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 font-bold flex flex-col items-center gap-1 transition-colors"
-            >
-              <UserCheck className="w-4 h-4 text-blue-400" />
-              Adjuster
-            </button>
-            <button
-              onClick={() => handleDemoLogin('admin@example.com')}
-              className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 font-bold flex flex-col items-center gap-1 transition-colors"
-            >
-              <ShieldAlert className="w-4 h-4 text-purple-400" />
-              Admin
-            </button>
+            <div className="grid grid-cols-2 gap-3 text-xs font-mono">
+              <div className="p-3 rounded-xl bg-slate-950/80 border border-purple-500/30">
+                <div className="text-purple-400 font-bold">99.4% ACCURACY</div>
+                <div className="text-slate-400 text-[10px]">AI OCR & Heatmaps</div>
+              </div>
+              <div className="p-3 rounded-xl bg-slate-950/80 border border-purple-500/30">
+                <div className="text-cyan-400 font-bold">&lt; 5 MINUTES</div>
+                <div className="text-slate-400 text-[10px]">Claim Turnaround</div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="text-center text-xs text-slate-400">
-          Don't have an account?{' '}
-          <Link href="/register" className="text-blue-400 font-bold hover:underline">
-            Register here
-          </Link>
+        {/* Right Column: Glassmorphism Login Form */}
+        <div className="lg:col-span-6 p-8 md:p-10 flex flex-col justify-center space-y-6 bg-slate-950/60 backdrop-blur-2xl">
+          <div className="text-center space-y-2">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-indigo-600 flex items-center justify-center text-white mx-auto shadow-lg shadow-purple-500/30 lg:hidden">
+              <ShieldCheck className="w-6 h-6" />
+            </div>
+            <h1 className="text-2xl font-extrabold text-white tracking-tight">
+              Sign In to <span className="text-gradient-purple">SHIELD AI</span>
+            </h1>
+            <p className="text-xs text-slate-400 font-light">
+              Enterprise Advisory Claims Management Portal
+            </p>
+          </div>
+
+          {error && (
+            <div className="p-3 rounded-xl bg-rose-950/60 border border-rose-800 text-rose-300 text-xs font-semibold text-center animate-shake">
+              {error}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-4 text-xs">
+            <div>
+              <label className="block text-slate-300 font-bold mb-1">Email Address</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="customer@example.com"
+                required
+                className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white placeholder-slate-500 focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
+              />
+            </div>
+
+            <div>
+              <label className="block text-slate-300 font-bold mb-1">Password</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••••"
+                required
+                className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white placeholder-slate-500 focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="w-full py-3.5 rounded-full bg-gradient-to-r from-purple-600 via-fuchsia-500 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-extrabold text-sm transition-all shadow-lg shadow-purple-500/30 flex items-center justify-center gap-2 transform hover:scale-[1.02]"
+            >
+              {isLoading ? 'Signing In...' : 'Sign In to Account'} <ArrowRight className="w-4 h-4" />
+            </button>
+          </form>
+
+          {/* One-Click Fast Demo Login */}
+          <div className="border-t border-purple-500/20 pt-5 space-y-3">
+            <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest text-center">
+              ONE-CLICK DEMO ACCOUNT ACCESS
+            </div>
+            <div className="grid grid-cols-3 gap-2.5 text-xs">
+              <button
+                onClick={() => handleDemoLogin('customer@example.com')}
+                className="p-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-purple-500/20 text-slate-300 font-bold flex flex-col items-center gap-1 transition-all hover:border-purple-500/50"
+              >
+                <User className="w-4 h-4 text-emerald-400" />
+                <span>Customer</span>
+              </button>
+              <button
+                onClick={() => handleDemoLogin('adjuster@example.com')}
+                className="p-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-purple-500/20 text-slate-300 font-bold flex flex-col items-center gap-1 transition-all hover:border-purple-500/50"
+              >
+                <UserCheck className="w-4 h-4 text-purple-400" />
+                <span>Adjuster</span>
+              </button>
+              <button
+                onClick={() => handleDemoLogin('admin@example.com')}
+                className="p-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-purple-500/20 text-slate-300 font-bold flex flex-col items-center gap-1 transition-all hover:border-purple-500/50"
+              >
+                <ShieldAlert className="w-4 h-4 text-cyan-400" />
+                <span>Admin</span>
+              </button>
+            </div>
+          </div>
+
+          <div className="text-center text-xs text-slate-400 pt-2">
+            Don't have an account?{' '}
+            <Link href="/register" className="text-purple-400 font-bold hover:underline">
+              Register here
+            </Link>
+          </div>
         </div>
       </div>
     </div>
