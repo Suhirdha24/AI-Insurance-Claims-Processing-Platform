@@ -74,6 +74,33 @@ async function seedData() {
     isActive: true,
   });
 
+  const customerAlias = await User.create({
+    name: 'Sarah (Customer)',
+    email: 'customer@claimflow.ai',
+    passwordHash: await bcrypt.hash('Customer123!', salt),
+    role: UserRole.CUSTOMER,
+    phone: '+1-555-0188',
+    isActive: true,
+  });
+
+  const adjusterAlias = await User.create({
+    name: 'Michael Vance',
+    email: 'adjuster@claimflow.ai',
+    passwordHash: await bcrypt.hash('Adjuster123!', salt),
+    role: UserRole.ADJUSTER,
+    phone: '+1-555-0189',
+    isActive: true,
+  });
+
+  const adminAlias = await User.create({
+    name: 'System Admin',
+    email: 'admin@claimflow.ai',
+    passwordHash: await bcrypt.hash('Admin123!', salt),
+    role: UserRole.ADMIN,
+    phone: '+1-555-0190',
+    isActive: true,
+  });
+
   const customer2 = await User.create({
     name: 'Elena Rostova',
     email: 'customer2@example.com',
