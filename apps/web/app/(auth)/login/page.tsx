@@ -123,7 +123,7 @@ export default function LoginPage() {
               <ShieldCheck className="w-6 h-6" />
             </div>
             <span className="text-xl font-bold tracking-tight text-white">
-              SHIELD <span className="text-gradient-purple">. AI</span>
+              ClaimFlow <span className="text-gradient-purple">AI</span>
             </span>
           </div>
 
@@ -158,7 +158,7 @@ export default function LoginPage() {
               <ShieldCheck className="w-6 h-6" />
             </div>
             <h1 className="text-2xl font-extrabold text-white tracking-tight">
-              Sign In to <span className="text-gradient-purple">SHIELD AI</span>
+              Sign In to <span className="text-gradient-purple">ClaimFlow AI</span>
             </h1>
             <p className="text-xs text-slate-400 font-light">
               Click any role below to switch hero photo & auto-fill credentials

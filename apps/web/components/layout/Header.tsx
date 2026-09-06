@@ -40,9 +40,9 @@ export function Header({ onNLSearchResults }: { onNLSearchResults?: (results: an
           </div>
           <div className="text-left">
             <h1 className="text-lg font-extrabold tracking-tight text-slate-900 dark:text-white leading-none">
-              SHIELD <span className="text-gradient-purple">. AI</span>
+              ClaimFlow <span className="text-gradient-purple">AI</span>
             </h1>
-            <p className="text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-0.5">Advisory Claims Engine</p>
+            <p className="text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-0.5">Enterprise Insurance Platform</p>
           </div>
         </Link>
 
