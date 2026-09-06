@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/lib/auth';
 import { UserRole } from '@ai-insurance/shared';
 import {
@@ -16,12 +16,12 @@ import {
   BarChart3,
   ScrollText,
   Car,
-  Settings,
   ShieldCheck
 } from 'lucide-react';
 
 export function Sidebar() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const { user } = useAuth();
 
   if (!user) return null;
@@ -51,15 +51,25 @@ export function Sidebar() {
   if (user.role === UserRole.ADJUSTER) navItems = adjusterLinks;
   if (user.role === UserRole.ADMIN) navItems = adminLinks;
 
+  const checkIsActive = (itemHref: string) => {
+    if (itemHref.includes('?riskLevel=HIGH')) {
+      return pathname === '/adjuster/queue' && searchParams.get('riskLevel') === 'HIGH';
+    }
+    if (itemHref === '/adjuster/queue') {
+      return pathname === '/adjuster/queue' && searchParams.get('riskLevel') !== 'HIGH';
+    }
+    return pathname === itemHref;
+  };
+
   return (
     <aside className="w-64 bg-[#06070B]/90 backdrop-blur-xl border-r border-purple-500/20 flex flex-col p-4 shrink-0 hidden md:flex min-h-[calc(100vh-65px)]">
-      {/* INSURE.AI Profile Header Panel */}
+      {/* User Profile Header Panel */}
       <div className="p-4 rounded-2xl glass-panel border border-purple-500/20 mb-6 space-y-3">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 justify-start">
           <div className="w-10 h-10 rounded-xl bg-purple-600/20 border border-purple-500/40 flex items-center justify-center text-purple-300 font-bold text-sm">
             {user.name?.charAt(0) || 'U'}
           </div>
-          <div>
+          <div className="text-left">
             <div className="text-xs font-extrabold text-white truncate max-w-[130px]">{user.name}</div>
             <div className="text-[10px] text-purple-300 font-medium">Verified User</div>
           </div>
@@ -72,14 +82,14 @@ export function Sidebar() {
         </div>
       </div>
 
-      <div className="text-[10px] font-extrabold text-purple-400 uppercase tracking-widest px-3 mb-3">
+      <div className="text-[10px] font-extrabold text-purple-400 uppercase tracking-widest px-3 mb-3 text-left">
         {user.role} Navigation
       </div>
 
       <nav className="space-y-1.5 flex-1">
         {navItems.map((item) => {
           const Icon = item.icon;
-          const isActive = pathname === item.href;
+          const isActive = checkIsActive(item.href);
           return (
             <Link
               key={item.href}
