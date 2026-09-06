@@ -11,8 +11,8 @@ type RoleType = 'customer' | 'adjuster' | 'admin';
 export default function LoginPage() {
   const { login } = useAuth();
   const [activeRole, setActiveRole] = useState<RoleType>('customer');
-  const [email, setEmail] = useState('customer@example.com');
-  const [password, setPassword] = useState('password123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -28,6 +28,7 @@ export default function LoginPage() {
       email: 'customer@example.com',
       roleLabel: 'Policyholder',
       placeholderEmail: 'customer@example.com',
+      placeholderPassword: 'Enter password (e.g. password123)',
       route: '/dashboard',
     },
     adjuster: {
@@ -41,6 +42,7 @@ export default function LoginPage() {
       email: 'adjuster@example.com',
       roleLabel: 'Claims Adjuster',
       placeholderEmail: 'adjuster@example.com',
+      placeholderPassword: 'Enter password (e.g. password123)',
       route: '/adjuster/dashboard',
     },
     admin: {
@@ -54,6 +56,7 @@ export default function LoginPage() {
       email: 'admin@example.com',
       roleLabel: 'System Administrator',
       placeholderEmail: 'admin@example.com',
+      placeholderPassword: 'Enter password (e.g. password123)',
       route: '/admin/dashboard',
     },
   };
@@ -62,8 +65,8 @@ export default function LoginPage() {
 
   const handleRoleSelect = (role: RoleType) => {
     setActiveRole(role);
-    setEmail(roleConfigs[role].email);
-    setPassword('password123');
+    setEmail('');
+    setPassword('');
   };
 
   const handleAutoLoginRole = async (role: RoleType) => {
@@ -225,7 +228,7 @@ export default function LoginPage() {
                 name="shield_user_email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder={`Enter ${currentConfig.roleLabel} email`}
+                placeholder={`e.g. ${currentConfig.placeholderEmail}`}
                 autoComplete="new-password"
                 required
                 className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white placeholder-slate-400 font-medium focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
@@ -244,7 +247,7 @@ export default function LoginPage() {
                 name="shield_user_password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter password"
+                placeholder={currentConfig.placeholderPassword}
                 autoComplete="new-password"
                 required
                 className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white placeholder-slate-400 font-medium focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
