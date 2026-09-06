@@ -4,15 +4,15 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useAuth } from '@/lib/auth';
-import { ShieldCheck, ArrowRight, UserCheck, ShieldAlert, User, Sparkles, LogIn } from 'lucide-react';
+import { ShieldCheck, ArrowRight, UserCheck, ShieldAlert, User, Sparkles } from 'lucide-react';
 
 type RoleType = 'customer' | 'adjuster' | 'admin';
 
 export default function LoginPage() {
   const { login } = useAuth();
   const [activeRole, setActiveRole] = useState<RoleType>('customer');
-  const [email, setEmail] = useState('customer@example.com');
-  const [password, setPassword] = useState('password123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -27,6 +27,7 @@ export default function LoginPage() {
       stat2Sub: 'Instant Claim Estimate',
       email: 'customer@example.com',
       roleLabel: 'Policyholder',
+      placeholderEmail: 'customer@example.com',
       route: '/dashboard',
     },
     adjuster: {
@@ -39,6 +40,7 @@ export default function LoginPage() {
       stat2Sub: 'Cross-Doc Mismatches',
       email: 'adjuster@example.com',
       roleLabel: 'Claims Adjuster',
+      placeholderEmail: 'adjuster@example.com',
       route: '/adjuster/dashboard',
     },
     admin: {
@@ -51,6 +53,7 @@ export default function LoginPage() {
       stat2Sub: 'Audit & System Catalog',
       email: 'admin@example.com',
       roleLabel: 'System Administrator',
+      placeholderEmail: 'admin@example.com',
       route: '/admin/dashboard',
     },
   };
@@ -59,8 +62,6 @@ export default function LoginPage() {
 
   const handleRoleSelect = (role: RoleType) => {
     setActiveRole(role);
-    setEmail(roleConfigs[role].email);
-    setPassword('password123');
   };
 
   const handleAutoLoginRole = async (role: RoleType) => {
@@ -155,7 +156,7 @@ export default function LoginPage() {
               Sign In to <span className="text-gradient-purple">SHIELD AI</span>
             </h1>
             <p className="text-xs text-slate-400 font-light">
-              Select your portal role below to preview photo & sign in instantly
+              Select your portal role below to preview hero photo & credentials
             </p>
           </div>
 
@@ -213,9 +214,9 @@ export default function LoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="email@example.com"
+                placeholder={`Enter your ${currentConfig.roleLabel} email (e.g. ${currentConfig.placeholderEmail})`}
                 required
-                className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white placeholder-slate-500 focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
+                className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white placeholder-slate-400 font-medium focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
               />
             </div>
 
@@ -225,9 +226,9 @@ export default function LoginPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
+                placeholder="Enter your account password (e.g. password123)"
                 required
-                className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white placeholder-slate-500 focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
+                className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white placeholder-slate-400 font-medium focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
               />
             </div>
 
@@ -236,14 +237,14 @@ export default function LoginPage() {
               disabled={isLoading}
               className="w-full py-3.5 rounded-full bg-gradient-to-r from-purple-600 via-fuchsia-500 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-extrabold text-sm transition-all shadow-lg shadow-purple-500/30 flex items-center justify-center gap-2 transform hover:scale-[1.02]"
             >
-              {isLoading ? 'Navigating to Portal...' : `Sign In as ${currentConfig.roleLabel}`} <ArrowRight className="w-4 h-4" />
+              {isLoading ? 'Signing In...' : `Sign In as ${currentConfig.roleLabel}`} <ArrowRight className="w-4 h-4" />
             </button>
           </form>
 
           {/* One-Click Direct Navigation Launch Buttons */}
           <div className="border-t border-purple-500/20 pt-4 space-y-2.5">
             <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest text-center">
-              ONE-CLICK PORTAL DIRECT LAUNCH
+              ONE-CLICK DEMO AUTO LOGIN & PORTAL LAUNCH
             </div>
             <div className="grid grid-cols-3 gap-2 text-xs">
               <button
