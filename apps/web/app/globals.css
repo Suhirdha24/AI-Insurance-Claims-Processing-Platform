@@ -11,7 +11,7 @@
     --text-muted: #475569;
     --glass-bg: rgba(255, 255, 255, 0.95);
     --glass-border: rgba(147, 51, 234, 0.2);
-    --grid-line: rgba(99, 102, 241, 0.07);
+    --grid-line: rgba(99, 102, 241, 0.06);
     --card-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.12);
   }
 
@@ -35,7 +35,7 @@
   }
 }
 
-/* Custom Futuristic Cyber Grid Background */
+/* Custom Cyber Grid Background */
 .bg-cyber-grid {
   background-size: 50px 50px;
   background-image: 
@@ -57,78 +57,6 @@
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Light mode specific clean contrast rules (Scope strictly to light mode containers) */
-html:not(.dark) {
-  color-scheme: light;
-}
-
-html:not(.dark) body {
-  background-color: #F8FAFC;
-  color: #0F172A;
-}
-
-html:not(.dark) header {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  border-color: rgba(147, 51, 234, 0.2) !important;
-}
-
-html:not(.dark) aside {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  border-color: rgba(147, 51, 234, 0.2) !important;
-}
-
-html:not(.dark) .glass-panel {
-  background-color: #FFFFFF !important;
-  border-color: rgba(147, 51, 234, 0.2) !important;
-  box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.12) !important;
-}
-
-html:not(.dark) .glass-panel h1,
-html:not(.dark) .glass-panel h2,
-html:not(.dark) .glass-panel h3,
-html:not(.dark) .glass-panel h4,
-html:not(.dark) aside h1,
-html:not(.dark) header h1 {
-  color: #0F172A !important;
-}
-
-html:not(.dark) .glass-panel p,
-html:not(.dark) aside p,
-html:not(.dark) header p {
-  color: #475569 !important;
-}
-
-/* Ensure buttons with dark/gradient backgrounds keep white text in light mode */
-html:not(.dark) button.bg-gradient-to-r,
-html:not(.dark) a.bg-gradient-to-r,
-html:not(.dark) .bg-gradient-to-r {
-  color: #FFFFFF !important;
-}
-
-html:not(.dark) .text-slate-400 {
-  color: #475569;
-}
-
-html:not(.dark) .text-slate-300 {
-  color: #334155;
-}
-
-html:not(.dark) .text-white {
-  color: #0F172A;
-}
-
-/* Re-assert white text inside dark inner card overlays (like the car inspector image callouts) */
-.bg-slate-950 .text-white,
-.bg-slate-900 .text-white,
-.bg-[#06070B] .text-white,
-[class*="bg-gradient-to"] .text-white,
-[class*="bg-purple-600"] .text-white,
-[class*="bg-indigo-600"] .text-white,
-[class*="bg-blue-600"] .text-white,
-[class*="bg-emerald-600"] .text-white {
-  color: #FFFFFF !important;
 }
 
 .glass-panel-hover {

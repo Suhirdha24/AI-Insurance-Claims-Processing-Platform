@@ -62,27 +62,27 @@ function SidebarContent() {
   };
 
   return (
-    <aside className="w-64 bg-[#06070B]/90 backdrop-blur-xl border-r border-purple-500/20 flex flex-col p-4 shrink-0 hidden md:flex min-h-[calc(100vh-65px)]">
+    <aside className="w-64 bg-white/95 dark:bg-[#06070B]/90 backdrop-blur-xl border-r border-purple-500/20 flex flex-col p-4 shrink-0 hidden md:flex min-h-[calc(100vh-65px)] transition-colors">
       {/* User Profile Header Panel */}
       <div className="p-4 rounded-2xl glass-panel border border-purple-500/20 mb-6 space-y-3">
         <div className="flex items-center gap-3 justify-start">
-          <div className="w-10 h-10 rounded-xl bg-purple-600/20 border border-purple-500/40 flex items-center justify-center text-purple-300 font-bold text-sm">
+          <div className="w-10 h-10 rounded-xl bg-purple-600/20 border border-purple-500/40 flex items-center justify-center text-purple-600 dark:text-purple-300 font-bold text-sm">
             {user.name?.charAt(0) || 'U'}
           </div>
           <div className="text-left">
-            <div className="text-xs font-extrabold text-white truncate max-w-[130px]">{user.name}</div>
-            <div className="text-[10px] text-purple-300 font-medium">Verified User</div>
+            <div className="text-xs font-extrabold text-slate-900 dark:text-white truncate max-w-[130px]">{user.name}</div>
+            <div className="text-[10px] text-purple-600 dark:text-purple-300 font-medium">Verified User</div>
           </div>
         </div>
 
         {/* Balance Badge */}
-        <div className="p-2.5 rounded-xl bg-slate-900/80 border border-purple-500/20 flex items-center justify-between text-xs">
-          <span className="text-slate-400 text-[11px]">Policy Coverage</span>
-          <span className="font-extrabold text-purple-300">₹10,00,000</span>
+        <div className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900/80 border border-purple-500/20 flex items-center justify-between text-xs">
+          <span className="text-slate-500 dark:text-slate-400 text-[11px]">Policy Coverage</span>
+          <span className="font-extrabold text-purple-700 dark:text-purple-300">₹10,00,000</span>
         </div>
       </div>
 
-      <div className="text-[10px] font-extrabold text-purple-400 uppercase tracking-widest px-3 mb-3 text-left">
+      <div className="text-[10px] font-extrabold text-purple-600 dark:text-purple-400 uppercase tracking-widest px-3 mb-3 text-left">
         {user.role} Navigation
       </div>
 
@@ -96,11 +96,11 @@ function SidebarContent() {
               href={item.href}
               className={`flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-semibold transition-all ${
                 isActive
-                  ? 'bg-gradient-to-r from-purple-600/30 to-fuchsia-600/20 text-white border border-purple-500/40 font-bold shadow-lg shadow-purple-500/10'
-                  : 'text-slate-400 hover:bg-slate-900/60 hover:text-white border border-transparent hover:border-purple-500/20'
+                  ? 'bg-purple-600 text-white font-bold shadow-lg shadow-purple-500/20 dark:bg-gradient-to-r dark:from-purple-600/30 dark:to-fuchsia-600/20 dark:text-white dark:border dark:border-purple-500/40'
+                  : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900/60 hover:text-slate-900 dark:hover:text-white border border-transparent hover:border-purple-500/20'
               }`}
             >
-              <Icon className={`w-4 h-4 ${isActive ? 'text-purple-400' : 'text-slate-500'}`} />
+              <Icon className={`w-4 h-4 ${isActive ? 'text-white dark:text-purple-400' : 'text-slate-400 dark:text-slate-500'}`} />
               {item.label}
             </Link>
           );
@@ -110,7 +110,7 @@ function SidebarContent() {
       {/* Footer System Badge */}
       <div className="pt-4 border-t border-purple-500/10">
         <div className="flex items-center gap-2 text-[10px] text-slate-500 px-3">
-          <ShieldCheck className="w-3.5 h-3.5 text-purple-400" />
+          <ShieldCheck className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
           <span>Advisory AI Engine Enabled</span>
         </div>
       </div>
@@ -120,7 +120,7 @@ function SidebarContent() {
 
 export function Sidebar() {
   return (
-    <Suspense fallback={<aside className="w-64 bg-[#06070B]/90 border-r border-purple-500/20 hidden md:flex shrink-0 min-h-[calc(100vh-65px)]" />}>
+    <Suspense fallback={<aside className="w-64 bg-white/95 dark:bg-[#06070B]/90 border-r border-purple-500/20 hidden md:flex shrink-0 min-h-[calc(100vh-65px)]" />}>
       <SidebarContent />
     </Suspense>
   );
