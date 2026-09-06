@@ -11,8 +11,8 @@ type RoleType = 'customer' | 'adjuster' | 'admin';
 export default function LoginPage() {
   const { login } = useAuth();
   const [activeRole, setActiveRole] = useState<RoleType>('customer');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('customer@example.com');
+  const [password, setPassword] = useState('password123');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -62,8 +62,8 @@ export default function LoginPage() {
 
   const handleRoleSelect = (role: RoleType) => {
     setActiveRole(role);
-    setEmail('');
-    setPassword('');
+    setEmail(roleConfigs[role].email);
+    setPassword('password123');
   };
 
   const handleAutoLoginRole = async (role: RoleType) => {
@@ -158,7 +158,7 @@ export default function LoginPage() {
               Sign In to <span className="text-gradient-purple">SHIELD AI</span>
             </h1>
             <p className="text-xs text-slate-400 font-light">
-              Select your portal role below to preview hero photo & credentials
+              Click any role below to switch hero photo & auto-fill credentials
             </p>
           </div>
 
@@ -210,24 +210,25 @@ export default function LoginPage() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4 text-xs">
+          <form onSubmit={handleSubmit} autoComplete="new-password" className="space-y-4 text-xs">
             <div>
               <div className="flex justify-between items-center mb-1">
                 <label className="block text-slate-300 font-bold">
                   Email Address ({currentConfig.roleLabel})
                 </label>
                 <span className="text-[10px] text-purple-300/80 font-mono">
-                  e.g. {currentConfig.placeholderEmail}
+                  {currentConfig.email}
                 </span>
               </div>
               <input
                 type="email"
+                name="shield_user_email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder={`Enter ${currentConfig.roleLabel} Email (e.g. ${currentConfig.placeholderEmail})`}
-                autoComplete="off"
+                placeholder={`Enter ${currentConfig.roleLabel} email`}
+                autoComplete="new-password"
                 required
-                className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white placeholder:text-purple-300/50 placeholder:font-normal focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
+                className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white placeholder-slate-400 font-medium focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
               />
             </div>
 
@@ -235,17 +236,18 @@ export default function LoginPage() {
               <div className="flex justify-between items-center mb-1">
                 <label className="block text-slate-300 font-bold">Password</label>
                 <span className="text-[10px] text-purple-300/80 font-mono">
-                  e.g. password123
+                  password123
                 </span>
               </div>
               <input
                 type="password"
+                name="shield_user_password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter Password (e.g. password123)"
-                autoComplete="off"
+                placeholder="Enter password"
+                autoComplete="new-password"
                 required
-                className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white placeholder:text-purple-300/50 placeholder:font-normal focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
+                className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white placeholder-slate-400 font-medium focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
               />
             </div>
 
@@ -254,14 +256,14 @@ export default function LoginPage() {
               disabled={isLoading}
               className="w-full py-3.5 rounded-full bg-gradient-to-r from-purple-600 via-fuchsia-500 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-extrabold text-sm transition-all shadow-lg shadow-purple-500/30 flex items-center justify-center gap-2 transform hover:scale-[1.02]"
             >
-              {isLoading ? 'Signing In...' : `Sign In as ${currentConfig.roleLabel}`} <ArrowRight className="w-4 h-4" />
+              {isLoading ? 'Navigating...' : `Sign In as ${currentConfig.roleLabel}`} <ArrowRight className="w-4 h-4" />
             </button>
           </form>
 
           {/* One-Click Direct Navigation Launch Buttons */}
           <div className="border-t border-purple-500/20 pt-4 space-y-2.5">
             <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest text-center">
-              ONE-CLICK DEMO AUTO LOGIN & PORTAL LAUNCH
+              ONE-CLICK PORTAL DIRECT LAUNCH
             </div>
             <div className="grid grid-cols-3 gap-2 text-xs">
               <button
