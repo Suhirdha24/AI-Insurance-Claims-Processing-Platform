@@ -31,7 +31,7 @@ export function Header({ onNLSearchResults }: { onNLSearchResults?: (results: an
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-[#06070B]/90 dark:bg-[#06070B]/90 backdrop-blur-xl border-b border-purple-500/20 px-4 md:px-6 py-3.5 shadow-xl">
+    <header className="sticky top-0 z-40 w-full bg-[#06070B]/90 dark:bg-[#06070B]/90 backdrop-blur-xl border-b border-purple-500/20 px-4 md:px-6 py-3.5 shadow-xl transition-colors">
       <div className="flex items-center justify-between gap-4 max-w-7xl mx-auto">
         {/* Left: Brand logo aligned to the left */}
         <Link href="/" className="flex items-center gap-3 shrink-0 justify-start">
@@ -71,10 +71,20 @@ export function Header({ onNLSearchResults }: { onNLSearchResults?: (results: an
         <div className="flex items-center gap-3">
           <button
             onClick={toggleTheme}
-            className="p-2 text-slate-300 hover:text-white rounded-xl bg-slate-900/60 hover:bg-slate-800/80 transition-colors border border-purple-500/20"
-            title="Toggle Light/Dark Theme"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl bg-slate-900/80 hover:bg-slate-800 transition-all border border-purple-500/30 text-purple-300 shadow-md"
+            title="Toggle Light/Dark Mode"
           >
-            {theme === 'light' ? <Moon className="w-4 h-4 text-purple-400" /> : <Sun className="w-4 h-4 text-amber-400" />}
+            {theme === 'light' ? (
+              <>
+                <Sun className="w-3.5 h-3.5 text-amber-500" />
+                <span>Light</span>
+              </>
+            ) : (
+              <>
+                <Moon className="w-3.5 h-3.5 text-purple-400" />
+                <span>Dark</span>
+              </>
+            )}
           </button>
 
           {user && (
