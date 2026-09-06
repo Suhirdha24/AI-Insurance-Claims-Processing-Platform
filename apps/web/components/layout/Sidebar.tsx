@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/lib/auth';
@@ -19,7 +19,7 @@ import {
   ShieldCheck
 } from 'lucide-react';
 
-export function Sidebar() {
+function SidebarContent() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { user } = useAuth();
@@ -115,5 +115,13 @@ export function Sidebar() {
         </div>
       </div>
     </aside>
+  );
+}
+
+export function Sidebar() {
+  return (
+    <Suspense fallback={<aside className="w-64 bg-[#06070B]/90 border-r border-purple-500/20 hidden md:flex shrink-0 min-h-[calc(100vh-65px)]" />}>
+      <SidebarContent />
+    </Suspense>
   );
 }
