@@ -62,6 +62,8 @@ export default function LoginPage() {
 
   const handleRoleSelect = (role: RoleType) => {
     setActiveRole(role);
+    setEmail('');
+    setPassword('');
   };
 
   const handleAutoLoginRole = async (role: RoleType) => {
@@ -163,6 +165,7 @@ export default function LoginPage() {
           {/* Role Selection Switcher Tabs */}
           <div className="grid grid-cols-3 gap-2 text-xs font-bold p-1 rounded-2xl bg-slate-900/90 border border-purple-500/30">
             <button
+              type="button"
               onClick={() => handleRoleSelect('customer')}
               className={`py-2.5 rounded-xl flex items-center justify-center gap-1.5 transition-all ${
                 activeRole === 'customer'
@@ -175,6 +178,7 @@ export default function LoginPage() {
             </button>
 
             <button
+              type="button"
               onClick={() => handleRoleSelect('adjuster')}
               className={`py-2.5 rounded-xl flex items-center justify-center gap-1.5 transition-all ${
                 activeRole === 'adjuster'
@@ -187,6 +191,7 @@ export default function LoginPage() {
             </button>
 
             <button
+              type="button"
               onClick={() => handleRoleSelect('admin')}
               className={`py-2.5 rounded-xl flex items-center justify-center gap-1.5 transition-all ${
                 activeRole === 'admin'
@@ -207,28 +212,40 @@ export default function LoginPage() {
 
           <form onSubmit={handleSubmit} className="space-y-4 text-xs">
             <div>
-              <label className="block text-slate-300 font-bold mb-1">
-                Email Address ({currentConfig.roleLabel})
-              </label>
+              <div className="flex justify-between items-center mb-1">
+                <label className="block text-slate-300 font-bold">
+                  Email Address ({currentConfig.roleLabel})
+                </label>
+                <span className="text-[10px] text-purple-300/80 font-mono">
+                  e.g. {currentConfig.placeholderEmail}
+                </span>
+              </div>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder={`Enter your ${currentConfig.roleLabel} email (e.g. ${currentConfig.placeholderEmail})`}
+                placeholder={`Enter ${currentConfig.roleLabel} Email (e.g. ${currentConfig.placeholderEmail})`}
+                autoComplete="off"
                 required
-                className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white placeholder-slate-400 font-medium focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
+                className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white placeholder:text-purple-300/50 placeholder:font-normal focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-slate-300 font-bold mb-1">Password</label>
+              <div className="flex justify-between items-center mb-1">
+                <label className="block text-slate-300 font-bold">Password</label>
+                <span className="text-[10px] text-purple-300/80 font-mono">
+                  e.g. password123
+                </span>
+              </div>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your account password (e.g. password123)"
+                placeholder="Enter Password (e.g. password123)"
+                autoComplete="off"
                 required
-                className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white placeholder-slate-400 font-medium focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
+                className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white placeholder:text-purple-300/50 placeholder:font-normal focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
               />
             </div>
 
@@ -248,6 +265,7 @@ export default function LoginPage() {
             </div>
             <div className="grid grid-cols-3 gap-2 text-xs">
               <button
+                type="button"
                 onClick={() => handleAutoLoginRole('customer')}
                 className="p-2.5 rounded-xl bg-slate-900/80 hover:bg-purple-600/30 border border-purple-500/20 text-slate-300 font-bold flex flex-col items-center gap-1 transition-all hover:border-purple-500/50"
               >
@@ -255,6 +273,7 @@ export default function LoginPage() {
                 <span>Customer</span>
               </button>
               <button
+                type="button"
                 onClick={() => handleAutoLoginRole('adjuster')}
                 className="p-2.5 rounded-xl bg-slate-900/80 hover:bg-purple-600/30 border border-purple-500/20 text-slate-300 font-bold flex flex-col items-center gap-1 transition-all hover:border-purple-500/50"
               >
@@ -262,6 +281,7 @@ export default function LoginPage() {
                 <span>Adjuster</span>
               </button>
               <button
+                type="button"
                 onClick={() => handleAutoLoginRole('admin')}
                 className="p-2.5 rounded-xl bg-slate-900/80 hover:bg-purple-600/30 border border-purple-500/20 text-slate-300 font-bold flex flex-col items-center gap-1 transition-all hover:border-purple-500/50"
               >
