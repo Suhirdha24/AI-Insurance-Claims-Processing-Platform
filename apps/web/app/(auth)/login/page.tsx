@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useAuth } from '@/lib/auth';
-import { ShieldCheck, ArrowRight, UserCheck, ShieldAlert, User, Sparkles } from 'lucide-react';
+import { ShieldCheck, ArrowRight, UserCheck, ShieldAlert, User, Sparkles, LogIn } from 'lucide-react';
 
 type RoleType = 'customer' | 'adjuster' | 'admin';
 
@@ -27,6 +27,7 @@ export default function LoginPage() {
       stat2Sub: 'Instant Claim Estimate',
       email: 'customer@example.com',
       roleLabel: 'Policyholder',
+      route: '/dashboard',
     },
     adjuster: {
       image: '/images/hero_adjuster.jpg',
@@ -38,6 +39,7 @@ export default function LoginPage() {
       stat2Sub: 'Cross-Doc Mismatches',
       email: 'adjuster@example.com',
       roleLabel: 'Claims Adjuster',
+      route: '/adjuster/dashboard',
     },
     admin: {
       image: '/images/hero_admin.jpg',
@@ -49,6 +51,7 @@ export default function LoginPage() {
       stat2Sub: 'Audit & System Catalog',
       email: 'admin@example.com',
       roleLabel: 'System Administrator',
+      route: '/admin/dashboard',
     },
   };
 
@@ -58,6 +61,22 @@ export default function LoginPage() {
     setActiveRole(role);
     setEmail(roleConfigs[role].email);
     setPassword('password123');
+  };
+
+  const handleAutoLoginRole = async (role: RoleType) => {
+    setActiveRole(role);
+    const targetEmail = roleConfigs[role].email;
+    setEmail(targetEmail);
+    setPassword('password123');
+    setIsLoading(true);
+    setError('');
+    try {
+      await login(targetEmail, 'password123');
+    } catch (err: any) {
+      setError(err.message || 'Login failed');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -136,7 +155,7 @@ export default function LoginPage() {
               Sign In to <span className="text-gradient-purple">SHIELD AI</span>
             </h1>
             <p className="text-xs text-slate-400 font-light">
-              Select your portal role to switch dynamic view & credentials
+              Select your portal role below to preview photo & sign in instantly
             </p>
           </div>
 
@@ -146,7 +165,7 @@ export default function LoginPage() {
               onClick={() => handleRoleSelect('customer')}
               className={`py-2.5 rounded-xl flex items-center justify-center gap-1.5 transition-all ${
                 activeRole === 'customer'
-                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md'
+                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md font-extrabold'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -158,7 +177,7 @@ export default function LoginPage() {
               onClick={() => handleRoleSelect('adjuster')}
               className={`py-2.5 rounded-xl flex items-center justify-center gap-1.5 transition-all ${
                 activeRole === 'adjuster'
-                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md'
+                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md font-extrabold'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -170,7 +189,7 @@ export default function LoginPage() {
               onClick={() => handleRoleSelect('admin')}
               className={`py-2.5 rounded-xl flex items-center justify-center gap-1.5 transition-all ${
                 activeRole === 'admin'
-                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md'
+                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md font-extrabold'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -217,11 +236,41 @@ export default function LoginPage() {
               disabled={isLoading}
               className="w-full py-3.5 rounded-full bg-gradient-to-r from-purple-600 via-fuchsia-500 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-extrabold text-sm transition-all shadow-lg shadow-purple-500/30 flex items-center justify-center gap-2 transform hover:scale-[1.02]"
             >
-              {isLoading ? 'Signing In...' : `Sign In as ${currentConfig.roleLabel}`} <ArrowRight className="w-4 h-4" />
+              {isLoading ? 'Navigating to Portal...' : `Sign In as ${currentConfig.roleLabel}`} <ArrowRight className="w-4 h-4" />
             </button>
           </form>
 
-          <div className="text-center text-xs text-slate-400 pt-2">
+          {/* One-Click Direct Navigation Launch Buttons */}
+          <div className="border-t border-purple-500/20 pt-4 space-y-2.5">
+            <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest text-center">
+              ONE-CLICK PORTAL DIRECT LAUNCH
+            </div>
+            <div className="grid grid-cols-3 gap-2 text-xs">
+              <button
+                onClick={() => handleAutoLoginRole('customer')}
+                className="p-2.5 rounded-xl bg-slate-900/80 hover:bg-purple-600/30 border border-purple-500/20 text-slate-300 font-bold flex flex-col items-center gap-1 transition-all hover:border-purple-500/50"
+              >
+                <User className="w-4 h-4 text-emerald-400" />
+                <span>Customer</span>
+              </button>
+              <button
+                onClick={() => handleAutoLoginRole('adjuster')}
+                className="p-2.5 rounded-xl bg-slate-900/80 hover:bg-purple-600/30 border border-purple-500/20 text-slate-300 font-bold flex flex-col items-center gap-1 transition-all hover:border-purple-500/50"
+              >
+                <UserCheck className="w-4 h-4 text-purple-400" />
+                <span>Adjuster</span>
+              </button>
+              <button
+                onClick={() => handleAutoLoginRole('admin')}
+                className="p-2.5 rounded-xl bg-slate-900/80 hover:bg-purple-600/30 border border-purple-500/20 text-slate-300 font-bold flex flex-col items-center gap-1 transition-all hover:border-purple-500/50"
+              >
+                <ShieldAlert className="w-4 h-4 text-cyan-400" />
+                <span>Admin</span>
+              </button>
+            </div>
+          </div>
+
+          <div className="text-center text-xs text-slate-400 pt-1">
             Don't have an account?{' '}
             <Link href="/register" className="text-purple-400 font-bold hover:underline">
               Register here
