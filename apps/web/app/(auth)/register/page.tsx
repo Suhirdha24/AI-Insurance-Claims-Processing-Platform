@@ -20,6 +20,26 @@ export default function RegisterPage() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  const roleHeroImages = {
+    [UserRole.CUSTOMER]: {
+      image: '/images/hero_customer.jpg',
+      badge: 'Policyholder Onboarding',
+      title: 'Instant AI Damage Detection & Claim Filing',
+    },
+    [UserRole.ADJUSTER]: {
+      image: '/images/hero_adjuster.jpg',
+      badge: 'Adjuster Onboarding',
+      title: 'AI Risk Telemetry & Human Review Workspace',
+    },
+    [UserRole.ADMIN]: {
+      image: '/images/hero_admin.jpg',
+      badge: 'Admin Operations',
+      title: 'Enterprise Cyber Security & Audit Operations',
+    },
+  };
+
+  const currentHero = roleHeroImages[formData.role] || roleHeroImages[UserRole.CUSTOMER];
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
@@ -45,13 +65,14 @@ export default function RegisterPage() {
 
       {/* Main Split Glassmorphism Container */}
       <div className="w-full max-w-5xl rounded-3xl glass-panel border border-purple-500/30 shadow-2xl glow-purple overflow-hidden grid grid-cols-1 lg:grid-cols-12">
-        {/* Left Column: Futuristic Cyber Hero Graphic */}
+        {/* Left Column: Dynamic Role Hero Graphic */}
         <div className="lg:col-span-5 relative hidden lg:flex flex-col justify-between p-8 border-r border-purple-500/20">
           <Image 
-            src="/images/login_hero.jpg" 
-            alt="AI Damage Assessment Cyber Hero" 
+            key={formData.role}
+            src={currentHero.image} 
+            alt="Role Hero" 
             fill 
-            className="object-cover"
+            className="object-cover transition-opacity duration-700 animate-in fade-in"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#06070B] via-[#06070B]/50 to-transparent z-10" />
@@ -68,16 +89,13 @@ export default function RegisterPage() {
 
           {/* Floating Info */}
           <div className="relative z-20 space-y-3 text-xs">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/20 border border-cyan-500/40 font-semibold text-cyan-300">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/20 border border-purple-500/40 font-semibold text-purple-300">
               <Sparkles className="w-3.5 h-3.5" />
-              Instant Advisory Onboarding
+              {currentHero.badge}
             </div>
             <h2 className="text-xl font-extrabold text-white leading-tight">
-              Create Your SHIELD AI Account
+              {currentHero.title}
             </h2>
-            <p className="text-slate-300 font-light text-xs leading-relaxed">
-              Register as a policyholder to submit instant damage claims, or as a certified claims adjuster to review AI risk telemetry.
-            </p>
           </div>
         </div>
 
@@ -88,7 +106,7 @@ export default function RegisterPage() {
               Create New <span className="text-gradient-purple">Account</span>
             </h1>
             <p className="text-xs text-slate-400 font-light">
-              Join the AI-Assisted Insurance Processing Platform
+              Select your role to dynamically switch onboarding view
             </p>
           </div>
 
@@ -126,11 +144,11 @@ export default function RegisterPage() {
             </div>
 
             <div>
-              <label className="block text-slate-300 font-bold mb-1">Account Role</label>
+              <label className="block text-slate-300 font-bold mb-1">Account Role (Hero Switcher)</label>
               <select
                 value={formData.role}
                 onChange={(e) => setFormData({ ...formData, role: e.target.value as UserRole })}
-                className="w-full p-3 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white font-bold outline-none"
+                className="w-full p-3 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white font-bold outline-none cursor-pointer"
               >
                 <option value={UserRole.CUSTOMER}>Policy Customer (Policyholder)</option>
                 <option value={UserRole.ADJUSTER}>Claims Adjuster (Reviewer)</option>
