@@ -3,6 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D20.0.0-brightgreen.svg)](https://nodejs.org/)
 [![Docker Compose](https://img.shields.io/badge/docker--compose-v2-blue.svg)](https://www.docker.com/)
+[![Status](https://img.shields.io/badge/status-production--ready-success.svg)](#)
 
 A complete, production-quality, end-to-end AI-assisted insurance claims management platform built with Next.js 14 App Router, Express.js, MongoDB, BullMQ, Redis, and a flexible AI Provider abstraction layer.
 
