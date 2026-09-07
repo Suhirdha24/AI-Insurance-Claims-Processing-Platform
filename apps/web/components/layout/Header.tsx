@@ -31,7 +31,7 @@ export function Header({ onNLSearchResults }: { onNLSearchResults?: (results: an
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-white/90 dark:bg-[#06070B]/90 backdrop-blur-xl border-b border-purple-500/20 px-4 md:px-6 py-3.5 shadow-xl transition-colors">
+    <header className="sticky top-0 z-40 w-full bg-white/95 dark:bg-[#06070B]/95 backdrop-blur-xl border-b border-slate-200 dark:border-purple-500/20 px-4 md:px-6 py-3.5 shadow-sm dark:shadow-xl transition-colors">
       <div className="flex items-center justify-between gap-4 max-w-7xl mx-auto">
         {/* Left: Brand logo aligned to the left */}
         <Link href="/" className="flex items-center gap-3 shrink-0 justify-start">

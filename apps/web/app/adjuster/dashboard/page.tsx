@@ -55,7 +55,7 @@ export default function AdjusterDashboardPage() {
     setTimeout(() => {
       setChatMessages(prev => [
         ...prev,
-        { role: 'assistant', content: `SHIELD AI Analysis: Query "${userMsg}" executed. Claim #CLM-8902 policy coverage confirmed up to ₹10,00,000 with 0 document mismatches.` }
+        { role: 'assistant', content: `ClaimFlow AI Analysis: Query "${userMsg}" executed. Claim #CLM-8902 policy coverage confirmed up to ₹10,00,000 with 0 document mismatches.` }
       ]);
     }, 600);
   };
@@ -67,18 +67,18 @@ export default function AdjusterDashboardPage() {
       {/* Top Greeting Header Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
+          <h1 className="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Good morning, <span className="text-gradient-purple">Adjuster Sarah</span>
           </h1>
-          <p className="text-xs text-slate-400 font-light mt-1">
-            SHIELD AI has handled <span className="text-purple-300 font-bold">47 automated claim tasks</span> this morning. Here's today at a glance.
+          <p className="text-xs text-slate-600 dark:text-slate-400 font-light mt-1">
+            ClaimFlow AI has handled <span className="text-purple-700 dark:text-purple-300 font-bold">47 automated claim tasks</span> this morning. Here's today at a glance.
           </p>
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs font-semibold text-emerald-400">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            All systems normal
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/30 text-xs font-semibold text-emerald-700 dark:text-emerald-400">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
+            All systems operational
           </div>
 
           <button 
@@ -86,13 +86,13 @@ export default function AdjusterDashboardPage() {
             className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold text-xs shadow-lg shadow-purple-500/30 hover:from-purple-500 transition-all"
           >
             <Sparkles className="w-4 h-4" />
-            Ask SHIELD AI
+            Ask ClaimFlow AI
           </button>
         </div>
       </div>
 
-      {/* Dark AI Agent Live Banner - MOLAR AI INSPIRED */}
-      <div className="rounded-3xl bg-[#1D1737] p-6 md:p-8 text-white border border-purple-500/30 shadow-2xl relative overflow-hidden">
+      {/* Dark AI Agent Live Banner - Vibrant Dark Gradient Card */}
+      <div className="rounded-3xl bg-gradient-to-r from-slate-950 via-purple-950 to-indigo-950 p-6 md:p-8 text-white border border-purple-500/30 shadow-2xl relative overflow-hidden">
         <div className="absolute top-0 right-0 w-80 h-80 bg-purple-600/20 blur-[100px] pointer-events-none" />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
@@ -112,7 +112,7 @@ export default function AdjusterDashboardPage() {
               </div>
 
               <h2 className="text-lg md:text-xl font-bold">
-                SHIELD AI is handling 4 claims right now
+                ClaimFlow AI is handling 4 claims right now
               </h2>
 
               <div className="flex items-center gap-2 text-xs">
@@ -149,136 +149,136 @@ export default function AdjusterDashboardPage() {
         </div>
       </div>
 
-      {/* 4 White Glass KPI Cards with Progress Bars */}
+      {/* 4 Theme Responsive KPI Cards with Progress Bars */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {/* Card 1 */}
-        <div className="glass-panel glass-panel-hover p-6 rounded-3xl border-purple-500/20 space-y-3">
-          <div className="flex justify-between items-center text-xs font-bold text-slate-400">
+        <div className="bg-white dark:bg-slate-900/90 p-6 rounded-3xl border border-slate-200 dark:border-purple-500/20 shadow-sm dark:shadow-xl space-y-3">
+          <div className="flex justify-between items-center text-xs font-bold text-slate-500 dark:text-slate-400">
             <span>Claims Processed Today</span>
-            <CheckCircle2 className="w-4 h-4 text-purple-400" />
+            <CheckCircle2 className="w-4 h-4 text-purple-600 dark:text-purple-400" />
           </div>
-          <div className="text-3xl font-extrabold text-white">24</div>
-          <div className="text-[11px] text-slate-400">12 done • 12 to go</div>
-          <div className="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
-            <div className="bg-purple-500 h-full w-[18%]" />
+          <div className="text-3xl font-extrabold text-slate-900 dark:text-white">24</div>
+          <div className="text-[11px] text-slate-500 dark:text-slate-400">12 done • 12 to go</div>
+          <div className="w-full bg-slate-100 dark:bg-slate-950 h-2 rounded-full overflow-hidden">
+            <div className="bg-purple-600 dark:bg-purple-500 h-full w-[18%]" />
           </div>
-          <div className="text-[10px] font-bold text-purple-300 text-right">Progress 18%</div>
+          <div className="text-[10px] font-bold text-purple-700 dark:text-purple-300 text-right">Progress 18%</div>
         </div>
 
         {/* Card 2 */}
-        <div className="glass-panel glass-panel-hover p-6 rounded-3xl border-purple-500/20 space-y-3">
-          <div className="flex justify-between items-center text-xs font-bold text-slate-400">
+        <div className="bg-white dark:bg-slate-900/90 p-6 rounded-3xl border border-slate-200 dark:border-rose-500/20 shadow-sm dark:shadow-xl space-y-3">
+          <div className="flex justify-between items-center text-xs font-bold text-slate-500 dark:text-slate-400">
             <span>AI Risk Flag Rate</span>
-            <AlertCircle className="w-4 h-4 text-rose-400" />
+            <AlertCircle className="w-4 h-4 text-rose-600 dark:text-rose-400" />
           </div>
-          <div className="text-3xl font-extrabold text-rose-400">3.2%</div>
-          <div className="text-[11px] text-slate-400">AI reminders active</div>
-          <div className="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
-            <div className="bg-rose-500 h-full w-[3.2%]" />
+          <div className="text-3xl font-extrabold text-rose-600 dark:text-rose-400">3.2%</div>
+          <div className="text-[11px] text-slate-500 dark:text-slate-400">AI reminders active</div>
+          <div className="w-full bg-slate-100 dark:bg-slate-950 h-2 rounded-full overflow-hidden">
+            <div className="bg-rose-600 dark:bg-rose-500 h-full w-[3.2%]" />
           </div>
-          <div className="text-[10px] font-bold text-rose-300 text-right">Progress 3.2%</div>
+          <div className="text-[10px] font-bold text-rose-700 dark:text-rose-300 text-right">Progress 3.2%</div>
         </div>
 
         {/* Card 3 */}
-        <div className="glass-panel glass-panel-hover p-6 rounded-3xl border-purple-500/20 space-y-3">
-          <div className="flex justify-between items-center text-xs font-bold text-slate-400">
+        <div className="bg-white dark:bg-slate-900/90 p-6 rounded-3xl border border-slate-200 dark:border-amber-500/20 shadow-sm dark:shadow-xl space-y-3">
+          <div className="flex justify-between items-center text-xs font-bold text-slate-500 dark:text-slate-400">
             <span>Claims Pending Review</span>
-            <Clock className="w-4 h-4 text-amber-400" />
+            <Clock className="w-4 h-4 text-amber-600 dark:text-amber-400" />
           </div>
-          <div className="text-3xl font-extrabold text-amber-400">{kpis?.pendingClaims || 3}</div>
-          <div className="text-[11px] text-slate-400">awaiting Sarah</div>
-          <div className="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
-            <div className="bg-amber-500 h-full w-[12%]" />
+          <div className="text-3xl font-extrabold text-amber-600 dark:text-amber-400">{kpis?.pendingClaims || 3}</div>
+          <div className="text-[11px] text-slate-500 dark:text-slate-400">awaiting Sarah</div>
+          <div className="w-full bg-slate-100 dark:bg-slate-950 h-2 rounded-full overflow-hidden">
+            <div className="bg-amber-600 dark:bg-amber-500 h-full w-[12%]" />
           </div>
-          <div className="text-[10px] font-bold text-amber-300 text-right">Progress 12%</div>
+          <div className="text-[10px] font-bold text-amber-700 dark:text-amber-300 text-right">Progress 12%</div>
         </div>
 
         {/* Card 4 */}
-        <div className="glass-panel glass-panel-hover p-6 rounded-3xl border-purple-500/20 space-y-3">
-          <div className="flex justify-between items-center text-xs font-bold text-slate-400">
+        <div className="bg-white dark:bg-slate-900/90 p-6 rounded-3xl border border-slate-200 dark:border-emerald-500/20 shadow-sm dark:shadow-xl space-y-3">
+          <div className="flex justify-between items-center text-xs font-bold text-slate-500 dark:text-slate-400">
             <span>Claim Payouts MTD</span>
-            <TrendingUp className="w-4 h-4 text-emerald-400" />
+            <TrendingUp className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
           </div>
-          <div className="text-3xl font-extrabold text-white">₹48.2K</div>
-          <div className="text-[11px] text-slate-400">on track for ₹62k</div>
-          <div className="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
-            <div className="bg-indigo-500 h-full w-[24%]" />
+          <div className="text-3xl font-extrabold text-slate-900 dark:text-white">₹48.2K</div>
+          <div className="text-[11px] text-slate-500 dark:text-slate-400">on track for ₹62k</div>
+          <div className="w-full bg-slate-100 dark:bg-slate-950 h-2 rounded-full overflow-hidden">
+            <div className="bg-indigo-600 dark:bg-indigo-500 h-full w-[24%]" />
           </div>
-          <div className="text-[10px] font-bold text-indigo-300 text-right">Progress 24%</div>
+          <div className="text-[10px] font-bold text-indigo-700 dark:text-indigo-300 text-right">Progress 24%</div>
         </div>
       </div>
 
       {/* Main Content 2-Column Panels */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Panel: AI Agent Activity */}
-        <div className="lg:col-span-6 glass-panel rounded-3xl p-6 border border-purple-500/20 space-y-5">
+        <div className="lg:col-span-6 bg-white dark:bg-slate-900/90 rounded-3xl p-6 border border-slate-200 dark:border-purple-500/20 shadow-sm dark:shadow-xl space-y-5">
           <div className="flex justify-between items-center">
             <div>
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                <h3 className="text-base font-bold text-white">AI Agent Activity</h3>
+                <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-ping" />
+                <h3 className="text-base font-bold text-slate-900 dark:text-white">AI Agent Activity</h3>
               </div>
-              <p className="text-xs text-slate-400 mt-0.5">Live telemetry • last 24 hours</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Live telemetry • last 24 hours</p>
             </div>
-            <button className="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/30 text-xs font-semibold hover:bg-purple-500/20">
+            <button className="px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-500/10 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-500/30 text-xs font-semibold hover:bg-purple-100 dark:hover:bg-purple-500/20">
               View All
             </button>
           </div>
 
           <div className="space-y-4">
-            <div className="p-4 rounded-2xl bg-slate-900/60 border border-purple-500/10 flex items-start gap-3.5 text-xs">
-              <div className="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-500/10 flex items-start gap-3.5 text-xs">
+              <div className="w-8 h-8 rounded-xl bg-emerald-100 dark:bg-emerald-500/10 border border-emerald-300 dark:border-emerald-500/30 flex items-center justify-center text-emerald-700 dark:text-emerald-400 shrink-0">
                 <CheckCircle2 className="w-4 h-4" />
               </div>
               <div className="flex-1">
-                <div className="font-bold text-white">Confirmed Sophia M. via SMS for tomorrow 14:30</div>
-                <div className="text-[11px] text-purple-300 mt-1">AI agent • 2 min ago</div>
+                <div className="font-bold text-slate-900 dark:text-white">Confirmed Sophia M. via SMS for tomorrow 14:30</div>
+                <div className="text-[11px] text-purple-700 dark:text-purple-300 mt-1">AI agent • 2 min ago</div>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-slate-900/60 border border-purple-500/10 flex items-start gap-3.5 text-xs">
-              <div className="w-8 h-8 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
+            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-500/10 flex items-start gap-3.5 text-xs">
+              <div className="w-8 h-8 rounded-xl bg-purple-100 dark:bg-purple-500/10 border border-purple-300 dark:border-purple-500/30 flex items-center justify-center text-purple-700 dark:text-purple-400 shrink-0">
                 <FileEdit className="w-4 h-4" />
               </div>
               <div className="flex-1">
-                <div className="font-bold text-white">Drafted claim for Michael C. • auto body repair estimate</div>
-                <div className="text-[11px] text-purple-300 mt-1">AI agent • 18 min ago</div>
+                <div className="font-bold text-slate-900 dark:text-white">Drafted claim for Michael C. • auto body repair estimate</div>
+                <div className="text-[11px] text-purple-700 dark:text-purple-300 mt-1">AI agent • 18 min ago</div>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-slate-900/60 border border-purple-500/10 flex items-start gap-3.5 text-xs">
-              <div className="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-500/10 flex items-start gap-3.5 text-xs">
+              <div className="w-8 h-8 rounded-xl bg-amber-100 dark:bg-amber-500/10 border border-amber-300 dark:border-amber-500/30 flex items-center justify-center text-amber-700 dark:text-amber-400 shrink-0">
                 <Calendar className="w-4 h-4" />
               </div>
               <div className="flex-1">
-                <div className="font-bold text-white">Rescheduled 1 claim from Tue 14:00 → Wed 10:30 (adjuster conflict)</div>
-                <div className="text-[11px] text-purple-300 mt-1">AI agent • 1 hour ago</div>
+                <div className="font-bold text-slate-900 dark:text-white">Rescheduled 1 claim from Tue 14:00 → Wed 10:30 (adjuster conflict)</div>
+                <div className="text-[11px] text-purple-700 dark:text-purple-300 mt-1">AI agent • 1 hour ago</div>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-slate-900/60 border border-purple-500/10 flex items-start gap-3.5 text-xs">
-              <div className="w-8 h-8 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0">
+            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-500/10 flex items-start gap-3.5 text-xs">
+              <div className="w-8 h-8 rounded-xl bg-cyan-100 dark:bg-cyan-500/10 border border-cyan-300 dark:border-cyan-500/30 flex items-center justify-center text-cyan-700 dark:text-cyan-400 shrink-0">
                 <MessageSquare className="w-4 h-4" />
               </div>
               <div className="flex-1">
-                <div className="font-bold text-white">Follow-up sent to Olivia P. — "No damage escalation, thanks SHIELD."</div>
-                <div className="text-[11px] text-purple-300 mt-1">AI agent • 2 hours ago</div>
+                <div className="font-bold text-slate-900 dark:text-white">Follow-up sent to Olivia P. — "No damage escalation, thanks ClaimFlow."</div>
+                <div className="text-[11px] text-purple-700 dark:text-purple-300 mt-1">AI agent • 2 hours ago</div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Right Panel: Today's Schedule & Claims Queue */}
-        <div className="lg:col-span-6 glass-panel rounded-3xl p-6 border border-purple-500/20 space-y-5">
+        <div className="lg:col-span-6 bg-white dark:bg-slate-900/90 rounded-3xl p-6 border border-slate-200 dark:border-purple-500/20 shadow-sm dark:shadow-xl space-y-5">
           <div className="flex justify-between items-center">
             <div>
-              <h3 className="text-base font-bold text-white">Today's Claims Queue</h3>
-              <p className="text-xs text-slate-400 mt-0.5">12 of 24 appointments & claim reviews completed</p>
+              <h3 className="text-base font-bold text-slate-900 dark:text-white">Today's Claims Queue</h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">12 of 24 appointments & claim reviews completed</p>
             </div>
 
             <div className="flex items-center gap-2 text-xs font-semibold">
               <span className="px-3 py-1 rounded-full bg-purple-600 text-white">Today 18</span>
-              <span className="px-3 py-1 rounded-full bg-slate-900 text-slate-400">Tomorrow 18</span>
+              <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-950 text-slate-600 dark:text-slate-400">Tomorrow 18</span>
             </div>
           </div>
 
@@ -286,22 +286,22 @@ export default function AdjusterDashboardPage() {
             {highRiskClaims.slice(0, 4).map((claim: any, idx: number) => {
               const times = ['09:30', '10:00', '11:45', '14:15'];
               return (
-                <div key={claim.id || claim._id || idx} className="p-4 rounded-2xl bg-slate-900/60 border border-purple-500/10 flex items-center justify-between text-xs">
+                <div key={claim.id || claim._id || idx} className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-500/10 flex items-center justify-between text-xs">
                   <div className="flex items-center gap-4">
-                    <div className="text-center font-mono pr-3 border-r border-purple-500/10">
-                      <div className="font-bold text-white">{times[idx % times.length]}</div>
-                      <div className="text-[10px] text-slate-400">30 min</div>
+                    <div className="text-center font-mono pr-3 border-r border-slate-200 dark:border-purple-500/10">
+                      <div className="font-bold text-slate-900 dark:text-white">{times[idx % times.length]}</div>
+                      <div className="text-[10px] text-slate-500 dark:text-slate-400">30 min</div>
                     </div>
 
                     <div>
-                      <div className="font-bold text-white">{claim.claimNumber} • {claim.claimType}</div>
-                      <div className="text-[11px] text-slate-400 mt-0.5">Estimated: ₹{claim.estimatedAmount?.toLocaleString()}</div>
+                      <div className="font-bold text-slate-900 dark:text-white">{claim.claimNumber} • {claim.claimType}</div>
+                      <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Estimated: ₹{claim.estimatedAmount?.toLocaleString()}</div>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-3">
                     <StatusBadge status={claim.status} />
-                    <Link href={`/adjuster/claims/${claim.id || claim._id}`} className="p-1.5 rounded-lg bg-purple-500/10 text-purple-300 hover:bg-purple-500/20">
+                    <Link href={`/adjuster/claims/${claim.id || claim._id}`} className="p-1.5 rounded-lg bg-purple-50 dark:bg-purple-500/10 text-purple-700 dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-purple-500/20">
                       <ChevronRight className="w-4 h-4" />
                     </Link>
                   </div>
@@ -312,13 +312,13 @@ export default function AdjusterDashboardPage() {
         </div>
       </div>
 
-      {/* Collapsible Ask SHIELD AI Floating Chat Drawer */}
+      {/* Collapsible Ask ClaimFlow AI Floating Chat Drawer */}
       {isAiChatOpen && (
-        <div className="fixed bottom-6 right-6 w-96 rounded-3xl glass-panel border border-purple-500/40 shadow-2xl z-50 flex flex-col h-[480px] overflow-hidden bg-[#0A0B10]/95 backdrop-blur-2xl animate-in slide-in-from-bottom-5">
-          <div className="p-4 bg-gradient-to-r from-purple-900/80 to-indigo-900/80 border-b border-purple-500/20 flex justify-between items-center text-white">
+        <div className="fixed bottom-6 right-6 w-96 rounded-3xl bg-white dark:bg-[#0A0B10]/95 border border-slate-200 dark:border-purple-500/40 shadow-2xl z-50 flex flex-col h-[480px] overflow-hidden backdrop-blur-2xl animate-in slide-in-from-bottom-5">
+          <div className="p-4 bg-gradient-to-r from-slate-900 to-purple-950 border-b border-purple-500/20 flex justify-between items-center text-white">
             <div className="flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-fuchsia-400" />
-              <span className="font-bold text-sm">Ask SHIELD AI Assistant</span>
+              <span className="font-bold text-sm">Ask ClaimFlow AI Assistant</span>
             </div>
             <button onClick={() => setIsAiChatOpen(false)} className="text-slate-400 hover:text-white">
               <X className="w-5 h-5" />
@@ -331,7 +331,7 @@ export default function AdjusterDashboardPage() {
                 <div className={`p-3 rounded-2xl max-w-[80%] ${
                   msg.role === 'user' 
                     ? 'bg-purple-600 text-white rounded-br-none' 
-                    : 'bg-slate-900 border border-purple-500/20 text-slate-200 rounded-bl-none'
+                    : 'bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-purple-500/20 text-slate-800 dark:text-slate-200 rounded-bl-none'
                 }`}>
                   {msg.content}
                 </div>
@@ -339,13 +339,13 @@ export default function AdjusterDashboardPage() {
             ))}
           </div>
 
-          <form onSubmit={handleSendChat} className="p-3 border-t border-purple-500/20 flex gap-2">
+          <form onSubmit={handleSendChat} className="p-3 border-t border-slate-200 dark:border-purple-500/20 flex gap-2">
             <input
               type="text"
               value={chatInput}
               onChange={(e) => setChatInput(e.target.value)}
               placeholder="Ask AI about claim risk or policy limits..."
-              className="flex-1 bg-slate-900 border border-purple-500/30 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-purple-500"
+              className="flex-1 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-purple-500/30 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-purple-500"
             />
             <button type="submit" className="p-2.5 rounded-xl bg-purple-600 text-white hover:bg-purple-500">
               <Send className="w-4 h-4" />
