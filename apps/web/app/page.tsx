@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Flame, Eye, Cloud, Cpu, Zap, Target, ShieldCheck } from 'lucide-react';
 
 export default function LandingPage() {
   const [activeTab, setActiveTab] = useState<'overview' | 'front' | 'door'>('overview');
@@ -128,18 +129,18 @@ export default function LandingPage() {
           <p className="text-xs uppercase tracking-widest text-slate-400 font-semibold mb-8">
             POWERED BY ENTERPRISE AI ARCHITECTURE
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-70">
-            <div className="flex items-center gap-2 text-slate-300 font-bold text-lg">
-              <span className="text-purple-400 text-2xl">🔥</span> PyTorch
+          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-80">
+            <div className="flex items-center gap-2.5 text-slate-300 font-bold text-base">
+              <Flame className="w-5 h-5 text-purple-400" /> PyTorch AI
             </div>
-            <div className="flex items-center gap-2 text-slate-300 font-bold text-lg">
-              <span className="text-cyan-400 text-2xl">👁️</span> OpenCV
+            <div className="flex items-center gap-2.5 text-slate-300 font-bold text-base">
+              <Eye className="w-5 h-5 text-cyan-400" /> OpenCV Vision
             </div>
-            <div className="flex items-center gap-2 text-slate-300 font-bold text-lg">
-              <span className="text-amber-400 text-2xl">☁️</span> Amazon Web Services
+            <div className="flex items-center gap-2.5 text-slate-300 font-bold text-base">
+              <Cloud className="w-5 h-5 text-amber-400" /> AWS Cloud
             </div>
-            <div className="flex items-center gap-2 text-slate-300 font-bold text-lg">
-              <span className="text-indigo-400 text-2xl">🧠</span> Tensor-Core AI
+            <div className="flex items-center gap-2.5 text-slate-300 font-bold text-base">
+              <Cpu className="w-5 h-5 text-indigo-400" /> Tensor Cores
             </div>
           </div>
         </div>
@@ -162,8 +163,8 @@ export default function LandingPage() {
         {/* Feature Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="p-8 rounded-3xl glass-panel glass-panel-hover relative group">
-            <div className="w-14 h-14 rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6 text-2xl">
-              ⚡
+            <div className="w-14 h-14 rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
+              <Zap className="w-7 h-7" />
             </div>
             <h3 className="text-xl font-bold text-white mb-3">Instant Assessments</h3>
             <p className="text-slate-400 text-sm leading-relaxed">
@@ -172,8 +173,8 @@ export default function LandingPage() {
           </div>
 
           <div className="p-8 rounded-3xl glass-panel glass-panel-hover relative group">
-            <div className="w-14 h-14 rounded-2xl bg-fuchsia-600/20 border border-fuchsia-500/30 flex items-center justify-center text-fuchsia-400 mb-6 text-2xl">
-              🎯
+            <div className="w-14 h-14 rounded-2xl bg-fuchsia-600/20 border border-fuchsia-500/30 flex items-center justify-center text-fuchsia-400 mb-6">
+              <Target className="w-7 h-7" />
             </div>
             <h3 className="text-xl font-bold text-white mb-3">Accurate Advisory AI Analysis</h3>
             <p className="text-slate-400 text-sm leading-relaxed">
@@ -182,8 +183,8 @@ export default function LandingPage() {
           </div>
 
           <div className="p-8 rounded-3xl glass-panel glass-panel-hover relative group">
-            <div className="w-14 h-14 rounded-2xl bg-cyan-600/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-6 text-2xl">
-              🛡️
+            <div className="w-14 h-14 rounded-2xl bg-cyan-600/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-6">
+              <ShieldCheck className="w-7 h-7" />
             </div>
             <h3 className="text-xl font-bold text-white mb-3">100% Human-in-the-Loop</h3>
             <p className="text-slate-400 text-sm leading-relaxed">

@@ -11,13 +11,13 @@ export default function AdjusterAnalyticsPage() {
 
   useEffect(() => {
     api.get('/analytics/dashboard')
-      .then((res: any) => setMetrics(res.data))
+      .then((res: any) => setMetrics(res.data || res))
       .catch(() => {
         setMetrics({
           adjusterWorkload: [
-            { name: 'Sarah Adjuster', activeCount: 14 },
-            { name: 'David Vance', activeCount: 8 },
-            { name: 'Elena R', activeCount: 11 },
+            { name: 'Adjuster Sarah', activeCount: 6 },
+            { name: 'Adjuster Michael', activeCount: 4 },
+            { name: 'Adjuster Priya', activeCount: 5 },
           ],
           claimsByType: [
             { type: 'VEHICLE', totalAmount: 4500000 },
@@ -29,9 +29,16 @@ export default function AdjusterAnalyticsPage() {
       .finally(() => setIsLoading(false));
   }, []);
 
-  if (isLoading) return <div className="p-8 text-center text-xs text-slate-500 dark:text-slate-400">Loading AI analytics...</div>;
-
-  const { adjusterWorkload = [], claimsByType = [] } = metrics || {};
+  const adjusterWorkload = metrics?.adjusterWorkload || [
+    { name: 'Adjuster Sarah', activeCount: 6 },
+    { name: 'Adjuster Michael', activeCount: 4 },
+    { name: 'Adjuster Priya', activeCount: 5 },
+  ];
+  const claimsByType = metrics?.claimsByType || [
+    { type: 'VEHICLE', totalAmount: 4500000 },
+    { type: 'PROPERTY', totalAmount: 1800000 },
+    { type: 'HEALTH', totalAmount: 950000 },
+  ];
 
   const formatINR = (val: number) => `₹${(val / 100000).toFixed(1)}L`;
 

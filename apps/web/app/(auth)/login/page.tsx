@@ -115,10 +115,10 @@ export default function LoginPage() {
       {/* Top Ambient Glow Aura */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1400px] h-[550px] bg-gradient-to-r from-purple-500/15 via-fuchsia-500/15 to-indigo-500/15 dark:from-purple-900/40 dark:via-fuchsia-600/30 dark:to-indigo-900/40 blur-[150px] pointer-events-none -z-10" />
 
-      {/* Main Ultra-Widescreen Split Container (Expanded max-w-[1360px] Cinema Ratio) */}
-      <div className="w-full max-w-[1360px] rounded-3xl bg-white dark:bg-black border border-slate-200 dark:border-purple-500/40 shadow-2xl dark:shadow-purple-950/70 overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[680px] transition-colors duration-300">
+      {/* Main Ultra-Widescreen Split Container */}
+      <div className="w-full max-w-[1360px] rounded-3xl bg-white border border-purple-200 shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[680px] transition-colors duration-300">
         {/* Left Column: Widescreen Persona Hero Graphic (7 Cols) */}
-        <div className="lg:col-span-7 relative hidden lg:flex flex-col justify-between p-12 border-r border-slate-200 dark:border-purple-500/30 overflow-hidden min-h-[650px]">
+        <div className="lg:col-span-7 relative hidden lg:flex flex-col justify-between p-12 border-r border-slate-200 overflow-hidden min-h-[650px] bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900">
           {/* Pre-mounted persona hero images for instant zero-lag role switching */}
           {(['customer', 'adjuster', 'admin'] as RoleType[]).map((role) => (
             <img

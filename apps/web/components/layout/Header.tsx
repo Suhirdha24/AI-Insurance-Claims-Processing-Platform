@@ -67,44 +67,26 @@ export function Header({ onNLSearchResults }: { onNLSearchResults?: (results: an
           </div>
         </form>
 
-        {/* Right: Theme toggle, Role indicator, User dropdown */}
+        {/* Right: Role indicator & Sign Out button */}
         <div className="flex items-center gap-3">
-          <button
-            onClick={toggleTheme}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold rounded-xl bg-slate-100 dark:bg-slate-900/80 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all border border-slate-200 dark:border-purple-500/30 text-slate-800 dark:text-purple-300 shadow-sm"
-            title="Toggle Light/Dark Mode"
-          >
-            {theme === 'light' ? (
-              <>
-                <Sun className="w-4 h-4 text-amber-500" />
-                <span>Light</span>
-              </>
-            ) : (
-              <>
-                <Moon className="w-4 h-4 text-purple-400" />
-                <span>Dark</span>
-              </>
-            )}
-          </button>
-
           {user && (
-            <div className="flex items-center gap-3 pl-3 border-l border-purple-500/20">
+            <div className="flex items-center gap-3">
               {/* User Balance Badge */}
-              <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-xs font-semibold text-purple-700 dark:text-purple-300">
-                <span className="w-2 h-2 rounded-full bg-purple-500 dark:bg-purple-400 animate-pulse" />
+              <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-xs font-semibold text-purple-700">
+                <span className="w-2 h-2 rounded-full bg-purple-600 animate-pulse" />
                 Coverage: ₹10,00,000
               </div>
 
               <div className="text-right hidden sm:block">
-                <div className="text-xs font-extrabold text-slate-900 dark:text-white">{user.name}</div>
-                <span className="inline-block px-2 py-0.5 text-[9px] font-black tracking-wider uppercase rounded-full bg-purple-100 dark:bg-purple-950/60 border border-purple-500/30 text-purple-700 dark:text-purple-300 mt-0.5">
+                <div className="text-xs font-extrabold text-slate-900">{user.name}</div>
+                <span className="inline-block px-2 py-0.5 text-[9px] font-black tracking-wider uppercase rounded-full bg-purple-100 border border-purple-300 text-purple-700 mt-0.5">
                   {user.role}
                 </span>
               </div>
 
               <button
                 onClick={logout}
-                className="p-2 text-rose-500 hover:text-rose-600 dark:text-rose-400 dark:hover:text-rose-300 rounded-xl hover:bg-rose-50 dark:hover:bg-rose-950/40 border border-transparent hover:border-rose-500/30 transition-colors"
+                className="p-2 text-rose-600 hover:text-rose-700 rounded-xl hover:bg-rose-50 border border-transparent hover:border-rose-200 transition-colors"
                 title="Sign Out"
               >
                 <LogOut className="w-4 h-4" />
