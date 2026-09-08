@@ -142,14 +142,14 @@ export default function LoginPage() {
               {currentConfig.title}
             </h2>
 
-            <div className="grid grid-cols-2 gap-4 text-xs font-mono max-w-lg">
-              <div className="p-4.5 rounded-2xl bg-black/90 border border-purple-500/40 backdrop-blur-md">
-                <div className="text-purple-400 font-extrabold text-sm">{currentConfig.stat1Title}</div>
-                <div className="text-slate-400 text-[11px] mt-0.5">{currentConfig.stat1Sub}</div>
+            <div className="grid grid-cols-2 gap-4 max-w-lg">
+              <div className="px-5 py-4 rounded-2xl bg-black/95 border border-purple-500/50 backdrop-blur-md shadow-lg shadow-purple-950/40">
+                <div className="text-purple-400 font-extrabold text-sm font-mono tracking-wider">{currentConfig.stat1Title}</div>
+                <div className="text-slate-200 text-xs font-medium mt-1">{currentConfig.stat1Sub}</div>
               </div>
-              <div className="p-4.5 rounded-2xl bg-black/90 border border-purple-500/40 backdrop-blur-md">
-                <div className="text-cyan-400 font-extrabold text-sm">{currentConfig.stat2Title}</div>
-                <div className="text-slate-400 text-[11px] mt-0.5">{currentConfig.stat2Sub}</div>
+              <div className="px-5 py-4 rounded-2xl bg-black/95 border border-purple-500/50 backdrop-blur-md shadow-lg shadow-purple-950/40">
+                <div className="text-cyan-400 font-extrabold text-sm font-mono tracking-wider">{currentConfig.stat2Title}</div>
+                <div className="text-slate-200 text-xs font-medium mt-1">{currentConfig.stat2Sub}</div>
               </div>
             </div>
           </div>
