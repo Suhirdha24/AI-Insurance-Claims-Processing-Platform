@@ -114,9 +114,9 @@ export function SubmissionWizard() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto glass-panel border border-purple-500/30 rounded-3xl shadow-2xl overflow-hidden p-6 sm:p-8 space-y-6">
+    <div className="max-w-3xl mx-auto bg-white dark:bg-slate-900 border border-slate-200 dark:border-purple-500/30 rounded-3xl shadow-lg dark:shadow-2xl overflow-hidden p-6 sm:p-8 space-y-6">
       {/* Wizard Step Progress Header */}
-      <div className="flex items-center justify-between pb-6 border-b border-purple-500/20">
+      <div className="flex items-center justify-between pb-6 border-b border-slate-200 dark:border-purple-500/20">
         {[1, 2, 3, 4, 5].map((s) => (
           <div key={s} className="flex items-center gap-2">
             <div
@@ -124,13 +124,13 @@ export function SubmissionWizard() {
                 s === step
                   ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg shadow-purple-500/30 ring-2 ring-purple-400/50'
                   : s < step
-                  ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
-                  : 'bg-slate-900/80 text-slate-500 border border-slate-800'
+                  ? 'bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-500/40'
+                  : 'bg-slate-100 dark:bg-slate-950 text-slate-400 dark:text-slate-500 border border-slate-200 dark:border-slate-800'
               }`}
             >
-              {s < step ? <CheckCircle2 className="w-4 h-4 text-emerald-400" /> : s}
+              {s < step ? <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> : s}
             </div>
-            <span className="text-xs font-semibold hidden sm:inline text-slate-300">
+            <span className="text-xs font-semibold hidden sm:inline text-slate-700 dark:text-slate-300">
               {s === 1 && 'Policy'}
               {s === 2 && 'Incident'}
               {s === 3 && 'Documents'}
@@ -143,8 +143,8 @@ export function SubmissionWizard() {
 
       {/* Validation Error Alert Box */}
       {validationError && (
-        <div className="p-4 rounded-xl bg-rose-950/80 border border-rose-700/60 text-rose-200 text-xs font-semibold flex items-center gap-3 animate-in fade-in">
-          <AlertCircle className="w-5 h-5 text-rose-400 shrink-0" />
+        <div className="p-4 rounded-xl bg-rose-50 dark:bg-rose-950/80 border border-rose-200 dark:border-rose-700/60 text-rose-800 dark:text-rose-200 text-xs font-semibold flex items-center gap-3 animate-in fade-in">
+          <AlertCircle className="w-5 h-5 text-rose-600 dark:text-rose-400 shrink-0" />
           <span>{validationError}</span>
         </div>
       )}
@@ -153,22 +153,22 @@ export function SubmissionWizard() {
       {step === 1 && (
         <div className="space-y-5">
           <div>
-            <h2 className="text-xl font-extrabold text-white">Step 1: Select Policy & Type</h2>
-            <p className="text-xs text-slate-400 mt-1">Choose your registered policy and estimated repair coverage</p>
+            <h2 className="text-xl font-extrabold text-slate-900 dark:text-white">Step 1: Select Policy & Type</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Choose your registered policy and estimated repair coverage</p>
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-300 mb-1.5">Active Policy *</label>
+            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Active Policy *</label>
             <select
               value={formData.policyId}
               onChange={(e) => {
                 setFormData({ ...formData, policyId: e.target.value });
                 setValidationError(null);
               }}
-              className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white text-xs font-bold focus:ring-2 focus:ring-purple-500/50 outline-none"
+              className="w-full p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-purple-500/30 text-slate-900 dark:text-white text-xs font-bold focus:ring-2 focus:ring-purple-500/50 outline-none"
             >
               {policies.map((p) => (
-                <option key={p.id || p._id} value={p.id || p._id} className="bg-slate-900 text-white">
+                <option key={p.id || p._id} value={p.id || p._id} className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
                   {p.policyNumber} ({p.policyType} - Max ₹{p.coverageLimit?.toLocaleString()})
                 </option>
               ))}
@@ -176,20 +176,20 @@ export function SubmissionWizard() {
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-300 mb-1.5">Claim Type *</label>
+            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Claim Type *</label>
             <select
               value={formData.claimType}
               onChange={(e) => setFormData({ ...formData, claimType: e.target.value as ClaimType })}
-              className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white text-xs font-bold focus:ring-2 focus:ring-purple-500/50 outline-none"
+              className="w-full p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-purple-500/30 text-slate-900 dark:text-white text-xs font-bold focus:ring-2 focus:ring-purple-500/50 outline-none"
             >
-              <option value={ClaimType.VEHICLE} className="bg-slate-900 text-white">Vehicle Insurance Claim</option>
-              <option value={ClaimType.PROPERTY} className="bg-slate-900 text-white">Property Insurance Claim</option>
-              <option value={ClaimType.HEALTH} className="bg-slate-900 text-white">Health Insurance Claim</option>
+              <option value={ClaimType.VEHICLE} className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Vehicle Insurance Claim</option>
+              <option value={ClaimType.PROPERTY} className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Property Insurance Claim</option>
+              <option value={ClaimType.HEALTH} className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Health Insurance Claim</option>
             </select>
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-300 mb-1.5">Estimated Repair / Claim Amount (₹) *</label>
+            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Estimated Repair / Claim Amount (₹) *</label>
             <input
               type="number"
               value={formData.estimatedAmount}
@@ -197,7 +197,7 @@ export function SubmissionWizard() {
                 setFormData({ ...formData, estimatedAmount: Number(e.target.value) });
                 setValidationError(null);
               }}
-              className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white text-sm font-bold focus:ring-2 focus:ring-purple-500/50 outline-none"
+              className="w-full p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-purple-500/30 text-slate-900 dark:text-white text-sm font-bold focus:ring-2 focus:ring-purple-500/50 outline-none"
             />
           </div>
 
@@ -214,12 +214,12 @@ export function SubmissionWizard() {
       {step === 2 && (
         <div className="space-y-5">
           <div>
-            <h2 className="text-xl font-extrabold text-white">Step 2: Incident Details</h2>
-            <p className="text-xs text-slate-400 mt-1">Provide exact date, location, and comprehensive incident description</p>
+            <h2 className="text-xl font-extrabold text-slate-900 dark:text-white">Step 2: Incident Details</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Provide exact date, location, and comprehensive incident description</p>
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-300 mb-1.5">Incident Date *</label>
+            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Incident Date *</label>
             <input
               type="date"
               value={formData.incidentDate}
@@ -227,12 +227,12 @@ export function SubmissionWizard() {
                 setFormData({ ...formData, incidentDate: e.target.value });
                 setValidationError(null);
               }}
-              className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white text-xs font-bold focus:ring-2 focus:ring-purple-500/50 outline-none"
+              className="w-full p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-purple-500/30 text-slate-900 dark:text-white text-xs font-bold focus:ring-2 focus:ring-purple-500/50 outline-none"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-300 mb-1.5">Incident Location *</label>
+            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Incident Location *</label>
             <input
               type="text"
               value={formData.incidentLocation}
@@ -241,12 +241,12 @@ export function SubmissionWizard() {
                 setValidationError(null);
               }}
               placeholder="e.g. MG Road Junction, Bangalore"
-              className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white placeholder-slate-500 text-xs focus:ring-2 focus:ring-purple-500/50 outline-none"
+              className="w-full p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-purple-500/30 text-slate-900 dark:text-white placeholder-slate-400 text-xs focus:ring-2 focus:ring-purple-500/50 outline-none"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-300 mb-1.5">Detailed Incident Description *</label>
+            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Detailed Incident Description *</label>
             <textarea
               value={formData.description}
               onChange={(e) => {
@@ -255,7 +255,7 @@ export function SubmissionWizard() {
               }}
               rows={4}
               placeholder="Describe what occurred, vehicles involved, and extent of damage..."
-              className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white placeholder-slate-500 text-xs focus:ring-2 focus:ring-purple-500/50 outline-none"
+              className="w-full p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-purple-500/30 text-slate-900 dark:text-white placeholder-slate-400 text-xs focus:ring-2 focus:ring-purple-500/50 outline-none"
             />
           </div>
 
@@ -265,7 +265,7 @@ export function SubmissionWizard() {
                 setValidationError(null);
                 setStep(1);
               }}
-              className="py-3.5 px-6 rounded-xl border border-purple-500/30 bg-slate-900/80 text-slate-300 font-bold text-xs hover:bg-slate-800 transition-colors"
+              className="py-3.5 px-6 rounded-xl border border-slate-200 dark:border-purple-500/30 bg-slate-100 dark:bg-slate-950 text-slate-700 dark:text-slate-300 font-bold text-xs hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
             >
               Back
             </button>
@@ -283,39 +283,39 @@ export function SubmissionWizard() {
       {step === 3 && (
         <div className="space-y-5">
           <div>
-            <h2 className="text-xl font-extrabold text-white">Step 3: Attach Evidence Documents</h2>
-            <p className="text-xs text-slate-400 mt-1">Upload photos, repair bills, or official police FIR documents</p>
+            <h2 className="text-xl font-extrabold text-slate-900 dark:text-white">Step 3: Attach Evidence Documents</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Upload photos, repair bills, or official police FIR documents</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="p-5 border-2 border-dashed border-purple-500/40 rounded-2xl bg-slate-900/60 text-center hover:border-purple-500 transition-colors">
-              <Upload className="w-7 h-7 text-purple-400 mx-auto mb-2" />
-              <div className="text-xs font-bold text-white">Claim Form / Repair Invoice</div>
+            <div className="p-5 border-2 border-dashed border-purple-300 dark:border-purple-500/40 rounded-2xl bg-slate-50 dark:bg-slate-950/60 text-center hover:border-purple-500 transition-colors">
+              <Upload className="w-7 h-7 text-purple-600 dark:text-purple-400 mx-auto mb-2" />
+              <div className="text-xs font-bold text-slate-900 dark:text-white">Claim Form / Repair Invoice</div>
               <input
                 type="file"
                 onChange={(e) => handleFileUpload(e, DocumentType.CLAIM_FORM)}
-                className="mt-3 text-xs text-slate-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-purple-600 file:text-white hover:file:bg-purple-500 cursor-pointer"
+                className="mt-3 text-xs text-slate-600 dark:text-slate-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-purple-600 file:text-white hover:file:bg-purple-500 cursor-pointer"
               />
             </div>
 
-            <div className="p-5 border-2 border-dashed border-purple-500/40 rounded-2xl bg-slate-900/60 text-center hover:border-purple-500 transition-colors">
-              <Upload className="w-7 h-7 text-cyan-400 mx-auto mb-2" />
-              <div className="text-xs font-bold text-white">Police FIR / Incident Report</div>
+            <div className="p-5 border-2 border-dashed border-cyan-300 dark:border-cyan-500/40 rounded-2xl bg-slate-50 dark:bg-slate-950/60 text-center hover:border-cyan-500 transition-colors">
+              <Upload className="w-7 h-7 text-cyan-600 dark:text-cyan-400 mx-auto mb-2" />
+              <div className="text-xs font-bold text-slate-900 dark:text-white">Police FIR / Incident Report</div>
               <input
                 type="file"
                 onChange={(e) => handleFileUpload(e, DocumentType.POLICE_REPORT)}
-                className="mt-3 text-xs text-slate-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-purple-600 file:text-white hover:file:bg-purple-500 cursor-pointer"
+                className="mt-3 text-xs text-slate-600 dark:text-slate-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-purple-600 file:text-white hover:file:bg-purple-500 cursor-pointer"
               />
             </div>
           </div>
 
           {files.length > 0 && (
-            <div className="p-4 bg-slate-900/90 border border-purple-500/30 rounded-2xl space-y-2">
-              <div className="text-xs font-bold text-purple-300">Attached Files:</div>
+            <div className="p-4 bg-slate-50 dark:bg-slate-950/90 border border-slate-200 dark:border-purple-500/30 rounded-2xl space-y-2">
+              <div className="text-xs font-bold text-purple-700 dark:text-purple-300">Attached Files:</div>
               {files.map((item, idx) => (
-                <div key={idx} className="text-xs font-semibold flex justify-between items-center p-2 rounded-xl bg-slate-950/80 border border-purple-500/20">
-                  <span className="text-white truncate max-w-[250px]">{item.file.name}</span>
-                  <span className="px-2.5 py-0.5 rounded-md bg-purple-950 border border-purple-500/40 text-purple-300 text-[10px] font-mono">
+                <div key={idx} className="text-xs font-semibold flex justify-between items-center p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-purple-500/20">
+                  <span className="text-slate-900 dark:text-white truncate max-w-[250px]">{item.file.name}</span>
+                  <span className="px-2.5 py-0.5 rounded-md bg-purple-100 dark:bg-purple-950 border border-purple-300 dark:border-purple-500/40 text-purple-700 dark:text-purple-300 text-[10px] font-mono">
                     {item.docType}
                   </span>
                 </div>
@@ -329,7 +329,7 @@ export function SubmissionWizard() {
                 setValidationError(null);
                 setStep(2);
               }}
-              className="py-3.5 px-6 rounded-xl border border-purple-500/30 bg-slate-900/80 text-slate-300 font-bold text-xs hover:bg-slate-800 transition-colors"
+              className="py-3.5 px-6 rounded-xl border border-slate-200 dark:border-purple-500/30 bg-slate-100 dark:bg-slate-950 text-slate-700 dark:text-slate-300 font-bold text-xs hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
             >
               Back
             </button>
@@ -347,30 +347,30 @@ export function SubmissionWizard() {
       {step === 4 && (
         <div className="space-y-5">
           <div>
-            <h2 className="text-xl font-extrabold text-white">Step 4: Review & Confirm Submission</h2>
-            <p className="text-xs text-slate-400 mt-1">Double check your claim info before submitting for AI automated risk scoring</p>
+            <h2 className="text-xl font-extrabold text-slate-900 dark:text-white">Step 4: Review & Confirm Submission</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Double check your claim info before submitting for AI automated risk scoring</p>
           </div>
 
-          <div className="p-5 rounded-2xl bg-slate-900/90 border border-purple-500/30 space-y-3 text-xs">
-            <div className="flex justify-between border-b border-purple-500/10 pb-2">
-              <span className="text-slate-400">Claim Type:</span>
-              <strong className="text-white font-mono">{formData.claimType}</strong>
+          <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-950/90 border border-slate-200 dark:border-purple-500/30 space-y-3 text-xs">
+            <div className="flex justify-between border-b border-slate-200 dark:border-purple-500/10 pb-2">
+              <span className="text-slate-500 dark:text-slate-400">Claim Type:</span>
+              <strong className="text-slate-900 dark:text-white font-mono">{formData.claimType}</strong>
             </div>
-            <div className="flex justify-between border-b border-purple-500/10 pb-2">
-              <span className="text-slate-400">Incident Date:</span>
-              <strong className="text-white font-mono">{formData.incidentDate}</strong>
+            <div className="flex justify-between border-b border-slate-200 dark:border-purple-500/10 pb-2">
+              <span className="text-slate-500 dark:text-slate-400">Incident Date:</span>
+              <strong className="text-slate-900 dark:text-white font-mono">{formData.incidentDate}</strong>
             </div>
-            <div className="flex justify-between border-b border-purple-500/10 pb-2">
-              <span className="text-slate-400">Estimated Amount:</span>
-              <strong className="text-emerald-400 font-mono text-sm">₹{formData.estimatedAmount?.toLocaleString()}</strong>
+            <div className="flex justify-between border-b border-slate-200 dark:border-purple-500/10 pb-2">
+              <span className="text-slate-500 dark:text-slate-400">Estimated Amount:</span>
+              <strong className="text-emerald-600 dark:text-emerald-400 font-mono text-sm">₹{formData.estimatedAmount?.toLocaleString()}</strong>
             </div>
-            <div className="flex justify-between border-b border-purple-500/10 pb-2">
-              <span className="text-slate-400">Location:</span>
-              <strong className="text-white">{formData.incidentLocation}</strong>
+            <div className="flex justify-between border-b border-slate-200 dark:border-purple-500/10 pb-2">
+              <span className="text-slate-500 dark:text-slate-400">Location:</span>
+              <strong className="text-slate-900 dark:text-white">{formData.incidentLocation}</strong>
             </div>
             <div className="pt-1">
-              <span className="text-slate-400 block mb-1">Description:</span>
-              <p className="p-3 rounded-xl bg-slate-950/80 border border-purple-500/20 text-slate-300 italic">
+              <span className="text-slate-500 dark:text-slate-400 block mb-1">Description:</span>
+              <p className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-purple-500/20 text-slate-800 dark:text-slate-300 italic">
                 "{formData.description}"
               </p>
             </div>
@@ -382,7 +382,7 @@ export function SubmissionWizard() {
                 setValidationError(null);
                 setStep(3);
               }}
-              className="py-3.5 px-6 rounded-xl border border-purple-500/30 bg-slate-900/80 text-slate-300 font-bold text-xs hover:bg-slate-800 transition-colors"
+              className="py-3.5 px-6 rounded-xl border border-slate-200 dark:border-purple-500/30 bg-slate-100 dark:bg-slate-950 text-slate-700 dark:text-slate-300 font-bold text-xs hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
             >
               Back
             </button>
@@ -404,9 +404,9 @@ export function SubmissionWizard() {
           <div className="w-16 h-16 bg-gradient-to-tr from-emerald-600 to-cyan-500 text-white rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-emerald-500/30">
             <CheckCircle2 className="w-10 h-10" />
           </div>
-          <h2 className="text-2xl font-black text-white">Claim Submitted Successfully!</h2>
-          <p className="text-xs text-slate-300 max-w-md mx-auto">
-            Your claim number is <strong className="text-cyan-400 font-mono text-sm">{createdClaim?.claimNumber}</strong>. Background AI document extraction and risk scoring have been initiated.
+          <h2 className="text-2xl font-black text-slate-900 dark:text-white">Claim Submitted Successfully!</h2>
+          <p className="text-xs text-slate-600 dark:text-slate-300 max-w-md mx-auto">
+            Your claim number is <strong className="text-purple-700 dark:text-purple-300 font-mono text-sm">{createdClaim?.claimNumber}</strong>. Background AI document extraction and risk scoring have been initiated.
           </p>
           <button
             onClick={() => router.push('/dashboard')}
