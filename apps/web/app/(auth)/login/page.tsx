@@ -106,16 +106,20 @@ export default function LoginPage() {
       {/* Main Split Glassmorphism Container */}
       <div className="w-full max-w-5xl rounded-3xl glass-panel border border-purple-500/30 shadow-2xl glow-purple overflow-hidden grid grid-cols-1 lg:grid-cols-12">
         {/* Left Column: Dynamic Persona Hero Graphic */}
-        <div className="lg:col-span-6 relative hidden lg:flex flex-col justify-between p-8 border-r border-purple-500/20">
-          <Image 
-            key={activeRole}
-            src={currentConfig.image} 
-            alt={`${currentConfig.roleLabel} Hero`} 
-            fill 
-            className="object-cover transition-opacity duration-700 animate-in fade-in"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#06070B] via-[#06070B]/50 to-transparent z-10" />
+        <div className="lg:col-span-6 relative hidden lg:flex flex-col justify-between p-8 border-r border-purple-500/20 overflow-hidden">
+          {/* Pre-mounted persona hero images for instant zero-lag role switching */}
+          {(['customer', 'adjuster', 'admin'] as RoleType[]).map((role) => (
+            <img
+              key={role}
+              src={roleConfigs[role].image}
+              alt={`${roleConfigs[role].roleLabel} Hero`}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                activeRole === role ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+              }`}
+              loading="eager"
+            />
+          ))}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#06070B] via-[#06070B]/50 to-transparent z-10 pointer-events-none" />
 
           {/* Top Brand Tag */}
           <div className="relative z-20 flex items-center gap-3">
