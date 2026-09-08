@@ -99,14 +99,14 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#06070B] text-slate-100 bg-cyber-grid flex items-center justify-center p-4 md:p-8 relative overflow-hidden">
+    <div className="min-h-screen bg-black text-slate-100 bg-cyber-grid flex items-center justify-center p-4 md:p-10 relative overflow-hidden">
       {/* Top Ambient Glow Aura */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[450px] bg-gradient-to-r from-purple-900/30 via-fuchsia-600/25 to-indigo-900/30 blur-[120px] pointer-events-none -z-10" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] bg-gradient-to-r from-purple-900/40 via-fuchsia-600/30 to-indigo-900/40 blur-[140px] pointer-events-none -z-10" />
 
-      {/* Main Split Glassmorphism Container */}
-      <div className="w-full max-w-5xl rounded-3xl glass-panel border border-purple-500/30 shadow-2xl glow-purple overflow-hidden grid grid-cols-1 lg:grid-cols-12">
-        {/* Left Column: Dynamic Persona Hero Graphic */}
-        <div className="lg:col-span-6 relative hidden lg:flex flex-col justify-between p-8 border-r border-purple-500/20 overflow-hidden">
+      {/* Main Widescreen Split Container (Expanded max-w-6xl ratio) */}
+      <div className="w-full max-w-6xl rounded-3xl bg-black border border-purple-500/40 shadow-2xl shadow-purple-950/60 overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[640px]">
+        {/* Left Column: Widescreen Persona Hero Graphic (7 Cols) */}
+        <div className="lg:col-span-7 relative hidden lg:flex flex-col justify-between p-10 border-r border-purple-500/30 overflow-hidden min-h-[600px]">
           {/* Pre-mounted persona hero images for instant zero-lag role switching */}
           {(['customer', 'adjuster', 'admin'] as RoleType[]).map((role) => (
             <img
@@ -119,44 +119,44 @@ export default function LoginPage() {
               loading="eager"
             />
           ))}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#06070B] via-[#06070B]/50 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10 pointer-events-none" />
 
           {/* Top Brand Tag */}
           <div className="relative z-20 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-fuchsia-500 flex items-center justify-center text-white shadow-lg shadow-purple-500/30">
+            <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-indigo-600 flex items-center justify-center text-white shadow-xl shadow-purple-500/40">
               <ShieldCheck className="w-6 h-6" />
             </div>
-            <span className="text-xl font-bold tracking-tight text-white">
+            <span className="text-2xl font-extrabold tracking-tight text-white">
               ClaimFlow <span className="text-gradient-purple">AI</span>
             </span>
           </div>
 
           {/* Dynamic Floating AI Metrics Overlay */}
           <div className="relative z-20 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/20 border border-purple-500/40 text-xs font-semibold text-purple-300">
-              <Sparkles className="w-3.5 h-3.5 text-fuchsia-400" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/20 border border-purple-500/40 text-xs font-semibold text-purple-300 backdrop-blur-md">
+              <Sparkles className="w-4 h-4 text-fuchsia-400" />
               {currentConfig.badge}
             </div>
 
-            <h2 className="text-2xl font-extrabold text-white leading-tight">
+            <h2 className="text-3xl font-extrabold text-white leading-snug max-w-lg">
               {currentConfig.title}
             </h2>
 
-            <div className="grid grid-cols-2 gap-3 text-xs font-mono">
-              <div className="p-3 rounded-xl bg-slate-950/80 border border-purple-500/30">
-                <div className="text-purple-400 font-bold">{currentConfig.stat1Title}</div>
-                <div className="text-slate-400 text-[10px]">{currentConfig.stat1Sub}</div>
+            <div className="grid grid-cols-2 gap-4 text-xs font-mono max-w-md">
+              <div className="p-4 rounded-2xl bg-black/90 border border-purple-500/40 backdrop-blur-md">
+                <div className="text-purple-400 font-extrabold text-sm">{currentConfig.stat1Title}</div>
+                <div className="text-slate-400 text-[11px] mt-0.5">{currentConfig.stat1Sub}</div>
               </div>
-              <div className="p-3 rounded-xl bg-slate-950/80 border border-purple-500/30">
-                <div className="text-cyan-400 font-bold">{currentConfig.stat2Title}</div>
-                <div className="text-slate-400 text-[10px]">{currentConfig.stat2Sub}</div>
+              <div className="p-4 rounded-2xl bg-black/90 border border-purple-500/40 backdrop-blur-md">
+                <div className="text-cyan-400 font-extrabold text-sm">{currentConfig.stat2Title}</div>
+                <div className="text-slate-400 text-[11px] mt-0.5">{currentConfig.stat2Sub}</div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Right Column: Glassmorphism Login Form */}
-        <div className="lg:col-span-6 p-8 md:p-10 flex flex-col justify-center space-y-6 bg-slate-950/60 backdrop-blur-2xl">
+        {/* Right Column: Sleek Black Login Form (5 Cols) */}
+        <div className="lg:col-span-5 p-8 md:p-10 flex flex-col justify-center space-y-6 bg-[#040406] backdrop-blur-2xl border-l border-purple-500/20">
           <div className="text-center space-y-2">
             <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-indigo-600 flex items-center justify-center text-white mx-auto shadow-lg shadow-purple-500/30 lg:hidden">
               <ShieldCheck className="w-6 h-6" />
@@ -165,18 +165,18 @@ export default function LoginPage() {
               Sign In to <span className="text-gradient-purple">ClaimFlow AI</span>
             </h1>
             <p className="text-xs text-slate-400 font-light">
-              Click any role below to switch hero photo & auto-fill credentials
+              Select persona to auto-fill credentials & switch visual workspace
             </p>
           </div>
 
           {/* Role Selection Switcher Tabs */}
-          <div className="grid grid-cols-3 gap-2 text-xs font-bold p-1 rounded-2xl bg-slate-900/90 border border-purple-500/30">
+          <div className="grid grid-cols-3 gap-2 text-xs font-bold p-1.5 rounded-2xl bg-black border border-purple-500/30 shadow-inner">
             <button
               type="button"
               onClick={() => handleRoleSelect('customer')}
               className={`py-2.5 rounded-xl flex items-center justify-center gap-1.5 transition-all ${
                 activeRole === 'customer'
-                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md font-extrabold'
+                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg shadow-purple-600/30 font-extrabold'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -189,7 +189,7 @@ export default function LoginPage() {
               onClick={() => handleRoleSelect('adjuster')}
               className={`py-2.5 rounded-xl flex items-center justify-center gap-1.5 transition-all ${
                 activeRole === 'adjuster'
-                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md font-extrabold'
+                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg shadow-purple-600/30 font-extrabold'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -202,7 +202,7 @@ export default function LoginPage() {
               onClick={() => handleRoleSelect('admin')}
               className={`py-2.5 rounded-xl flex items-center justify-center gap-1.5 transition-all ${
                 activeRole === 'admin'
-                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md font-extrabold'
+                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg shadow-purple-600/30 font-extrabold'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -212,18 +212,18 @@ export default function LoginPage() {
           </div>
 
           {error && (
-            <div className="p-3 rounded-xl bg-rose-950/60 border border-rose-800 text-rose-300 text-xs font-semibold text-center">
+            <div className="p-3.5 rounded-xl bg-rose-950/80 border border-rose-800 text-rose-200 text-xs font-semibold text-center">
               {error}
             </div>
           )}
 
           <form onSubmit={handleSubmit} autoComplete="new-password" className="space-y-4 text-xs">
             <div>
-              <div className="flex justify-between items-center mb-1">
+              <div className="flex justify-between items-center mb-1.5">
                 <label className="block text-slate-300 font-bold">
                   Email Address ({currentConfig.roleLabel})
                 </label>
-                <span className="text-[10px] text-purple-300/80 font-mono">
+                <span className="text-[10px] text-purple-400 font-mono">
                   {currentConfig.email}
                 </span>
               </div>
@@ -235,14 +235,14 @@ export default function LoginPage() {
                 placeholder={`e.g. ${currentConfig.placeholderEmail}`}
                 autoComplete="new-password"
                 required
-                className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white placeholder-slate-400 font-medium focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
+                className="w-full p-3.5 rounded-xl bg-[#090a0f] border border-slate-800 text-white placeholder-slate-500 font-medium focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
               />
             </div>
 
             <div>
-              <div className="flex justify-between items-center mb-1">
+              <div className="flex justify-between items-center mb-1.5">
                 <label className="block text-slate-300 font-bold">Password</label>
-                <span className="text-[10px] text-purple-300/80 font-mono">
+                <span className="text-[10px] text-purple-400 font-mono">
                   password123
                 </span>
               </div>
@@ -254,21 +254,21 @@ export default function LoginPage() {
                 placeholder={currentConfig.placeholderPassword}
                 autoComplete="new-password"
                 required
-                className="w-full p-3.5 rounded-xl bg-slate-900/90 border border-purple-500/30 text-white placeholder-slate-400 font-medium focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
+                className="w-full p-3.5 rounded-xl bg-[#090a0f] border border-slate-800 text-white placeholder-slate-500 font-medium focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
               />
             </div>
 
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3.5 rounded-full bg-gradient-to-r from-purple-600 via-fuchsia-500 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-extrabold text-sm transition-all shadow-lg shadow-purple-500/30 flex items-center justify-center gap-2 transform hover:scale-[1.02]"
+              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-purple-600 via-fuchsia-500 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-extrabold text-sm transition-all shadow-xl shadow-purple-600/30 flex items-center justify-center gap-2 transform hover:scale-[1.01]"
             >
-              {isLoading ? 'Navigating...' : `Sign In as ${currentConfig.roleLabel}`} <ArrowRight className="w-4 h-4" />
+              {isLoading ? 'Authenticating...' : `Sign In as ${currentConfig.roleLabel}`} <ArrowRight className="w-4 h-4" />
             </button>
           </form>
 
           {/* One-Click Direct Navigation Launch Buttons */}
-          <div className="border-t border-purple-500/20 pt-4 space-y-2.5">
+          <div className="border-t border-slate-800/80 pt-4 space-y-2.5">
             <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest text-center">
               ONE-CLICK PORTAL DIRECT LAUNCH
             </div>
@@ -276,7 +276,7 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={() => handleAutoLoginRole('customer')}
-                className="p-2.5 rounded-xl bg-slate-900/80 hover:bg-purple-600/30 border border-purple-500/20 text-slate-300 font-bold flex flex-col items-center gap-1 transition-all hover:border-purple-500/50"
+                className="p-2.5 rounded-xl bg-[#090a0f] hover:bg-purple-950/40 border border-slate-800 text-slate-300 font-bold flex flex-col items-center gap-1 transition-all hover:border-purple-500/50"
               >
                 <User className="w-4 h-4 text-emerald-400" />
                 <span>Customer</span>
@@ -284,7 +284,7 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={() => handleAutoLoginRole('adjuster')}
-                className="p-2.5 rounded-xl bg-slate-900/80 hover:bg-purple-600/30 border border-purple-500/20 text-slate-300 font-bold flex flex-col items-center gap-1 transition-all hover:border-purple-500/50"
+                className="p-2.5 rounded-xl bg-[#090a0f] hover:bg-purple-950/40 border border-slate-800 text-slate-300 font-bold flex flex-col items-center gap-1 transition-all hover:border-purple-500/50"
               >
                 <UserCheck className="w-4 h-4 text-purple-400" />
                 <span>Adjuster</span>
@@ -292,7 +292,7 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={() => handleAutoLoginRole('admin')}
-                className="p-2.5 rounded-xl bg-slate-900/80 hover:bg-purple-600/30 border border-purple-500/20 text-slate-300 font-bold flex flex-col items-center gap-1 transition-all hover:border-purple-500/50"
+                className="p-2.5 rounded-xl bg-[#090a0f] hover:bg-purple-950/40 border border-slate-800 text-slate-300 font-bold flex flex-col items-center gap-1 transition-all hover:border-purple-500/50"
               >
                 <ShieldAlert className="w-4 h-4 text-cyan-400" />
                 <span>Admin</span>
