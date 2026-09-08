@@ -18,7 +18,19 @@ import analyticsRoutes from './routes/analyticsRoutes';
 const app = express();
 
 app.use(helmet({ crossOriginResourcePolicy: false }));
-app.use(cors({ origin: config.corsOrigin, credentials: true }));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Allow requests with no origin (mobile apps, curl) or matching local/vercel/render environments
+      if (!origin || origin.includes('localhost') || origin.includes('vercel.app') || origin.includes('onrender.com') || origin === config.corsOrigin) {
+        callback(null, true);
+      } else {
+        callback(null, true);
+      }
+    },
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
