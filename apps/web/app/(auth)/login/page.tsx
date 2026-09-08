@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useAuth } from '@/lib/auth';
-import { ShieldCheck, ArrowRight, UserCheck, ShieldAlert, User, Sparkles } from 'lucide-react';
+import { ShieldCheck, ArrowRight, UserCheck, ShieldAlert, User, Sparkles, Eye, EyeOff } from 'lucide-react';
 
 type RoleType = 'customer' | 'adjuster' | 'admin';
 
@@ -13,6 +13,7 @@ export default function LoginPage() {
   const [activeRole, setActiveRole] = useState<RoleType>('customer');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -219,14 +220,9 @@ export default function LoginPage() {
 
           <form onSubmit={handleSubmit} autoComplete="new-password" className="space-y-4 text-xs">
             <div>
-              <div className="flex justify-between items-center mb-1.5">
-                <label className="block text-slate-700 dark:text-slate-300 font-bold">
-                  Email Address ({currentConfig.roleLabel})
-                </label>
-                <span className="text-[10px] text-purple-600 dark:text-purple-400 font-mono font-bold">
-                  {currentConfig.email}
-                </span>
-              </div>
+              <label className="block text-slate-700 dark:text-slate-300 font-bold mb-1.5">
+                Email Address
+              </label>
               <input
                 type="email"
                 name="shield_user_email"
@@ -240,22 +236,27 @@ export default function LoginPage() {
             </div>
 
             <div>
-              <div className="flex justify-between items-center mb-1.5">
-                <label className="block text-slate-700 dark:text-slate-300 font-bold">Password</label>
-                <span className="text-[10px] text-purple-600 dark:text-purple-400 font-mono font-bold">
-                  password123
-                </span>
+              <label className="block text-slate-700 dark:text-slate-300 font-bold mb-1.5">Password</label>
+              <div className="relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  name="shield_user_password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder={currentConfig.placeholderPassword}
+                  autoComplete="new-password"
+                  required
+                  className="w-full p-3.5 pr-11 rounded-xl bg-slate-50 dark:bg-[#090a0f] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 font-medium focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-purple-600 dark:hover:text-purple-400 p-1 transition-colors"
+                  title={showPassword ? 'Hide Password' : 'Show Password'}
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
               </div>
-              <input
-                type="password"
-                name="shield_user_password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder={currentConfig.placeholderPassword}
-                autoComplete="new-password"
-                required
-                className="w-full p-3.5 rounded-xl bg-slate-50 dark:bg-[#090a0f] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 font-medium focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
-              />
             </div>
 
             <button
