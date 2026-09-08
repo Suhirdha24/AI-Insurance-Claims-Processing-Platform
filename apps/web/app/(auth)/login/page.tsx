@@ -99,14 +99,14 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-slate-100 bg-cyber-grid flex items-center justify-center p-4 md:p-10 relative overflow-hidden">
+    <div className="min-h-screen bg-black text-slate-100 bg-cyber-grid flex items-center justify-center p-4 md:p-12 relative overflow-hidden">
       {/* Top Ambient Glow Aura */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] bg-gradient-to-r from-purple-900/40 via-fuchsia-600/30 to-indigo-900/40 blur-[140px] pointer-events-none -z-10" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1400px] h-[550px] bg-gradient-to-r from-purple-900/40 via-fuchsia-600/30 to-indigo-900/40 blur-[150px] pointer-events-none -z-10" />
 
-      {/* Main Widescreen Split Container (Expanded max-w-6xl ratio) */}
-      <div className="w-full max-w-6xl rounded-3xl bg-black border border-purple-500/40 shadow-2xl shadow-purple-950/60 overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[640px]">
+      {/* Main Ultra-Widescreen Split Container (Expanded max-w-[1360px] Cinema Ratio) */}
+      <div className="w-full max-w-[1360px] rounded-3xl bg-black border border-purple-500/40 shadow-2xl shadow-purple-950/70 overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[680px]">
         {/* Left Column: Widescreen Persona Hero Graphic (7 Cols) */}
-        <div className="lg:col-span-7 relative hidden lg:flex flex-col justify-between p-10 border-r border-purple-500/30 overflow-hidden min-h-[600px]">
+        <div className="lg:col-span-7 relative hidden lg:flex flex-col justify-between p-12 border-r border-purple-500/30 overflow-hidden min-h-[650px]">
           {/* Pre-mounted persona hero images for instant zero-lag role switching */}
           {(['customer', 'adjuster', 'admin'] as RoleType[]).map((role) => (
             <img
@@ -122,9 +122,9 @@ export default function LoginPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10 pointer-events-none" />
 
           {/* Top Brand Tag */}
-          <div className="relative z-20 flex items-center gap-3">
-            <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-indigo-600 flex items-center justify-center text-white shadow-xl shadow-purple-500/40">
-              <ShieldCheck className="w-6 h-6" />
+          <div className="relative z-20 flex items-center gap-3.5">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-indigo-600 flex items-center justify-center text-white shadow-xl shadow-purple-500/40">
+              <ShieldCheck className="w-7 h-7" />
             </div>
             <span className="text-2xl font-extrabold tracking-tight text-white">
               ClaimFlow <span className="text-gradient-purple">AI</span>
@@ -132,22 +132,22 @@ export default function LoginPage() {
           </div>
 
           {/* Dynamic Floating AI Metrics Overlay */}
-          <div className="relative z-20 space-y-4">
+          <div className="relative z-20 space-y-5 max-w-xl">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/20 border border-purple-500/40 text-xs font-semibold text-purple-300 backdrop-blur-md">
               <Sparkles className="w-4 h-4 text-fuchsia-400" />
               {currentConfig.badge}
             </div>
 
-            <h2 className="text-3xl font-extrabold text-white leading-snug max-w-lg">
+            <h2 className="text-4xl font-extrabold text-white leading-tight">
               {currentConfig.title}
             </h2>
 
-            <div className="grid grid-cols-2 gap-4 text-xs font-mono max-w-md">
-              <div className="p-4 rounded-2xl bg-black/90 border border-purple-500/40 backdrop-blur-md">
+            <div className="grid grid-cols-2 gap-4 text-xs font-mono max-w-lg">
+              <div className="p-4.5 rounded-2xl bg-black/90 border border-purple-500/40 backdrop-blur-md">
                 <div className="text-purple-400 font-extrabold text-sm">{currentConfig.stat1Title}</div>
                 <div className="text-slate-400 text-[11px] mt-0.5">{currentConfig.stat1Sub}</div>
               </div>
-              <div className="p-4 rounded-2xl bg-black/90 border border-purple-500/40 backdrop-blur-md">
+              <div className="p-4.5 rounded-2xl bg-black/90 border border-purple-500/40 backdrop-blur-md">
                 <div className="text-cyan-400 font-extrabold text-sm">{currentConfig.stat2Title}</div>
                 <div className="text-slate-400 text-[11px] mt-0.5">{currentConfig.stat2Sub}</div>
               </div>
@@ -156,7 +156,7 @@ export default function LoginPage() {
         </div>
 
         {/* Right Column: Sleek Black Login Form (5 Cols) */}
-        <div className="lg:col-span-5 p-8 md:p-10 flex flex-col justify-center space-y-6 bg-[#040406] backdrop-blur-2xl border-l border-purple-500/20">
+        <div className="lg:col-span-5 p-10 md:p-12 flex flex-col justify-center space-y-6 bg-[#040406] backdrop-blur-2xl border-l border-purple-500/20">
           <div className="text-center space-y-2">
             <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-indigo-600 flex items-center justify-center text-white mx-auto shadow-lg shadow-purple-500/30 lg:hidden">
               <ShieldCheck className="w-6 h-6" />
