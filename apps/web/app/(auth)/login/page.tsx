@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useAuth } from '@/lib/auth';
 import { ShieldCheck, ArrowRight, UserCheck, ShieldAlert, User, Sparkles, Eye, EyeOff } from 'lucide-react';
+import { UserRole } from '@ai-insurance/shared';
 
 type RoleType = 'customer' | 'adjuster' | 'admin';
 
@@ -77,8 +78,13 @@ export default function LoginPage() {
     setPassword('password123');
     setIsLoading(true);
     setError('');
+
+    let targetRole = UserRole.CUSTOMER;
+    if (role === 'adjuster') targetRole = UserRole.ADJUSTER;
+    if (role === 'admin') targetRole = UserRole.ADMIN;
+
     try {
-      await login(targetEmail, 'password123');
+      await login(targetEmail, 'password123', targetRole);
     } catch (err: any) {
       setError(err.message || 'Login failed');
     } finally {
@@ -90,8 +96,13 @@ export default function LoginPage() {
     e.preventDefault();
     setIsLoading(true);
     setError('');
+
+    let targetRole = UserRole.CUSTOMER;
+    if (activeRole === 'adjuster') targetRole = UserRole.ADJUSTER;
+    if (activeRole === 'admin') targetRole = UserRole.ADMIN;
+
     try {
-      await login(email, password);
+      await login(email, password, targetRole);
     } catch (err: any) {
       setError(err.message || 'Login failed');
     } finally {

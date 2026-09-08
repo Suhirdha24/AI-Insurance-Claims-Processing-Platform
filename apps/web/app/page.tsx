@@ -23,7 +23,7 @@ export default function LandingPage() {
               </svg>
             </div>
             <span className="text-xl font-bold tracking-tight text-white">
-              SHIELD <span className="text-gradient-purple">. AI</span>
+              ClaimFlow <span className="text-gradient-purple">AI</span>
             </span>
           </Link>
 

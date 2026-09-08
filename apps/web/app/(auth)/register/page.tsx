@@ -169,6 +169,7 @@ export default function RegisterPage() {
               >
                 <option value={UserRole.CUSTOMER} className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Policy Customer (Policyholder)</option>
                 <option value={UserRole.ADJUSTER} className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Claims Adjuster (Reviewer)</option>
+                <option value={UserRole.ADMIN} className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">System Administrator (Admin)</option>
               </select>
             </div>
 
