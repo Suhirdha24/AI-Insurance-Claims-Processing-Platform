@@ -127,15 +127,17 @@ export default function RegisterPage() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4 text-xs">
+          <form onSubmit={handleSubmit} autoComplete="off" className="space-y-4 text-xs">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-slate-700 dark:text-slate-300 font-bold mb-1.5">Full Name</label>
                 <input
                   type="text"
+                  name="shield_reg_full_name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="John Doe"
+                  placeholder="e.g. John Doe"
+                  autoComplete="off"
                   required
                   className="w-full p-3.5 rounded-xl bg-slate-50 dark:bg-[#090a0f] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 font-medium focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
                 />
@@ -145,9 +147,11 @@ export default function RegisterPage() {
                 <label className="block text-slate-700 dark:text-slate-300 font-bold mb-1.5">Email Address</label>
                 <input
                   type="email"
+                  name="shield_reg_user_email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="john@example.com"
+                  placeholder="e.g. john@example.com"
+                  autoComplete="new-password"
                   required
                   className="w-full p-3.5 rounded-xl bg-slate-50 dark:bg-[#090a0f] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 font-medium focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
                 />
@@ -157,6 +161,7 @@ export default function RegisterPage() {
             <div>
               <label className="block text-slate-700 dark:text-slate-300 font-bold mb-1.5">Account Role (Hero Switcher)</label>
               <select
+                name="shield_reg_user_role"
                 value={formData.role}
                 onChange={(e) => setFormData({ ...formData, role: e.target.value as UserRole })}
                 className="w-full p-3.5 rounded-xl bg-slate-50 dark:bg-[#090a0f] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-bold outline-none cursor-pointer transition-all"
@@ -171,9 +176,11 @@ export default function RegisterPage() {
                 <label className="block text-slate-700 dark:text-slate-300 font-bold mb-1.5">Password</label>
                 <input
                   type="password"
+                  name="shield_reg_user_password"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  placeholder="••••••••"
+                  placeholder="Enter password (e.g. ••••••••)"
+                  autoComplete="new-password"
                   required
                   className="w-full p-3.5 rounded-xl bg-slate-50 dark:bg-[#090a0f] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 font-medium focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
                 />
@@ -183,9 +190,11 @@ export default function RegisterPage() {
                 <label className="block text-slate-700 dark:text-slate-300 font-bold mb-1.5">Confirm Password</label>
                 <input
                   type="password"
+                  name="shield_reg_confirm_password"
                   value={formData.confirmPassword}
                   onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                  placeholder="••••••••"
+                  placeholder="Re-enter password"
+                  autoComplete="new-password"
                   required
                   className="w-full p-3.5 rounded-xl bg-slate-50 dark:bg-[#090a0f] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 font-medium focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
                 />
