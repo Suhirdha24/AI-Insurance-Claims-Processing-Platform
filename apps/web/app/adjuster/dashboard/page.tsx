@@ -26,12 +26,34 @@ export default function AdjusterDashboardPage() {
   const [highRiskClaims, setHighRiskClaims] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isAiChatOpen, setIsAiChatOpen] = useState(false);
+  const [timeGreeting, setTimeGreeting] = useState({ greeting: 'Good morning', period: 'this morning' });
+
   const [chatMessages, setChatMessages] = useState<{ role: string; content: string }[]>([
     { role: 'assistant', content: 'Good morning! I have pre-processed 4 claims and flagged 1 high-risk vehicle mismatch. How can I assist your review today?' }
   ]);
   const [chatInput, setChatInput] = useState('');
 
   useEffect(() => {
+    // Dynamic time-of-day greeting determination
+    const hour = new Date().getHours();
+    let currentGreeting = 'Good morning';
+    let currentPeriod = 'this morning';
+    if (hour >= 12 && hour < 17) {
+      currentGreeting = 'Good afternoon';
+      currentPeriod = 'this afternoon';
+    } else if (hour >= 17 && hour < 22) {
+      currentGreeting = 'Good evening';
+      currentPeriod = 'this evening';
+    } else if (hour >= 22 || hour < 5) {
+      currentGreeting = 'Good evening';
+      currentPeriod = 'tonight';
+    }
+
+    setTimeGreeting({ greeting: currentGreeting, period: currentPeriod });
+    setChatMessages([
+      { role: 'assistant', content: `${currentGreeting}! I have pre-processed 4 claims and flagged 1 high-risk vehicle mismatch. How can I assist your review today?` }
+    ]);
+
     Promise.all([
       api.get('/analytics/dashboard'),
       api.get('/claims?limit=6'),
@@ -68,10 +90,10 @@ export default function AdjusterDashboardPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Good morning, <span className="text-gradient-purple">Adjuster Sarah</span>
+            {timeGreeting.greeting}, <span className="text-gradient-purple">Adjuster Sarah</span>
           </h1>
           <p className="text-xs text-slate-600 dark:text-slate-400 font-light mt-1">
-            ClaimFlow AI has handled <span className="text-purple-700 dark:text-purple-300 font-bold">47 automated claim tasks</span> this morning. Here's today at a glance.
+            ClaimFlow AI has handled <span className="text-purple-700 dark:text-purple-300 font-bold">47 automated claim tasks</span> {timeGreeting.period}. Here's today at a glance.
           </p>
         </div>
 
