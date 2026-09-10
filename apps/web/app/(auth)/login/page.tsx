@@ -113,12 +113,12 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-slate-100 dark:bg-black text-slate-900 dark:text-slate-100 bg-cyber-grid flex items-center justify-center p-4 md:p-12 relative overflow-hidden transition-colors duration-300">
       {/* Top Ambient Glow Aura */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1400px] h-[550px] bg-gradient-to-r from-purple-500/15 via-fuchsia-500/15 to-indigo-500/15 dark:from-purple-900/40 dark:via-fuchsia-600/30 dark:to-indigo-900/40 blur-[150px] pointer-events-none -z-10" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1400px] h-[550px] bg-gradient-to-r from-indigo-500/15 via-blue-500/15 to-cyan-500/15 dark:from-indigo-900/40 dark:via-blue-600/30 dark:to-cyan-900/40 blur-[150px] pointer-events-none -z-10" />
 
       {/* Main Ultra-Widescreen Split Container */}
-      <div className="w-full max-w-[1360px] rounded-3xl bg-white border border-purple-200 shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[680px] transition-colors duration-300">
+      <div className="w-full max-w-[1360px] rounded-3xl bg-white border border-indigo-200 shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[680px] transition-colors duration-300">
         {/* Left Column: Widescreen Persona Hero Graphic (7 Cols) */}
-        <div className="lg:col-span-7 relative hidden lg:flex flex-col justify-between p-12 border-r border-slate-200 overflow-hidden min-h-[650px] bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900">
+        <div className="lg:col-span-7 relative hidden lg:flex flex-col justify-between p-12 border-r border-slate-200 overflow-hidden min-h-[650px] bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
           {/* Pre-mounted persona hero images for instant zero-lag role switching */}
           {(['customer', 'adjuster', 'admin'] as RoleType[]).map((role) => (
             <img
@@ -135,7 +135,7 @@ export default function LoginPage() {
 
           {/* Top Brand Tag */}
           <div className="relative z-20 flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-indigo-600 flex items-center justify-center text-white shadow-xl shadow-purple-500/40">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 via-blue-600 to-cyan-500 flex items-center justify-center text-white shadow-xl shadow-indigo-500/40">
               <ShieldCheck className="w-7 h-7" />
             </div>
             <span className="text-2xl font-extrabold tracking-tight text-white">
@@ -145,8 +145,8 @@ export default function LoginPage() {
 
           {/* Dynamic Floating AI Metrics Overlay */}
           <div className="relative z-20 space-y-5 max-w-xl">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/20 border border-purple-500/40 text-xs font-semibold text-purple-300 backdrop-blur-md">
-              <Sparkles className="w-4 h-4 text-fuchsia-400" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/20 border border-indigo-500/40 text-xs font-semibold text-indigo-300 backdrop-blur-md">
+              <Sparkles className="w-4 h-4 text-cyan-400" />
               {currentConfig.badge}
             </div>
 
@@ -155,11 +155,11 @@ export default function LoginPage() {
             </h2>
 
             <div className="grid grid-cols-2 gap-4 max-w-lg">
-              <div className="px-5 py-4 rounded-2xl bg-black/95 border border-purple-500/50 backdrop-blur-md shadow-lg shadow-purple-950/40">
-                <div className="text-purple-400 font-extrabold text-sm font-mono tracking-wider">{currentConfig.stat1Title}</div>
+              <div className="px-5 py-4 rounded-2xl bg-black/95 border border-indigo-500/50 backdrop-blur-md shadow-lg shadow-indigo-950/40">
+                <div className="text-indigo-400 font-extrabold text-sm font-mono tracking-wider">{currentConfig.stat1Title}</div>
                 <div className="text-slate-200 text-xs font-medium mt-1">{currentConfig.stat1Sub}</div>
               </div>
-              <div className="px-5 py-4 rounded-2xl bg-black/95 border border-purple-500/50 backdrop-blur-md shadow-lg shadow-purple-950/40">
+              <div className="px-5 py-4 rounded-2xl bg-black/95 border border-indigo-500/50 backdrop-blur-md shadow-lg shadow-indigo-950/40">
                 <div className="text-cyan-400 font-extrabold text-sm font-mono tracking-wider">{currentConfig.stat2Title}</div>
                 <div className="text-slate-200 text-xs font-medium mt-1">{currentConfig.stat2Sub}</div>
               </div>
@@ -168,9 +168,9 @@ export default function LoginPage() {
         </div>
 
         {/* Right Column: Theme-Responsive Login Form (5 Cols) */}
-        <div className="lg:col-span-5 p-10 md:p-12 flex flex-col justify-center space-y-6 bg-white dark:bg-[#040406] backdrop-blur-2xl border-l border-slate-200 dark:border-purple-500/20 transition-colors duration-300">
+        <div className="lg:col-span-5 p-10 md:p-12 flex flex-col justify-center space-y-6 bg-white dark:bg-[#040406] backdrop-blur-2xl border-l border-slate-200 dark:border-indigo-500/20 transition-colors duration-300">
           <div className="text-center space-y-2">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-indigo-600 flex items-center justify-center text-white mx-auto shadow-lg shadow-purple-500/30 lg:hidden">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 via-blue-600 to-cyan-500 flex items-center justify-center text-white mx-auto shadow-lg shadow-indigo-500/30 lg:hidden">
               <ShieldCheck className="w-6 h-6" />
             </div>
             <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">
@@ -182,13 +182,13 @@ export default function LoginPage() {
           </div>
 
           {/* Role Selection Switcher Tabs */}
-          <div className="grid grid-cols-3 gap-2 text-xs font-bold p-1.5 rounded-2xl bg-slate-100 dark:bg-black border border-slate-200 dark:border-purple-500/30 shadow-inner">
+          <div className="grid grid-cols-3 gap-2 text-xs font-bold p-1.5 rounded-2xl bg-slate-100 dark:bg-black border border-slate-200 dark:border-indigo-500/30 shadow-inner">
             <button
               type="button"
               onClick={() => handleRoleSelect('customer')}
               className={`py-2.5 rounded-xl flex items-center justify-center gap-1.5 transition-all ${
                 activeRole === 'customer'
-                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg shadow-purple-600/30 font-extrabold'
+                  ? 'bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 text-white shadow-lg shadow-indigo-600/30 font-extrabold'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
@@ -201,7 +201,7 @@ export default function LoginPage() {
               onClick={() => handleRoleSelect('adjuster')}
               className={`py-2.5 rounded-xl flex items-center justify-center gap-1.5 transition-all ${
                 activeRole === 'adjuster'
-                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg shadow-purple-600/30 font-extrabold'
+                  ? 'bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 text-white shadow-lg shadow-indigo-600/30 font-extrabold'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
@@ -214,7 +214,7 @@ export default function LoginPage() {
               onClick={() => handleRoleSelect('admin')}
               className={`py-2.5 rounded-xl flex items-center justify-center gap-1.5 transition-all ${
                 activeRole === 'admin'
-                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg shadow-purple-600/30 font-extrabold'
+                  ? 'bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 text-white shadow-lg shadow-indigo-600/30 font-extrabold'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
@@ -242,7 +242,7 @@ export default function LoginPage() {
                 placeholder={`e.g. ${currentConfig.placeholderEmail}`}
                 autoComplete="new-password"
                 required
-                className="w-full p-3.5 rounded-xl bg-slate-50 dark:bg-[#090a0f] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 font-medium focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
+                className="w-full p-3.5 rounded-xl bg-slate-50 dark:bg-[#090a0f] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 font-medium focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 outline-none transition-all"
               />
             </div>
 
@@ -257,12 +257,12 @@ export default function LoginPage() {
                   placeholder={currentConfig.placeholderPassword}
                   autoComplete="new-password"
                   required
-                  className="w-full p-3.5 pr-11 rounded-xl bg-slate-50 dark:bg-[#090a0f] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 font-medium focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 outline-none transition-all"
+                  className="w-full p-3.5 pr-11 rounded-xl bg-slate-50 dark:bg-[#090a0f] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 font-medium focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 outline-none transition-all"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-purple-600 dark:hover:text-purple-400 p-1 transition-colors"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 p-1 transition-colors"
                   title={showPassword ? 'Hide Password' : 'Show Password'}
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -273,7 +273,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-purple-600 via-fuchsia-500 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-extrabold text-sm transition-all shadow-xl shadow-purple-600/30 flex items-center justify-center gap-2 transform hover:scale-[1.01]"
+              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-extrabold text-sm transition-all shadow-xl shadow-indigo-600/30 flex items-center justify-center gap-2 transform hover:scale-[1.01]"
             >
               {isLoading ? 'Authenticating...' : `Sign In as ${currentConfig.roleLabel}`} <ArrowRight className="w-4 h-4" />
             </button>
@@ -288,7 +288,7 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={() => handleAutoLoginRole('customer')}
-                className="p-2.5 rounded-xl bg-slate-50 dark:bg-[#090a0f] hover:bg-purple-50 dark:hover:bg-purple-950/40 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-bold flex flex-col items-center gap-1 transition-all hover:border-purple-500/50"
+                className="p-2.5 rounded-xl bg-slate-50 dark:bg-[#090a0f] hover:bg-indigo-50 dark:hover:bg-indigo-950/40 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-bold flex flex-col items-center gap-1 transition-all hover:border-indigo-500/50"
               >
                 <User className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                 <span>Customer</span>
@@ -296,15 +296,15 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={() => handleAutoLoginRole('adjuster')}
-                className="p-2.5 rounded-xl bg-slate-50 dark:bg-[#090a0f] hover:bg-purple-50 dark:hover:bg-purple-950/40 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-bold flex flex-col items-center gap-1 transition-all hover:border-purple-500/50"
+                className="p-2.5 rounded-xl bg-slate-50 dark:bg-[#090a0f] hover:bg-indigo-50 dark:hover:bg-indigo-950/40 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-bold flex flex-col items-center gap-1 transition-all hover:border-indigo-500/50"
               >
-                <UserCheck className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                <UserCheck className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
                 <span>Adjuster</span>
               </button>
               <button
                 type="button"
                 onClick={() => handleAutoLoginRole('admin')}
-                className="p-2.5 rounded-xl bg-slate-50 dark:bg-[#090a0f] hover:bg-purple-50 dark:hover:bg-purple-950/40 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-bold flex flex-col items-center gap-1 transition-all hover:border-purple-500/50"
+                className="p-2.5 rounded-xl bg-slate-50 dark:bg-[#090a0f] hover:bg-indigo-50 dark:hover:bg-indigo-950/40 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-bold flex flex-col items-center gap-1 transition-all hover:border-indigo-500/50"
               >
                 <ShieldAlert className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                 <span>Admin</span>
@@ -314,7 +314,7 @@ export default function LoginPage() {
 
           <div className="text-center text-xs text-slate-500 dark:text-slate-400 pt-1">
             Don't have an account?{' '}
-            <Link href="/register" className="text-purple-600 dark:text-purple-400 font-bold hover:underline">
+            <Link href="/register" className="text-indigo-600 dark:text-indigo-400 font-bold hover:underline">
               Register here
             </Link>
           </div>

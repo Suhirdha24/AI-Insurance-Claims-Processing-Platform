@@ -31,11 +31,11 @@ export function Header({ onNLSearchResults }: { onNLSearchResults?: (results: an
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-white/95 dark:bg-[#06070B]/95 backdrop-blur-xl border-b border-slate-200 dark:border-purple-500/20 px-4 md:px-6 py-3.5 shadow-sm dark:shadow-xl transition-colors">
+    <header className="sticky top-0 z-40 w-full bg-white/95 dark:bg-[#06070B]/95 backdrop-blur-xl border-b border-slate-200 dark:border-indigo-500/20 px-4 md:px-6 py-3.5 shadow-sm dark:shadow-xl transition-colors">
       <div className="flex items-center justify-between gap-4 max-w-7xl mx-auto">
         {/* Left: Brand logo aligned to the left */}
         <Link href="/" className="flex items-center gap-3 shrink-0 justify-start">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-purple-500/30">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-blue-600 to-cyan-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
             <ShieldCheck className="w-6 h-6" />
           </div>
           <div className="text-left">
@@ -54,13 +54,13 @@ export function Header({ onNLSearchResults }: { onNLSearchResults?: (results: an
               value={nlQuery}
               onChange={(e) => setNlQuery(e.target.value)}
               placeholder="Ask AI: 'Show high-risk vehicle damage claims above ₹2 lakh'..."
-              className="w-full pl-10 pr-12 py-2 text-xs rounded-full bg-slate-100 dark:bg-slate-900/90 border border-purple-500/20 dark:border-purple-500/30 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 transition-all shadow-inner"
+              className="w-full pl-10 pr-12 py-2 text-xs rounded-full bg-slate-100 dark:bg-slate-900/90 border border-indigo-500/20 dark:border-indigo-500/30 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all shadow-inner"
             />
-            <Sparkles className="w-4 h-4 text-purple-600 dark:text-purple-400 absolute left-3.5 top-2.5" />
+            <Sparkles className="w-4 h-4 text-indigo-600 dark:text-indigo-400 absolute left-3.5 top-2.5" />
             <button
               type="submit"
               disabled={isSearching}
-              className="absolute right-1.5 top-1.5 px-3 py-1 text-[10px] font-bold uppercase rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-500 hover:to-indigo-500 disabled:opacity-50 transition-colors shadow-md shadow-purple-500/20"
+              className="absolute right-1.5 top-1.5 px-3 py-1 text-[10px] font-bold uppercase rounded-full bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 text-white hover:from-indigo-500 hover:to-cyan-500 disabled:opacity-50 transition-colors shadow-md shadow-indigo-500/20"
             >
               {isSearching ? '...' : 'Search'}
             </button>
@@ -72,14 +72,14 @@ export function Header({ onNLSearchResults }: { onNLSearchResults?: (results: an
           {user && (
             <div className="flex items-center gap-3">
               {/* User Balance Badge */}
-              <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-xs font-semibold text-purple-700">
-                <span className="w-2 h-2 rounded-full bg-purple-600 animate-pulse" />
+              <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-xs font-semibold text-indigo-700">
+                <span className="w-2 h-2 rounded-full bg-indigo-600 animate-pulse" />
                 Coverage: ₹10,00,000
               </div>
 
               <div className="text-right hidden sm:block">
                 <div className="text-xs font-extrabold text-slate-900">{user.name}</div>
-                <span className="inline-block px-2 py-0.5 text-[9px] font-black tracking-wider uppercase rounded-full bg-purple-100 border border-purple-300 text-purple-700 mt-0.5">
+                <span className="inline-block px-2 py-0.5 text-[9px] font-black tracking-wider uppercase rounded-full bg-indigo-100 border border-indigo-300 text-indigo-700 mt-0.5">
                   {user.role}
                 </span>
               </div>
