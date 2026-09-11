@@ -38,7 +38,7 @@ export default function AdminPoliciesPage() {
       <div className="flex justify-between items-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl shadow-sm">
         <div>
           <h1 className="text-xl font-black text-slate-900 dark:text-slate-100 flex items-center gap-2">
-            <Shield className="w-6 h-6 text-purple-500" />
+            <Shield className="w-6 h-6 text-indigo-500" />
             Insurance Policy Catalog
           </h1>
           <p className="text-xs text-slate-400 mt-1">Configure policy templates, coverage limits, deductibles and exclusions</p>

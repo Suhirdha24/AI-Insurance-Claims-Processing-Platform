@@ -120,7 +120,7 @@ function SidebarContent() {
 
 export function Sidebar() {
   return (
-    <Suspense fallback={<aside className="w-64 bg-white/95 dark:bg-[#06070B]/90 border-r border-purple-500/20 hidden md:flex shrink-0 min-h-[calc(100vh-65px)]" />}>
+    <Suspense fallback={<aside className="w-64 bg-white/95 dark:bg-[#06070B]/90 border-r border-indigo-500/20 hidden md:flex shrink-0 min-h-[calc(100vh-65px)]" />}>
       <SidebarContent />
     </Suspense>
   );

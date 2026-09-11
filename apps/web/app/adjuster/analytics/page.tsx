@@ -45,11 +45,11 @@ export default function AdjusterAnalyticsPage() {
   return (
     <div className="p-6 max-w-7xl mx-auto space-y-6">
       {/* Header Panel */}
-      <div className="bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-purple-500/30 rounded-3xl p-6 shadow-sm dark:shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-indigo-500/30 rounded-3xl p-6 shadow-sm dark:shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-500/20 border border-purple-200 dark:border-purple-500/40 flex items-center justify-center text-purple-700 dark:text-purple-300">
-              <BarChart3 className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+            <div className="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-500/20 border border-indigo-200 dark:border-indigo-500/40 flex items-center justify-center text-indigo-700 dark:text-indigo-300">
+              <BarChart3 className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
             </div>
             <div>
               <h1 className="text-xl font-extrabold text-slate-900 dark:text-white">AI Performance & Workload Analytics</h1>
@@ -68,13 +68,13 @@ export default function AdjusterAnalyticsPage() {
 
       {/* Analytics Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-purple-500/30 rounded-3xl p-6 shadow-sm dark:shadow-xl space-y-4">
+        <div className="bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-indigo-500/30 rounded-3xl p-6 shadow-sm dark:shadow-xl space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-700 dark:text-slate-300 flex items-center gap-2">
-              <Activity className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+              <Activity className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
               <span>Active Claims Workload by Adjuster</span>
             </h3>
-            <span className="text-[10px] font-mono text-purple-700 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/60 px-2 py-0.5 rounded border border-purple-200 dark:border-purple-500/30">
+            <span className="text-[10px] font-mono text-indigo-700 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 px-2 py-0.5 rounded border border-indigo-200 dark:border-indigo-500/30">
               LIVE QUEUE
             </span>
           </div>
@@ -86,15 +86,15 @@ export default function AdjusterAnalyticsPage() {
                 <XAxis dataKey="name" stroke="#64748b" tick={{ fontSize: 11 }} />
                 <YAxis stroke="#64748b" tick={{ fontSize: 11 }} />
                 <Tooltip 
-                  contentStyle={{ backgroundColor: '#0f172a', borderColor: '#8b5cf6', borderRadius: '12px', color: '#fff' }} 
+                  contentStyle={{ backgroundColor: '#0f172a', borderColor: '#6366f1', borderRadius: '12px', color: '#fff' }} 
                 />
-                <Bar dataKey="activeCount" fill="#a855f7" radius={[6, 6, 0, 0]} />
+                <Bar dataKey="activeCount" fill="#6366f1" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-purple-500/30 rounded-3xl p-6 shadow-sm dark:shadow-xl space-y-4">
+        <div className="bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-indigo-500/30 rounded-3xl p-6 shadow-sm dark:shadow-xl space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-700 dark:text-slate-300 flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />

@@ -69,7 +69,7 @@ function ClaimsQueueContent() {
 
   return (
     <div className="p-6 max-w-7xl mx-auto space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white dark:bg-slate-900/90 p-6 rounded-3xl border border-slate-200 dark:border-purple-500/30 shadow-sm dark:shadow-xl">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white dark:bg-slate-900/90 p-6 rounded-3xl border border-slate-200 dark:border-indigo-500/30 shadow-sm dark:shadow-xl">
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-xl font-extrabold text-slate-900 dark:text-white">Claims Queue & Workload Dispatch</h1>
@@ -84,23 +84,23 @@ function ClaimsQueueContent() {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-slate-900/90 p-4 rounded-2xl border border-slate-200 dark:border-purple-500/30 shadow-sm dark:shadow-xl flex flex-col md:flex-row items-center gap-3">
+      <div className="bg-white dark:bg-slate-900/90 p-4 rounded-2xl border border-slate-200 dark:border-indigo-500/30 shadow-sm dark:shadow-xl flex flex-col md:flex-row items-center gap-3">
         <form onSubmit={handleSearchSubmit} className="flex-1 w-full relative">
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search claim #, description, vehicle reg..."
-            className="w-full pl-9 pr-4 py-2.5 text-xs rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-purple-500/30 text-slate-900 dark:text-white placeholder-slate-400 outline-none focus:ring-2 focus:ring-purple-500/50 transition-all"
+            className="w-full pl-9 pr-4 py-2.5 text-xs rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-500/30 text-slate-900 dark:text-white placeholder-slate-400 outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all"
           />
-          <Search className="w-4 h-4 text-purple-600 dark:text-purple-400 absolute left-3 top-3" />
+          <Search className="w-4 h-4 text-indigo-600 dark:text-indigo-400 absolute left-3 top-3" />
         </form>
 
         <div className="flex flex-wrap items-center gap-2 w-full md:w-auto text-xs">
           <select
             value={status}
             onChange={(e) => setStatus(e.target.value)}
-            className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-purple-500/30 text-slate-900 dark:text-white font-bold outline-none cursor-pointer"
+            className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-500/30 text-slate-900 dark:text-white font-bold outline-none cursor-pointer"
           >
             <option value="">All Statuses</option>
             {Object.values(ClaimStatus).map((s) => (
@@ -111,7 +111,7 @@ function ClaimsQueueContent() {
           <select
             value={riskLevel}
             onChange={(e) => setRiskLevel(e.target.value)}
-            className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-purple-500/30 text-slate-900 dark:text-white font-bold outline-none cursor-pointer"
+            className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-500/30 text-slate-900 dark:text-white font-bold outline-none cursor-pointer"
           >
             <option value="">All Risk Tiers</option>
             {Object.values(RiskLevel).map((r) => (
@@ -122,7 +122,7 @@ function ClaimsQueueContent() {
           <select
             value={claimType}
             onChange={(e) => setClaimType(e.target.value)}
-            className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-purple-500/30 text-slate-900 dark:text-white font-bold outline-none cursor-pointer"
+            className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-500/30 text-slate-900 dark:text-white font-bold outline-none cursor-pointer"
           >
             <option value="">All Types</option>
             {Object.values(ClaimType).map((t) => (
@@ -132,7 +132,7 @@ function ClaimsQueueContent() {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-purple-500/30 rounded-3xl shadow-sm dark:shadow-xl overflow-hidden">
+      <div className="bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-indigo-500/30 rounded-3xl shadow-sm dark:shadow-xl overflow-hidden">
         {isLoading ? (
           <div className="p-8 text-center text-xs text-slate-500 dark:text-slate-400">Loading claims queue...</div>
         ) : claims.length === 0 ? (
@@ -140,7 +140,7 @@ function ClaimsQueueContent() {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-50 dark:bg-slate-950/80 text-slate-700 dark:text-purple-300 font-bold uppercase text-[10px] border-b border-slate-200 dark:border-purple-500/20">
+              <thead className="bg-slate-50 dark:bg-slate-950/80 text-slate-700 dark:text-indigo-300 font-bold uppercase text-[10px] border-b border-slate-200 dark:border-indigo-500/20">
                 <tr>
                   <th className="p-4">Claim #</th>
                   <th className="p-4">Customer</th>
@@ -151,9 +151,9 @@ function ClaimsQueueContent() {
                   <th className="p-4 text-right">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-200 dark:divide-purple-500/10">
+              <tbody className="divide-y divide-slate-200 dark:divide-indigo-500/10">
                 {claims.map((c: any) => (
-                  <tr key={c.id || c._id} className="hover:bg-slate-50 dark:hover:bg-purple-600/10 transition-colors">
+                  <tr key={c.id || c._id} className="hover:bg-slate-50 dark:hover:bg-indigo-600/10 transition-colors">
                     <td className="p-4 font-bold text-slate-900 dark:text-white">{c.claimNumber}</td>
                     <td className="p-4 font-semibold text-slate-700 dark:text-slate-300">{c.customerId?.name || 'Customer'}</td>
                     <td className="p-4 text-slate-500 dark:text-slate-400 font-mono">{c.claimType}</td>
@@ -163,7 +163,7 @@ function ClaimsQueueContent() {
                     <td className="p-4 text-right">
                       <Link
                         href={`/adjuster/claims/${c.id || c._id}`}
-                        className="inline-flex items-center gap-1 py-1.5 px-3 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-extrabold text-[11px] shadow-md shadow-purple-500/20"
+                        className="inline-flex items-center gap-1 py-1.5 px-3 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-extrabold text-[11px] shadow-md shadow-indigo-500/20"
                       >
                         Review <ArrowUpRight className="w-3.5 h-3.5" />
                       </Link>

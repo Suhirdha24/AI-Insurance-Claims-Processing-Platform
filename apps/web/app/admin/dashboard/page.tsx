@@ -39,15 +39,15 @@ export default function AdminDashboardPage() {
   return (
     <div className="p-6 max-w-7xl mx-auto space-y-6">
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-slate-900 via-purple-950 to-slate-900 text-white p-6 rounded-3xl shadow-xl flex justify-between items-center border border-purple-500/20">
+      <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-6 rounded-3xl shadow-xl flex justify-between items-center border border-indigo-500/20">
         <div>
           <h1 className="text-xl font-extrabold flex items-center gap-2">
-            <ShieldCheck className="w-6 h-6 text-purple-400" />
+            <ShieldCheck className="w-6 h-6 text-indigo-400" />
             Platform Administration & Governance
           </h1>
-          <p className="text-xs text-purple-200 mt-1">Manage user permissions, policy configurations, audit logs and AI model health</p>
+          <p className="text-xs text-indigo-200 mt-1">Manage user permissions, policy configurations, audit logs and AI model health</p>
         </div>
-        <div className="flex items-center gap-2 bg-purple-950/80 px-3.5 py-2 rounded-xl border border-purple-700/50 text-xs font-bold shadow-lg">
+        <div className="flex items-center gap-2 bg-indigo-950/80 px-3.5 py-2 rounded-xl border border-indigo-700/50 text-xs font-bold shadow-lg">
           <Activity className="w-4 h-4 text-emerald-400 animate-pulse" />
           <span>System Status: Operational</span>
         </div>
@@ -60,7 +60,7 @@ export default function AdminDashboardPage() {
             <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Registered Users</div>
             <div className="text-2xl font-black text-slate-900 mt-1">{kpis?.totalUsers || 12}</div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-purple-50 border border-purple-200 text-purple-700 flex items-center justify-center font-bold">
+          <div className="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-700 flex items-center justify-center font-bold">
             <Users className="w-5 h-5" />
           </div>
         </div>
@@ -78,9 +78,9 @@ export default function AdminDashboardPage() {
         <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
           <div>
             <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Total Claims Processed</div>
-            <div className="text-2xl font-black text-purple-600 mt-1">{kpis?.totalClaims || 15}</div>
+            <div className="text-2xl font-black text-indigo-600 mt-1">{kpis?.totalClaims || 15}</div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-purple-50 border border-purple-200 text-purple-700 flex items-center justify-center font-bold">
+          <div className="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-700 flex items-center justify-center font-bold">
             <FileText className="w-5 h-5" />
           </div>
         </div>
@@ -105,7 +105,7 @@ export default function AdminDashboardPage() {
               <XAxis dataKey="status" tick={{ fontSize: 10, fill: '#64748B' }} />
               <YAxis tick={{ fontSize: 10, fill: '#64748B' }} />
               <Tooltip />
-              <Bar dataKey="count" fill="#8B5CF6" radius={[6, 6, 0, 0]} />
+              <Bar dataKey="count" fill="#6366F1" radius={[6, 6, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

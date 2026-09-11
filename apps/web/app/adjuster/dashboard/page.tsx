@@ -93,7 +93,7 @@ export default function AdjusterDashboardPage() {
             {timeGreeting.greeting}, <span className="text-gradient-purple">Adjuster Sarah</span>
           </h1>
           <p className="text-xs text-slate-600 dark:text-slate-400 font-light mt-1">
-            ClaimFlow AI has handled <span className="text-purple-700 dark:text-purple-300 font-bold">47 automated claim tasks</span> {timeGreeting.period}. Here's today at a glance.
+            ClaimFlow AI has handled <span className="text-indigo-700 dark:text-indigo-300 font-bold">47 automated claim tasks</span> {timeGreeting.period}. Here's today at a glance.
           </p>
         </div>
 
@@ -105,7 +105,7 @@ export default function AdjusterDashboardPage() {
 
           <button 
             onClick={() => setIsAiChatOpen(!isAiChatOpen)}
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold text-xs shadow-lg shadow-purple-500/30 hover:from-purple-500 transition-all"
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-indigo-600 to-cyan-600 text-white font-bold text-xs shadow-lg shadow-indigo-500/30 hover:from-indigo-500 transition-all"
           >
             <Sparkles className="w-4 h-4" />
             Ask ClaimFlow AI
@@ -114,23 +114,23 @@ export default function AdjusterDashboardPage() {
       </div>
 
       {/* Dark AI Agent Live Banner - Vibrant Dark Gradient Card */}
-      <div className="rounded-3xl bg-gradient-to-r from-slate-950 via-purple-950 to-indigo-950 p-6 md:p-8 text-white border border-purple-500/30 shadow-2xl relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-purple-600/20 blur-[100px] pointer-events-none" />
+      <div className="rounded-3xl bg-gradient-to-r from-slate-950 via-indigo-950 to-slate-900 p-6 md:p-8 text-white border border-indigo-500/30 shadow-2xl relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-600/20 blur-[100px] pointer-events-none" />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
           {/* Left: Orb & Live Status */}
           <div className="lg:col-span-6 flex items-center gap-5">
-            <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-indigo-500 flex items-center justify-center shadow-xl shadow-purple-500/40 shrink-0">
+            <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-tr from-indigo-600 via-blue-600 to-cyan-500 flex items-center justify-center shadow-xl shadow-indigo-500/40 shrink-0">
               <Sparkles className="w-8 h-8 text-white animate-pulse" />
             </div>
 
             <div className="space-y-2">
               <div className="flex items-center gap-3">
-                <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/40 text-[10px] font-extrabold uppercase tracking-widest flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-fuchsia-400 animate-ping" />
+                <span className="px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 text-[10px] font-extrabold uppercase tracking-widest flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
                   AI AGENT • LIVE
                 </span>
-                <span className="text-xs font-mono text-purple-300">||||||||</span>
+                <span className="text-xs font-mono text-indigo-300">||||||||</span>
               </div>
 
               <h2 className="text-lg md:text-xl font-bold">
@@ -138,10 +138,10 @@ export default function AdjusterDashboardPage() {
               </h2>
 
               <div className="flex items-center gap-2 text-xs">
-                <span className="px-3 py-1 rounded-full bg-slate-900/60 border border-purple-500/20 text-slate-300">
+                <span className="px-3 py-1 rounded-full bg-slate-900/60 border border-indigo-500/20 text-slate-300">
                   Calling 2 claimants
                 </span>
-                <span className="px-3 py-1 rounded-full bg-slate-900/60 border border-purple-500/20 text-slate-300">
+                <span className="px-3 py-1 rounded-full bg-slate-900/60 border border-indigo-500/20 text-slate-300">
                   Drafting 2 claims
                 </span>
               </div>
@@ -149,20 +149,20 @@ export default function AdjusterDashboardPage() {
           </div>
 
           {/* Right: 3 Mini Bar Chart Counters */}
-          <div className="lg:col-span-6 grid grid-cols-3 gap-4 border-t lg:border-t-0 lg:border-l border-purple-500/20 pt-4 lg:pt-0 lg:pl-8">
-            <div className="p-3.5 rounded-2xl bg-slate-900/40 border border-purple-500/20">
+          <div className="lg:col-span-6 grid grid-cols-3 gap-4 border-t lg:border-t-0 lg:border-l border-indigo-500/20 pt-4 lg:pt-0 lg:pl-8">
+            <div className="p-3.5 rounded-2xl bg-slate-900/40 border border-indigo-500/20">
               <div className="text-[10px] font-semibold text-slate-400 uppercase">Tasks Today</div>
               <div className="text-2xl font-extrabold text-white mt-1">47</div>
-              <div className="text-[10px] text-purple-300 mt-1 font-light">12 done • 12 to go</div>
+              <div className="text-[10px] text-indigo-300 mt-1 font-light">12 done • 12 to go</div>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-slate-900/40 border border-purple-500/20">
+            <div className="p-3.5 rounded-2xl bg-slate-900/40 border border-indigo-500/20">
               <div className="text-[10px] font-semibold text-slate-400 uppercase">Time Saved</div>
               <div className="text-2xl font-extrabold text-white mt-1">8.4h</div>
               <div className="text-[10px] text-cyan-300 mt-1 font-light">AI reminders active</div>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-slate-900/40 border border-purple-500/20">
+            <div className="p-3.5 rounded-2xl bg-slate-900/40 border border-indigo-500/20">
               <div className="text-[10px] font-semibold text-slate-400 uppercase">Confirmed</div>
               <div className="text-2xl font-extrabold text-white mt-1">98%</div>
               <div className="text-[10px] text-emerald-300 mt-1 font-light">Awaiting Sarah</div>
@@ -174,17 +174,17 @@ export default function AdjusterDashboardPage() {
       {/* 4 Theme Responsive KPI Cards with Progress Bars */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {/* Card 1 */}
-        <div className="bg-white dark:bg-slate-900/90 p-6 rounded-3xl border border-slate-200 dark:border-purple-500/20 shadow-sm dark:shadow-xl space-y-3">
+        <div className="bg-white dark:bg-slate-900/90 p-6 rounded-3xl border border-slate-200 dark:border-indigo-500/20 shadow-sm dark:shadow-xl space-y-3">
           <div className="flex justify-between items-center text-xs font-bold text-slate-500 dark:text-slate-400">
             <span>Claims Processed Today</span>
-            <CheckCircle2 className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+            <CheckCircle2 className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
           </div>
           <div className="text-3xl font-extrabold text-slate-900 dark:text-white">24</div>
           <div className="text-[11px] text-slate-500 dark:text-slate-400">12 done • 12 to go</div>
           <div className="w-full bg-slate-100 dark:bg-slate-950 h-2 rounded-full overflow-hidden">
-            <div className="bg-purple-600 dark:bg-purple-500 h-full w-[18%]" />
+            <div className="bg-indigo-600 dark:bg-indigo-500 h-full w-[18%]" />
           </div>
-          <div className="text-[10px] font-bold text-purple-700 dark:text-purple-300 text-right">Progress 18%</div>
+          <div className="text-[10px] font-bold text-indigo-700 dark:text-indigo-300 text-right">Progress 18%</div>
         </div>
 
         {/* Card 2 */}
@@ -233,7 +233,7 @@ export default function AdjusterDashboardPage() {
       {/* Main Content 2-Column Panels */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Panel: AI Agent Activity */}
-        <div className="lg:col-span-6 bg-white dark:bg-slate-900/90 rounded-3xl p-6 border border-slate-200 dark:border-purple-500/20 shadow-sm dark:shadow-xl space-y-5">
+        <div className="lg:col-span-6 bg-white dark:bg-slate-900/90 rounded-3xl p-6 border border-slate-200 dark:border-indigo-500/20 shadow-sm dark:shadow-xl space-y-5">
           <div className="flex justify-between items-center">
             <div>
               <div className="flex items-center gap-2">
@@ -242,56 +242,56 @@ export default function AdjusterDashboardPage() {
               </div>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Live telemetry • last 24 hours</p>
             </div>
-            <button className="px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-500/10 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-500/30 text-xs font-semibold hover:bg-purple-100 dark:hover:bg-purple-500/20">
+            <button className="px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/30 text-xs font-semibold hover:bg-indigo-100 dark:hover:bg-indigo-500/20">
               View All
             </button>
           </div>
 
           <div className="space-y-4">
-            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-500/10 flex items-start gap-3.5 text-xs">
+            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-indigo-500/10 flex items-start gap-3.5 text-xs">
               <div className="w-8 h-8 rounded-xl bg-emerald-100 dark:bg-emerald-500/10 border border-emerald-300 dark:border-emerald-500/30 flex items-center justify-center text-emerald-700 dark:text-emerald-400 shrink-0">
                 <CheckCircle2 className="w-4 h-4" />
               </div>
               <div className="flex-1">
                 <div className="font-bold text-slate-900 dark:text-white">Confirmed Sophia M. via SMS for tomorrow 14:30</div>
-                <div className="text-[11px] text-purple-700 dark:text-purple-300 mt-1">AI agent • 2 min ago</div>
+                <div className="text-[11px] text-indigo-700 dark:text-indigo-300 mt-1">AI agent • 2 min ago</div>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-500/10 flex items-start gap-3.5 text-xs">
-              <div className="w-8 h-8 rounded-xl bg-purple-100 dark:bg-purple-500/10 border border-purple-300 dark:border-purple-500/30 flex items-center justify-center text-purple-700 dark:text-purple-400 shrink-0">
+            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-indigo-500/10 flex items-start gap-3.5 text-xs">
+              <div className="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-500/10 border border-indigo-300 dark:border-indigo-500/30 flex items-center justify-center text-indigo-700 dark:text-indigo-400 shrink-0">
                 <FileEdit className="w-4 h-4" />
               </div>
               <div className="flex-1">
                 <div className="font-bold text-slate-900 dark:text-white">Drafted claim for Michael C. • auto body repair estimate</div>
-                <div className="text-[11px] text-purple-700 dark:text-purple-300 mt-1">AI agent • 18 min ago</div>
+                <div className="text-[11px] text-indigo-700 dark:text-indigo-300 mt-1">AI agent • 18 min ago</div>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-500/10 flex items-start gap-3.5 text-xs">
+            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-indigo-500/10 flex items-start gap-3.5 text-xs">
               <div className="w-8 h-8 rounded-xl bg-amber-100 dark:bg-amber-500/10 border border-amber-300 dark:border-amber-500/30 flex items-center justify-center text-amber-700 dark:text-amber-400 shrink-0">
                 <Calendar className="w-4 h-4" />
               </div>
               <div className="flex-1">
                 <div className="font-bold text-slate-900 dark:text-white">Rescheduled 1 claim from Tue 14:00 → Wed 10:30 (adjuster conflict)</div>
-                <div className="text-[11px] text-purple-700 dark:text-purple-300 mt-1">AI agent • 1 hour ago</div>
+                <div className="text-[11px] text-indigo-700 dark:text-indigo-300 mt-1">AI agent • 1 hour ago</div>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-500/10 flex items-start gap-3.5 text-xs">
+            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-indigo-500/10 flex items-start gap-3.5 text-xs">
               <div className="w-8 h-8 rounded-xl bg-cyan-100 dark:bg-cyan-500/10 border border-cyan-300 dark:border-cyan-500/30 flex items-center justify-center text-cyan-700 dark:text-cyan-400 shrink-0">
                 <MessageSquare className="w-4 h-4" />
               </div>
               <div className="flex-1">
                 <div className="font-bold text-slate-900 dark:text-white">Follow-up sent to Olivia P. — "No damage escalation, thanks ClaimFlow."</div>
-                <div className="text-[11px] text-purple-700 dark:text-purple-300 mt-1">AI agent • 2 hours ago</div>
+                <div className="text-[11px] text-indigo-700 dark:text-indigo-300 mt-1">AI agent • 2 hours ago</div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Right Panel: Today's Schedule & Claims Queue */}
-        <div className="lg:col-span-6 bg-white dark:bg-slate-900/90 rounded-3xl p-6 border border-slate-200 dark:border-purple-500/20 shadow-sm dark:shadow-xl space-y-5">
+        <div className="lg:col-span-6 bg-white dark:bg-slate-900/90 rounded-3xl p-6 border border-slate-200 dark:border-indigo-500/20 shadow-sm dark:shadow-xl space-y-5">
           <div className="flex justify-between items-center">
             <div>
               <h3 className="text-base font-bold text-slate-900 dark:text-white">Today's Claims Queue</h3>
@@ -299,7 +299,7 @@ export default function AdjusterDashboardPage() {
             </div>
 
             <div className="flex items-center gap-2 text-xs font-semibold">
-              <span className="px-3 py-1 rounded-full bg-purple-600 text-white">Today 18</span>
+              <span className="px-3 py-1 rounded-full bg-indigo-600 text-white">Today 18</span>
               <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-950 text-slate-600 dark:text-slate-400">Tomorrow 18</span>
             </div>
           </div>
@@ -308,9 +308,9 @@ export default function AdjusterDashboardPage() {
             {highRiskClaims.slice(0, 4).map((claim: any, idx: number) => {
               const times = ['09:30', '10:00', '11:45', '14:15'];
               return (
-                <div key={claim.id || claim._id || idx} className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-500/10 flex items-center justify-between text-xs">
+                <div key={claim.id || claim._id || idx} className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-indigo-500/10 flex items-center justify-between text-xs">
                   <div className="flex items-center gap-4">
-                    <div className="text-center font-mono pr-3 border-r border-slate-200 dark:border-purple-500/10">
+                    <div className="text-center font-mono pr-3 border-r border-slate-200 dark:border-indigo-500/10">
                       <div className="font-bold text-slate-900 dark:text-white">{times[idx % times.length]}</div>
                       <div className="text-[10px] text-slate-500 dark:text-slate-400">30 min</div>
                     </div>
@@ -323,7 +323,7 @@ export default function AdjusterDashboardPage() {
 
                   <div className="flex items-center gap-3">
                     <StatusBadge status={claim.status} />
-                    <Link href={`/adjuster/claims/${claim.id || claim._id}`} className="p-1.5 rounded-lg bg-purple-50 dark:bg-purple-500/10 text-purple-700 dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-purple-500/20">
+                    <Link href={`/adjuster/claims/${claim.id || claim._id}`} className="p-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-500/20">
                       <ChevronRight className="w-4 h-4" />
                     </Link>
                   </div>
@@ -336,10 +336,10 @@ export default function AdjusterDashboardPage() {
 
       {/* Collapsible Ask ClaimFlow AI Floating Chat Drawer */}
       {isAiChatOpen && (
-        <div className="fixed bottom-6 right-6 w-96 rounded-3xl bg-white dark:bg-[#0A0B10]/95 border border-slate-200 dark:border-purple-500/40 shadow-2xl z-50 flex flex-col h-[480px] overflow-hidden backdrop-blur-2xl animate-in slide-in-from-bottom-5">
-          <div className="p-4 bg-gradient-to-r from-slate-900 to-purple-950 border-b border-purple-500/20 flex justify-between items-center text-white">
+        <div className="fixed bottom-6 right-6 w-96 rounded-3xl bg-white dark:bg-[#0A0B10]/95 border border-slate-200 dark:border-indigo-500/40 shadow-2xl z-50 flex flex-col h-[480px] overflow-hidden backdrop-blur-2xl animate-in slide-in-from-bottom-5">
+          <div className="p-4 bg-gradient-to-r from-slate-900 to-indigo-950 border-b border-indigo-500/20 flex justify-between items-center text-white">
             <div className="flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-fuchsia-400" />
+              <Sparkles className="w-5 h-5 text-cyan-400" />
               <span className="font-bold text-sm">Ask ClaimFlow AI Assistant</span>
             </div>
             <button onClick={() => setIsAiChatOpen(false)} className="text-slate-400 hover:text-white">
@@ -352,8 +352,8 @@ export default function AdjusterDashboardPage() {
               <div key={idx} className={`flex gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`p-3 rounded-2xl max-w-[80%] ${
                   msg.role === 'user' 
-                    ? 'bg-purple-600 text-white rounded-br-none' 
-                    : 'bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-purple-500/20 text-slate-800 dark:text-slate-200 rounded-bl-none'
+                    ? 'bg-indigo-600 text-white rounded-br-none' 
+                    : 'bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-indigo-500/20 text-slate-800 dark:text-slate-200 rounded-bl-none'
                 }`}>
                   {msg.content}
                 </div>
@@ -361,15 +361,15 @@ export default function AdjusterDashboardPage() {
             ))}
           </div>
 
-          <form onSubmit={handleSendChat} className="p-3 border-t border-slate-200 dark:border-purple-500/20 flex gap-2">
+          <form onSubmit={handleSendChat} className="p-3 border-t border-slate-200 dark:border-indigo-500/20 flex gap-2">
             <input
               type="text"
               value={chatInput}
               onChange={(e) => setChatInput(e.target.value)}
               placeholder="Ask AI about claim risk or policy limits..."
-              className="flex-1 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-purple-500/30 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-purple-500"
+              className="flex-1 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-indigo-500/30 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500"
             />
-            <button type="submit" className="p-2.5 rounded-xl bg-purple-600 text-white hover:bg-purple-500">
+            <button type="submit" className="p-2.5 rounded-xl bg-indigo-600 text-white hover:bg-indigo-500">
               <Send className="w-4 h-4" />
             </button>
           </form>

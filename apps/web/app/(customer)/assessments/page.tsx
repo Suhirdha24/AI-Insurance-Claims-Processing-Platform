@@ -92,7 +92,7 @@ export default function DamageAssessmentViewerPage() {
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 rounded-3xl bg-white border border-slate-200 shadow-sm">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="px-3 py-0.5 rounded-full bg-purple-100 text-purple-700 border border-purple-200 text-xs font-bold uppercase tracking-wider">
+            <span className="px-3 py-0.5 rounded-full bg-indigo-100 text-indigo-700 border border-indigo-200 text-xs font-bold uppercase tracking-wider">
               ClaimFlow AI • 3D Damage Inspector
             </span>
             <span className="text-xs text-emerald-600 font-bold flex items-center gap-1">
@@ -114,7 +114,7 @@ export default function DamageAssessmentViewerPage() {
             onClick={() => handleModelSelect('suv')}
             className={`px-3.5 py-2 rounded-xl transition-all ${
               selectedModelKey === 'suv'
-                ? 'bg-purple-600 text-white font-extrabold shadow-md'
+                ? 'bg-indigo-600 text-white font-extrabold shadow-md'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -124,7 +124,7 @@ export default function DamageAssessmentViewerPage() {
             onClick={() => handleModelSelect('sedan')}
             className={`px-3.5 py-2 rounded-xl transition-all ${
               selectedModelKey === 'sedan'
-                ? 'bg-purple-600 text-white font-extrabold shadow-md'
+                ? 'bg-indigo-600 text-white font-extrabold shadow-md'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -134,7 +134,7 @@ export default function DamageAssessmentViewerPage() {
             onClick={() => handleModelSelect('ev')}
             className={`px-3.5 py-2 rounded-xl transition-all ${
               selectedModelKey === 'ev'
-                ? 'bg-purple-600 text-white font-extrabold shadow-md'
+                ? 'bg-indigo-600 text-white font-extrabold shadow-md'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -149,7 +149,7 @@ export default function DamageAssessmentViewerPage() {
         <div className="lg:col-span-3 space-y-3">
           <div className="text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 font-extrabold px-1 flex justify-between items-center">
             <span>Detected Damage Areas</span>
-            <span className="text-[10px] text-purple-700 dark:text-purple-400 font-bold">AI SCAN VERIFIED</span>
+            <span className="text-[10px] text-indigo-700 dark:text-indigo-400 font-bold">AI SCAN VERIFIED</span>
           </div>
 
           <div className="space-y-3">
@@ -162,19 +162,19 @@ export default function DamageAssessmentViewerPage() {
                   onClick={() => setSelectedHotspot(item)}
                   className={`p-4 rounded-2xl cursor-pointer transition-all border ${
                     isSelected 
-                      ? 'border-purple-500 bg-purple-50 shadow-md ring-2 ring-purple-500/50 scale-[1.01]' 
-                      : 'bg-white border-slate-200 hover:border-purple-400'
+                      ? 'border-indigo-500 bg-indigo-50 shadow-md ring-2 ring-indigo-500/50 scale-[1.01]' 
+                      : 'bg-white border-slate-200 hover:border-indigo-400'
                   }`}
                 >
                   <div className="flex justify-between items-start">
                     <span className="text-xs font-extrabold text-slate-900">{item.part}</span>
                   </div>
                   <div className="text-[10px] text-slate-500 mt-1 uppercase font-semibold">
-                    {item.type} | <span className="text-purple-700 font-bold">{item.confidence}% AI Confidence</span>
+                    {item.type} | <span className="text-indigo-700 font-bold">{item.confidence}% AI Confidence</span>
                   </div>
                   <div className="mt-3 flex justify-between items-center text-xs">
                     <span className="text-slate-500 text-[10px]">REPAIR ESTIMATE</span>
-                    <span className="font-extrabold text-purple-700 text-sm">{formatINR(item.cost)}</span>
+                    <span className="font-extrabold text-indigo-700 text-sm">{formatINR(item.cost)}</span>
                   </div>
                 </div>
               );
@@ -183,11 +183,11 @@ export default function DamageAssessmentViewerPage() {
         </div>
 
         {/* Center Stage: 3D Holographic Turntable Inspection Stage */}
-        <div className="lg:col-span-6 relative rounded-3xl bg-slate-950 p-4 border border-purple-500/30 shadow-2xl flex flex-col justify-between overflow-hidden min-h-[460px] text-white">
+        <div className="lg:col-span-6 relative rounded-3xl bg-slate-950 p-4 border border-indigo-500/30 shadow-2xl flex flex-col justify-between overflow-hidden min-h-[460px] text-white">
           {/* Top Model Badge Pill */}
           <div className="flex justify-center items-center z-10">
-            <div className="px-4 py-1 rounded-full bg-slate-900/90 border border-purple-500/40 text-xs font-mono text-purple-300 flex items-center gap-3 shadow-lg">
-              <span className="w-2 h-2 rounded-full bg-purple-400 animate-ping" />
+            <div className="px-4 py-1 rounded-full bg-slate-900/90 border border-indigo-500/40 text-xs font-mono text-indigo-300 flex items-center gap-3 shadow-lg">
+              <span className="w-2 h-2 rounded-full bg-indigo-400 animate-ping" />
               <span className="font-extrabold text-white tracking-wider uppercase">
                 {currentModel.name}
               </span>
@@ -218,15 +218,15 @@ export default function DamageAssessmentViewerPage() {
                 {/* Glowing Beacon Indicator */}
                 <div className={`w-4 h-4 rounded-full flex items-center justify-center animate-bounce ${
                   item.color === 'cyan' ? 'bg-cyan-400 text-black shadow-lg shadow-cyan-500/60' :
-                  item.color === 'magenta' ? 'bg-fuchsia-400 text-black shadow-lg shadow-fuchsia-500/60' :
+                  item.color === 'magenta' ? 'bg-indigo-400 text-black shadow-lg shadow-indigo-500/60' :
                   'bg-amber-400 text-black shadow-lg shadow-amber-500/60'
                 }`}>
                   <div className="w-1.5 h-1.5 rounded-full bg-white" />
                 </div>
 
                 {/* Laser Callout Annotation Box */}
-                <div className="absolute left-6 -top-3 whitespace-nowrap p-2.5 rounded-xl bg-slate-950/95 border border-purple-500/40 text-[10px] font-mono text-white shadow-2xl space-y-0.5">
-                  <div className="font-extrabold text-purple-300">{item.part}</div>
+                <div className="absolute left-6 -top-3 whitespace-nowrap p-2.5 rounded-xl bg-slate-950/95 border border-indigo-500/40 text-[10px] font-mono text-white shadow-2xl space-y-0.5">
+                  <div className="font-extrabold text-indigo-300">{item.part}</div>
                   <div className="text-slate-400 text-[9px]">[{item.type}]</div>
                   <div className="text-cyan-400 font-bold">{item.measurement}</div>
                 </div>
@@ -235,9 +235,9 @@ export default function DamageAssessmentViewerPage() {
           </div>
 
           {/* Stage Bottom Control Status Bar */}
-          <div className="z-10 px-4 py-2 rounded-xl bg-slate-900/90 border border-purple-500/30 flex justify-between items-center text-[10px] font-mono text-slate-300">
+          <div className="z-10 px-4 py-2 rounded-xl bg-slate-900/90 border border-indigo-500/30 flex justify-between items-center text-[10px] font-mono text-slate-300">
             <div className="flex items-center gap-2">
-              <span className="text-purple-400 font-bold">LASER SCANNER ACTIVE</span>
+              <span className="text-indigo-400 font-bold">LASER SCANNER ACTIVE</span>
               <span>•</span>
               <span>3D STRUCTURAL MODEL ({selectedHotspot?.part || 'SCANNING'})</span>
             </div>
@@ -250,7 +250,7 @@ export default function DamageAssessmentViewerPage() {
             CLAIM ESTIMATE SUMMARY
           </div>
 
-          <div className="bg-white dark:bg-slate-900/90 p-5 rounded-2xl border border-slate-200 dark:border-purple-500/20 space-y-4 text-xs font-mono shadow-sm">
+          <div className="bg-white dark:bg-slate-900/90 p-5 rounded-2xl border border-slate-200 dark:border-indigo-500/20 space-y-4 text-xs font-mono shadow-sm">
             <div className="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-slate-800">
               <span className="text-slate-500 dark:text-slate-400">Policy Number</span>
               <span className="font-extrabold text-slate-900 dark:text-white">POL-2026-8849</span>
@@ -275,7 +275,7 @@ export default function DamageAssessmentViewerPage() {
 
             <div className="pt-2 flex justify-between items-center text-sm font-sans">
               <span className="text-slate-700 dark:text-slate-300 font-bold">TOTAL ESTIMATE</span>
-              <span className="text-xl font-black text-purple-700 dark:text-purple-300">{formatINR(totalCost)}</span>
+              <span className="text-xl font-black text-indigo-700 dark:text-indigo-300">{formatINR(totalCost)}</span>
             </div>
           </div>
         </div>
@@ -284,7 +284,7 @@ export default function DamageAssessmentViewerPage() {
       {/* Bottom Telemetry & Insurance Actions */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-4 pt-1 text-xs">
         {/* 1. Policy Coverage Badge */}
-        <div className="md:col-span-3 bg-white dark:bg-slate-900/90 p-4 rounded-2xl border border-slate-200 dark:border-purple-500/20 shadow-sm space-y-2">
+        <div className="md:col-span-3 bg-white dark:bg-slate-900/90 p-4 rounded-2xl border border-slate-200 dark:border-indigo-500/20 shadow-sm space-y-2">
           <div className="text-slate-500 dark:text-slate-400 uppercase font-bold text-[10px] flex items-center justify-between">
             <span>Policy Status</span>
             <ShieldCheck className="w-4 h-4 text-emerald-500" />
@@ -294,19 +294,19 @@ export default function DamageAssessmentViewerPage() {
         </div>
 
         {/* 2. AI Confidence Metrics */}
-        <div className="md:col-span-3 bg-white dark:bg-slate-900/90 p-4 rounded-2xl border border-slate-200 dark:border-purple-500/20 shadow-sm space-y-2">
+        <div className="md:col-span-3 bg-white dark:bg-slate-900/90 p-4 rounded-2xl border border-slate-200 dark:border-indigo-500/20 shadow-sm space-y-2">
           <div className="text-slate-500 dark:text-slate-400 uppercase font-bold text-[10px] flex items-center justify-between">
             <span>AI Scan Confidence</span>
-            <Activity className="w-4 h-4 text-purple-500" />
+            <Activity className="w-4 h-4 text-indigo-500" />
           </div>
-          <div className="font-extrabold text-purple-700 dark:text-purple-300 text-sm">94.8% Visual Precision</div>
+          <div className="font-extrabold text-indigo-700 dark:text-indigo-300 text-sm">94.8% Visual Precision</div>
           <div className="w-full bg-slate-100 dark:bg-slate-950 h-2 rounded-full overflow-hidden">
-            <div className="bg-purple-600 dark:bg-purple-500 h-full w-[94.8%]" />
+            <div className="bg-indigo-600 dark:bg-indigo-500 h-full w-[94.8%]" />
           </div>
         </div>
 
         {/* 3. Insurance Claim Flow CTAs */}
-        <div className="md:col-span-6 bg-white dark:bg-slate-900/90 p-4 rounded-2xl border border-slate-200 dark:border-purple-500/20 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="md:col-span-6 bg-white dark:bg-slate-900/90 p-4 rounded-2xl border border-slate-200 dark:border-indigo-500/20 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
           <div>
             <div className="font-bold text-slate-900 dark:text-white">Ready to File Damage Claim?</div>
             <div className="text-[11px] text-slate-500 dark:text-slate-400">Attach this 3D AI assessment directly to your new claim submission.</div>
@@ -314,7 +314,7 @@ export default function DamageAssessmentViewerPage() {
 
           <Link
             href="/claims/new"
-            className="w-full sm:w-auto py-3 px-6 rounded-full bg-gradient-to-r from-purple-600 via-fuchsia-500 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-xs shadow-lg shadow-purple-500/30 transition-all shrink-0 text-center"
+            className="w-full sm:w-auto py-3 px-6 rounded-full bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-bold text-xs shadow-lg shadow-indigo-500/30 transition-all shrink-0 text-center"
           >
             File Claim with AI Scan →
           </Link>

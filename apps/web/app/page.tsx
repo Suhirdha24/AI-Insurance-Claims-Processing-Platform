@@ -11,14 +11,14 @@ export default function LandingPage() {
   return (
     <div className="relative min-h-screen bg-[#06070B] text-slate-100 bg-cyber-grid overflow-hidden">
       {/* Top Ambient Glow Aura */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[450px] bg-gradient-to-r from-purple-900/30 via-fuchsia-600/25 to-indigo-900/30 blur-[120px] pointer-events-none -z-10" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[450px] bg-gradient-to-r from-indigo-900/30 via-blue-600/25 to-cyan-900/30 blur-[120px] pointer-events-none -z-10" />
 
       {/* Header Bar */}
-      <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#06070B]/70 border-b border-purple-500/10">
+      <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#06070B]/70 border-b border-indigo-500/10">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-fuchsia-500 flex items-center justify-center shadow-lg shadow-purple-500/30">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-cyan-500 flex items-center justify-center shadow-lg shadow-indigo-500/30">
               <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
@@ -30,11 +30,11 @@ export default function LandingPage() {
 
           {/* Navigation Links */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-            <a href="#benefits" className="hover:text-purple-400 transition-colors">Benefits</a>
-            <a href="#how-it-works" className="hover:text-purple-400 transition-colors">How It Works</a>
-            <a href="#technologies" className="hover:text-purple-400 transition-colors">Technologies</a>
-            <a href="#features" className="hover:text-purple-400 transition-colors">Key Features</a>
-            <a href="#pricing" className="hover:text-purple-400 transition-colors">Pricing</a>
+            <a href="#benefits" className="hover:text-indigo-400 transition-colors">Benefits</a>
+            <a href="#how-it-works" className="hover:text-indigo-400 transition-colors">How It Works</a>
+            <a href="#technologies" className="hover:text-indigo-400 transition-colors">Technologies</a>
+            <a href="#features" className="hover:text-indigo-400 transition-colors">Key Features</a>
+            <a href="#pricing" className="hover:text-indigo-400 transition-colors">Pricing</a>
           </nav>
 
           {/* Actions */}
@@ -42,7 +42,7 @@ export default function LandingPage() {
             <Link href="/login" className="text-sm font-medium text-slate-300 hover:text-white transition-colors px-4 py-2">
               CONTACT US
             </Link>
-            <Link href="/login" className="px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-purple-600 via-fuchsia-500 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 shadow-lg shadow-purple-500/25 transition-all duration-300 transform hover:scale-[1.02]">
+            <Link href="/login" className="px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 shadow-lg shadow-indigo-500/25 transition-all duration-300 transform hover:scale-[1.02]">
               LOGIN
             </Link>
           </div>
@@ -52,8 +52,8 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section className="relative pt-16 pb-20 px-6 max-w-7xl mx-auto text-center">
         {/* Floating Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel border-fuchsia-500/30 text-xs font-semibold text-fuchsia-300 mb-8 animate-pulse">
-          <span className="w-2 h-2 rounded-full bg-fuchsia-400 animate-ping" />
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel border-cyan-500/30 text-xs font-semibold text-cyan-300 mb-8 animate-pulse">
+          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
           Guaranteed Reliability • 100% Advisory AI
         </div>
 
@@ -70,7 +70,7 @@ export default function LandingPage() {
 
         {/* Hero CTA Buttons */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-5">
-          <Link href="/register" className="w-full sm:w-auto px-8 py-4 rounded-full text-base font-bold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 shadow-xl shadow-purple-500/30 transition-all duration-300 transform hover:scale-105">
+          <Link href="/register" className="w-full sm:w-auto px-8 py-4 rounded-full text-base font-bold text-white bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 shadow-xl shadow-indigo-500/30 transition-all duration-300 transform hover:scale-105">
             START FOR FREE
           </Link>
           <a href="#how-it-works" className="w-full sm:w-auto px-8 py-4 rounded-full text-base font-semibold text-slate-200 glass-panel hover:bg-slate-800/60 transition-all duration-300">
@@ -79,7 +79,7 @@ export default function LandingPage() {
         </div>
 
         {/* Hero Interactive UI Mockup Container */}
-        <div className="mt-16 relative max-w-5xl mx-auto rounded-3xl glass-panel p-4 md:p-6 glow-purple border border-purple-500/30 shadow-2xl overflow-hidden">
+        <div className="mt-16 relative max-w-5xl mx-auto rounded-3xl glass-panel p-4 md:p-6 glow-purple border border-indigo-500/30 shadow-2xl overflow-hidden">
           {/* Top Mockup Header */}
           <div className="flex items-center justify-between mb-4 px-3">
             <div className="flex items-center gap-2">
@@ -91,7 +91,7 @@ export default function LandingPage() {
 
             {/* Quick Metrics Pills */}
             <div className="flex items-center gap-3 text-xs font-semibold">
-              <span className="px-3 py-1 rounded-lg bg-purple-500/20 text-purple-300 border border-purple-500/40">
+              <span className="px-3 py-1 rounded-lg bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
                 $790.58 est. cost
               </span>
               <span className="px-3 py-1 rounded-lg bg-blue-500/20 text-blue-300 border border-blue-500/40">
@@ -124,14 +124,14 @@ export default function LandingPage() {
       </section>
 
       {/* Tech Partners Section */}
-      <section className="py-12 border-y border-purple-500/10 bg-slate-950/40">
+      <section className="py-12 border-y border-indigo-500/10 bg-slate-950/40">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <p className="text-xs uppercase tracking-widest text-slate-400 font-semibold mb-8">
             POWERED BY ENTERPRISE AI ARCHITECTURE
           </p>
           <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-80">
             <div className="flex items-center gap-2.5 text-slate-300 font-bold text-base">
-              <Flame className="w-5 h-5 text-purple-400" /> PyTorch AI
+              <Flame className="w-5 h-5 text-indigo-400" /> PyTorch AI
             </div>
             <div className="flex items-center gap-2.5 text-slate-300 font-bold text-base">
               <Eye className="w-5 h-5 text-cyan-400" /> OpenCV Vision
@@ -150,7 +150,7 @@ export default function LandingPage() {
       <section id="benefits" className="py-24 px-6 max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
-            <span className="text-xs uppercase tracking-widest text-purple-400 font-semibold">ENTERPRISE BENEFIT</span>
+            <span className="text-xs uppercase tracking-widest text-indigo-400 font-semibold">ENTERPRISE BENEFIT</span>
             <h2 className="text-3xl md:text-5xl font-extrabold text-white mt-2">
               Why Thousands of Drivers <br />& Insurers Trust Us
             </h2>
@@ -163,7 +163,7 @@ export default function LandingPage() {
         {/* Feature Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="p-8 rounded-3xl glass-panel glass-panel-hover relative group">
-            <div className="w-14 h-14 rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
+            <div className="w-14 h-14 rounded-2xl bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 mb-6">
               <Zap className="w-7 h-7" />
             </div>
             <h3 className="text-xl font-bold text-white mb-3">Instant Assessments</h3>
@@ -173,7 +173,7 @@ export default function LandingPage() {
           </div>
 
           <div className="p-8 rounded-3xl glass-panel glass-panel-hover relative group">
-            <div className="w-14 h-14 rounded-2xl bg-fuchsia-600/20 border border-fuchsia-500/30 flex items-center justify-center text-fuchsia-400 mb-6">
+            <div className="w-14 h-14 rounded-2xl bg-cyan-600/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-6">
               <Target className="w-7 h-7" />
             </div>
             <h3 className="text-xl font-bold text-white mb-3">Accurate Advisory AI Analysis</h3>
@@ -196,7 +196,7 @@ export default function LandingPage() {
 
       {/* Floating 3D Hologram Car & Reviews Showcase */}
       <section className="py-20 px-6 max-w-7xl mx-auto">
-        <div className="rounded-3xl glass-panel p-8 md:p-12 border border-purple-500/20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="rounded-3xl glass-panel p-8 md:p-12 border border-indigo-500/20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-semibold text-cyan-300 mb-4">
               AI DIAGNOSTIC MATRIX
@@ -210,16 +210,16 @@ export default function LandingPage() {
 
             {/* Testimonials */}
             <div className="space-y-4">
-              <div className="p-5 rounded-2xl bg-slate-900/60 border border-purple-500/10">
+              <div className="p-5 rounded-2xl bg-slate-900/60 border border-indigo-500/10">
                 <div className="flex items-center gap-1 text-amber-400 mb-2">★★★★★ <span className="text-xs text-slate-400 font-semibold ml-2">5.0</span></div>
                 <p className="text-sm text-slate-300 italic">"Managing vehicle repairs used to be a logistical nightmare. Now, I can get accurate damage reports instantly and prioritize repairs effortlessly."</p>
-                <div className="mt-3 text-xs font-semibold text-purple-300">— Michael Reynolds, Fleet Manager</div>
+                <div className="mt-3 text-xs font-semibold text-indigo-300">— Michael Reynolds, Fleet Manager</div>
               </div>
 
-              <div className="p-5 rounded-2xl bg-slate-900/60 border border-purple-500/10">
+              <div className="p-5 rounded-2xl bg-slate-900/60 border border-indigo-500/10">
                 <div className="flex items-center gap-1 text-amber-400 mb-2">★★★★★ <span className="text-xs text-slate-400 font-semibold ml-2">5.0</span></div>
                 <p className="text-sm text-slate-300 italic">"Seamlessly integrated into our workflow. Highly accurate estimates and fast processing times!"</p>
-                <div className="mt-3 text-xs font-semibold text-purple-300">— Emily Carter, Service Advisor</div>
+                <div className="mt-3 text-xs font-semibold text-indigo-300">— Emily Carter, Service Advisor</div>
               </div>
             </div>
           </div>
@@ -237,20 +237,20 @@ export default function LandingPage() {
       </section>
 
       {/* Direct Portal Jump Access Footer */}
-      <footer className="py-12 border-t border-purple-500/10 bg-slate-950/80">
+      <footer className="py-12 border-t border-indigo-500/10 bg-slate-950/80">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-purple-600 flex items-center justify-center text-white font-bold text-xs">
+            <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold text-xs">
               🛡️
             </div>
             <span className="text-sm font-semibold text-white">SHIELD AI Claims Platform © 2026</span>
           </div>
 
           <div className="flex flex-wrap justify-center gap-6 text-sm font-medium">
-            <Link href="/login" className="text-purple-400 hover:text-purple-300 transition-colors">
+            <Link href="/login" className="text-indigo-400 hover:text-indigo-300 transition-colors">
               Policyholder Portal
             </Link>
-            <Link href="/login" className="text-fuchsia-400 hover:text-fuchsia-300 transition-colors">
+            <Link href="/login" className="text-cyan-400 hover:text-cyan-300 transition-colors">
               Adjuster Portal
             </Link>
             <Link href="/login" className="text-cyan-400 hover:text-cyan-300 transition-colors">

@@ -65,7 +65,7 @@ export default function AdminUsersPage() {
       <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex items-center justify-between">
         <div>
           <h1 className="text-xl font-extrabold text-slate-900 flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center">
+            <div className="w-9 h-9 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center">
               <Users className="w-5 h-5" />
             </div>
             User Directory & Access Control
@@ -77,7 +77,7 @@ export default function AdminUsersPage() {
       {/* Metric Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
         <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-purple-50 border border-purple-200 text-purple-700 flex items-center justify-center font-bold">
+          <div className="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-700 flex items-center justify-center font-bold">
             <Users className="w-5 h-5" />
           </div>
           <div>
@@ -97,7 +97,7 @@ export default function AdminUsersPage() {
         </div>
 
         <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-purple-50 border border-purple-200 text-purple-700 flex items-center justify-center font-bold">
+          <div className="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-700 flex items-center justify-center font-bold">
             <UserPlus className="w-5 h-5" />
           </div>
           <div>
@@ -125,7 +125,7 @@ export default function AdminUsersPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search users by name, email, or system role..."
-            className="w-full pl-9 pr-4 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 font-medium focus:ring-2 focus:ring-purple-500/50 outline-none"
+            className="w-full pl-9 pr-4 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 font-medium focus:ring-2 focus:ring-indigo-500/50 outline-none"
           />
           <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
         </div>
@@ -150,7 +150,7 @@ export default function AdminUsersPage() {
             </thead>
             <tbody className="divide-y divide-slate-100">
               {filteredUsers.map((u: any) => (
-                <tr key={u.id || u._id} className="hover:bg-purple-50/30 transition-colors">
+                <tr key={u.id || u._id} className="hover:bg-indigo-50/30 transition-colors">
                   <td className="p-4 font-extrabold text-slate-900">{u.name}</td>
                   <td className="p-4 font-medium text-slate-600 font-mono text-[11px]">{u.email}</td>
                   <td className="p-4">
@@ -159,7 +159,7 @@ export default function AdminUsersPage() {
                         u.role === UserRole.ADMIN
                           ? 'bg-cyan-50 border-cyan-200 text-cyan-700'
                           : u.role === UserRole.ADJUSTER
-                          ? 'bg-purple-50 border-purple-200 text-purple-700'
+                          ? 'bg-indigo-50 border-indigo-200 text-indigo-700'
                           : 'bg-emerald-50 border-emerald-200 text-emerald-700'
                       }`}
                     >
@@ -180,7 +180,7 @@ export default function AdminUsersPage() {
                     <select
                       value={u.role}
                       onChange={(e) => handleRoleChange(u.id || u._id, e.target.value)}
-                      className="p-2 rounded-xl border border-slate-300 bg-white text-slate-900 text-xs font-bold shadow-sm cursor-pointer outline-none focus:ring-2 focus:ring-purple-500/50"
+                      className="p-2 rounded-xl border border-slate-300 bg-white text-slate-900 text-xs font-bold shadow-sm cursor-pointer outline-none focus:ring-2 focus:ring-indigo-500/50"
                     >
                       <option value={UserRole.CUSTOMER}>CUSTOMER</option>
                       <option value={UserRole.ADJUSTER}>ADJUSTER</option>
